@@ -13,6 +13,7 @@ class Dashboard extends Component
 {
     public function render()
     {
+        $kelas=[];
         $year = date('Y');
         $month = date('m');
         if($month<7){
