@@ -52,7 +52,7 @@
                             <tr>
                                 <td class="px-2 py-3">{{ $periodes->firstitem() + $key }}</td>
                                 <td>{{ $periode->year }}</td>
-                                <td>{{ $periode->period }}</td>
+                                <td>{{ $semester[$periode->period] }}</td>
                                 <td>
                                     <button wire:click="edit({{ $periode->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
                                     Edit

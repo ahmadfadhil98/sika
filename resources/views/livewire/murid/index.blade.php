@@ -54,7 +54,7 @@
                                 <td class="px-2 py-3">{{ $murids->firstitem() + $key }}</td>
                                 <td>{{ $murid->nis }}</td>
                                 <td>{{ $murid->name }}</td>
-                                <td>{{ $murid->genre }}</td>
+                                <td>{{ $gender[$murid->genre] }}</td>
                                 <td>
                                     <button wire:click="edit({{ $murid->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
                                     Edit
