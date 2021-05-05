@@ -13,7 +13,7 @@
         <form>
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div>
-              <h1 class=" uppercase font-bold text-center mb-4">BAYAR UANG ASRAMA</h1>
+              <h1 class=" uppercase font-bold text-center mb-4">PENGELUARAN UANG ASRAMA</h1>
             </div>
               <div>
                     <div class="mb-2">
@@ -32,7 +32,7 @@
                     </div>
 
 
-                    <div class="mb-2"> <span>Attachments</span>
+                    <div class="mb-2"> <span>Dokumen Bukti</span>
                         <div class="shadow appearance-none h-40 rounded border border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
 
                                 <div x-data="{photoName: null, photoPreview: null}" class="absolute">
@@ -53,9 +53,9 @@
                                     <!-- Current Profile Photo -->
                                     <div class="mt-2 text-center" x-show="! photoPreview">
                                         <i class="fa fa-cloud-upload fa-3x text-gray-200 text-center"></i>
-                                        <span class="block text-gray-400 font-normal">Attach you files here</span>
-                                        <span class="block text-gray-400 font-normal">or</span>
-                                        <span class="block text-blue-400 font-normal">Browse files</span>
+                                        <span class="text-xs block text-gray-400 font-normal">Seret data ke sini</span>
+                                        <span class="text-xs block text-gray-400 font-normal">atau</span>
+                                        <span class="text-base block text-blue-400 font-normal">Cari file</span>
                                     </div>
 
                                     <!-- New Profile Photo Preview -->
@@ -78,12 +78,12 @@
         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
           <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
             <button wire:click.prevent="store()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
-              Submit
+              Simpan
             </button>
           </span>
           <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
             <button wire:click="hideModal()" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">
-              Cancel
+              Batal
             </button>
           </span>
         </div>

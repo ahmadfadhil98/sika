@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg px-4 py-4">
-                    
+
                     <div class="flex mb-4">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <button wire:click="showModal()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded mb-2">
@@ -17,8 +17,8 @@
                         </button>
                     </div>
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <input wire:model="search" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900" placeholder="Search Post...">           
-                    </div>                     
+                        <input wire:model="search" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900" placeholder="Search Post...">
+                    </div>
                     </div>
 
 
@@ -32,7 +32,7 @@
                                 <h1 class="text-white font-bold">{{ session('info') }}</h1>
                             </div>
                         </div>
-                        
+
                     @endif
 
                       @if(session()->has('delete'))
@@ -40,21 +40,21 @@
                             <div>
                                 <h1 class="text-white font-bold">{{ session('delete') }}</h1>
                             </div>
-                        </div>                        
+                        </div>
                     @endif
-                             
+
                     <table class="table-fixed w-full">
                         <thead class="bg-blue-500">
                             <tr>
                                 <th class="px-4 py-2 text-white w-20">No</th>
-                                <th class="px-4 py-2 text-white w-auto">Title</th>
-                                <th class="px-4 py-2 text-white w-auto">Description</th>
-                                <th class="px-4 py-2 text-white w-auto">Action</th>
+                                <th class="px-4 py-2 text-white w-auto">Judul</th>
+                                <th class="px-4 py-2 text-white w-auto">Keterangan</th>
+                                <th class="px-4 py-2 text-white w-auto">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($posts as $key=>$post)
-                            <tr>          
+                            <tr>
                                 <td class="px-2 py-3">{{ $posts->firstitem() + $key }}</td>
                                 <td>{{ $post->title }}</td>
                                  <td>{{ $post->description }}</td>
@@ -73,10 +73,10 @@
                     <div class="mt-4">
                           {{$posts->links()}}
                     </div>
-                   
+
                 </div>
 
-               
+
 
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                     <div class="text-center text-sm text-gray-500 sm:text-left">

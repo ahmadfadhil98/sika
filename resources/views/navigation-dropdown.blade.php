@@ -13,16 +13,16 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        <h1 class="text-base">Dashboard</h1>
                     </x-jet-nav-link>
                 </div>
 
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="hidden sm:flex sm:items-center sm:ml-8">
                     <x-jet-dropdown align="left" width="48">
                         <x-slot name="trigger">
 
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                <div>Data</div>
+                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">
+                                <div class="text-base">Manajemen Database</div>
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -32,37 +32,53 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Management Data') }}
+                            <div class="block px-4 py-2 text-xs text-gray-300">
+                                {{ __('Database Peserta Didik') }}
                             </div>
+                            <div class="border-t border-gray-50"></div>
+
                             <x-jet-dropdown-link href="{{ route('murids') }}">
-                                {{ __('Murid') }}
+                                <h2 class="text-sm">Peserta Didik</h2>
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('kelas') }}">
-                                {{ __('Kelas') }}
+                                <h2 class="text-sm">Kelas</h2>
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('asramas') }}">
-                                {{ __('Asrama') }}
-                            </x-jet-dropdown-link>
-                            <x-jet-dropdown-link href="{{ route('gurutendiks') }}">
-                                {{ __('Guru/Tendik') }}
+                                <h2 class="text-sm">Asrama</h2>
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('periodes') }}">
-                                {{ __('Periode') }}
+                                <h2 class="text-sm">Semester</h2>
                             </x-jet-dropdown-link>
+                            <div class="border-t border-gray-50"></div>
+                            <div class="block px-4 py-2 text-xs text-gray-300">
+                                {{ __('Database Pegawai Sekolah') }}
+                            </div>
+                            <div class="border-t border-gray-50"></div>
+
+                            <x-jet-dropdown-link href="{{ route('gurutendiks') }}">
+                                <h2 class="text-sm">Guru / Pembina Asrama</h2>
+                            </x-jet-dropdown-link>
+                            <div class="border-t border-gray-50"></div>
+                            <div class="block px-4 py-2 text-xs text-gray-300">
+                                {{ __('Database Barang') }}
+                            </div>
+                            <div class="border-t border-gray-50"></div>
+
                             <x-jet-dropdown-link href="{{ route('barangs') }}">
-                                {{ __('Barang') }}
+                                <h2 class="text-sm">Barang</h2>
                             </x-jet-dropdown-link>
+
                         </x-slot>
+
                     </x-jet-dropdown>
                 </div>
 
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="hidden sm:flex sm:items-center sm:ml-8">
                     <x-jet-dropdown align="left" width="48">
                         <x-slot name="trigger">
 
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                <div>Data II</div>
+                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">
+                                <div class="text-base">Pengelompokan Data</div>
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -73,25 +89,26 @@
 
                         <x-slot name="content">
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Management Data') }}
+                                {{ __('Data Kelas & Asrama') }}
                             </div>
+                            <div class="border-t border-gray-50"></div>
 
                             <x-jet-dropdown-link href="{{ route('dkelas') }}">
-                                {{ __('Kelas') }}
+                                <h2 class="text-sm">Kelas</h2>
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('dasrama') }}">
-                                {{ __('Asrama') }}
+                                <h2 class="text-sm">Asrama</h2>
                             </x-jet-dropdown-link>
                         </x-slot>
                     </x-jet-dropdown>
                 </div>
 
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="hidden sm:flex sm:items-center sm:ml-8">
                     <x-jet-dropdown align="left" width="48">
                         <x-slot name="trigger">
 
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                <div>Transaksi</div>
+                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">
+                                <div class="text-base">Transaksi</div>
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -104,23 +121,24 @@
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Pengelolaan Uang Asrama') }}
                             </div>
+                            <div class="border-t border-gray-50"></div>
 
                             <x-jet-dropdown-link href="{{ route('uas') }}">
-                                {{ __('Uang Asrama') }}
+                                <h2 class="text-sm">Uang Asrama</h2>
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('pengeluarans') }}">
-                                {{ __('Pengeluaran') }}
+                                <h2 class="text-sm">Pengeluaran</h2>
                             </x-jet-dropdown-link>
                         </x-slot>
                     </x-jet-dropdown>
                 </div>
 
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="hidden sm:flex sm:items-center sm:ml-8">
                     <x-jet-dropdown align="left" width="48">
                         <x-slot name="trigger">
 
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                <div>Laporan</div>
+                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">
+                                <div class="text-base">Laporan</div>
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -131,14 +149,15 @@
 
                         <x-slot name="content">
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Laporan Pengelolaan Uang Asrama') }}
+                                {{ __('Laporan Keuangan Asrama') }}
                             </div>
+                            <div class="border-t border-gray-50"></div>
 
                             <x-jet-dropdown-link href="{{ route('report_masuk') }}">
-                                {{ __('Uang Masuk') }}
+                                <h2 class="text-sm">Uang Masuk</h2>
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('report_keluar') }}">
-                                {{ __('Uang Keluar') }}
+                                <h2 class="text-sm">Uang Keluar</h2>
                             </x-jet-dropdown-link>
                         </x-slot>
                     </x-jet-dropdown>
@@ -148,7 +167,7 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="hidden sm:flex sm:items-center sm:ml-8">
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
@@ -159,20 +178,14 @@
                     <x-slot name="content">
                         <!-- Account Management -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Manage Account') }}
+                            {{ __('Pengelola Uang Asrama') }}
                         </div>
 
+                        <div class="border-t border-gray-50"></div>
+
                         <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                            {{ __('Profile') }}
+                            {{ __('Profil') }}
                         </x-jet-dropdown-link>
-
-                        @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                            <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
-                                {{ __('API Tokens') }}
-                            </x-jet-dropdown-link>
-                        @endif
-
-                        <div class="border-t border-gray-100"></div>
 
                         <!-- Team Management -->
                         @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -212,7 +225,7 @@
                             <x-jet-dropdown-link href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                             this.closest('form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Keluar') }}
                             </x-jet-dropdown-link>
                         </form>
                     </x-slot>
