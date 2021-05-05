@@ -53,7 +53,7 @@
                                 <td class="px-2 py-3">{{ $gurutendiks->firstitem() + $key }}</td>
 
                                 <td class="capitalize ">{{ $gurutendik->name }}</td>
-                                <td>{{ $gurutendik->genre }}</td>
+                                <td>{{ $gender[$gurutendik->genre] }}</td>
                                 <td>
                                     <button wire:click="edit({{ $gurutendik->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
                                     Edit

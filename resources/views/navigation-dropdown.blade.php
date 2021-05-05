@@ -122,7 +122,6 @@
                                 {{ __('Pengelolaan Uang Asrama') }}
                             </div>
                             <div class="border-t border-gray-50"></div>
-
                             <x-jet-dropdown-link href="{{ route('uas') }}">
                                 <h2 class="text-sm">Uang Asrama</h2>
                             </x-jet-dropdown-link>
@@ -152,7 +151,9 @@
                                 {{ __('Laporan Keuangan Asrama') }}
                             </div>
                             <div class="border-t border-gray-50"></div>
-
+                            <x-jet-dropdown-link href="{{ route('neraca') }}">
+                                <h2 class="text-sm">Neraca</h2>
+                            </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('report_masuk') }}">
                                 <h2 class="text-sm">Uang Masuk</h2>
                             </x-jet-dropdown-link>
