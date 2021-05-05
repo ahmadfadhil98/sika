@@ -25,11 +25,11 @@ class DetailKelas extends Component
         $kelas = Kelas::pluck('name','id');
         $walas = GuruTendik::pluck('name','id');
         $periode = Periode::select('id', DB::raw("CONCAT(if(period=1,concat(year-1,'/',year),concat(year,'/',year+1)),'-',if(period=1,'Semester 2','Semester 1')) AS semester"))->orderBy('id','desc')->pluck('semester','id');
-        $dkelas = DB::table('kelas_periodes')
-            ->join('kelas','kelas.id','kelas_periodes.kelas_id')
-            ->select('kelas_periodes.id','kelas.name as kelas','kelas_periodes.periode_id','kelas_periodes.kelas_id','kelas_periodes.walas_id')
-            ->where('kelas.name','like',$searchParams)
-            ->where('periode_id',$this->period)
+            $dkelas = DB::table('kelas_periodes')
+                ->join('kelas','kelas.id','kelas_periodes.kelas_id')
+                ->select('kelas_periodes.id','kelas.name as kelas','kelas_periodes.periode_id','kelas_periodes.kelas_id','kelas_periodes.walas_id')
+                ->where('kelas.name','like',$searchParams)
+                ->where('periode_id',$this->period)
             ->paginate(5);
 
             return view('livewire.detailkelas.index', [

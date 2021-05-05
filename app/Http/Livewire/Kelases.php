@@ -60,7 +60,7 @@ class Kelases extends Component
     }
 
     public function edit($id){
-        $kelas = kelas::findOrFail($id);
+        $kelas = Kelas::findOrFail($id);
         $this->kelasId = $id;
         $this->name = $kelas->name;
 

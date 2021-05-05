@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Pengeluaran;
 use App\Http\Livewire\AnggotaAsrama;
 use App\Http\Livewire\AnggotaKelas;
 use App\Http\Livewire\Asramas;
@@ -9,9 +10,14 @@ use App\Http\Livewire\DetailMurids;
 use App\Http\Livewire\GuruTendiks;
 use App\Http\Livewire\Kelases;
 use App\Http\Livewire\Murids;
+use App\Http\Livewire\Pengeluarans;
+use App\Http\Livewire\Barangs;
+use App\Http\Livewire\CreatePengeluarans;
 use App\Http\Livewire\Periodes;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Posts;
+use App\Http\Livewire\ReportKeluar;
+use App\Http\Livewire\ReportMasuk;
 use App\Http\Livewire\UangAsramas;
 
 /*
@@ -49,4 +55,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/anggota_asrama/{id}/{di}', AnggotaAsrama ::class)->name('aasrama');
     Route::get('/uas', UangAsramas::class)->name('uas');
     Route::get('/dmurid/{id}/{di}',DetailMurids::class)->name('dmurid');
+    Route::get('/barang', Barangs::class)->name('barangs');
+    Route::get('/pengeluarans', Pengeluarans::class)->name('pengeluarans');
+    Route::get('/tambah_pengeluaran',CreatePengeluarans::class)->name('create_spend');
+    // Route::resource('/pengeluaran', Pengeluaran::class);
+    // Route::put('pengeluaran', [Pengeluaran::class,'store']);
+    Route::get('report_masuk',ReportMasuk::class)->name('report_masuk');
+    Route::get('report_keluar',ReportKeluar::class)->name('report_keluar');
+
 });

@@ -13,21 +13,22 @@
         <form>
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div>
-              <h1 class=" uppercase font-bold text-center mb-4">BAYAR UANG ASRAMA {{$murid[$dmurid->murid_id]}}</h1>
+              <h1 class=" uppercase font-bold text-center mb-4">BAYAR UANG ASRAMA</h1>
             </div>
               <div>
                     <div class="mb-2">
                         <input wire:model="dmuridId" type="hidden" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
                     </div>
                     <div class="mb-2">
-                        {{ Form::select('bulan',$month,null,
-                        ['class' => 'shadow appearance-none border rounded w-full py-2 px-3 text-blue-900','id' => 'bulan','wire:model'=>'bulan','placeholder'=>'Untuk Bulan'])}}
-                        @error('bulan') <h1 class="text-red-500">{{$message}}</h1>@enderror
+                        {{ Form::select('barang_id',$barangs,null,
+                        ['class' => 'shadow appearance-none border rounded w-full py-2 px-3 text-blue-900','id' => 'barang_id','wire:model'=>'barang_id','placeholder'=>'Untuk barang_id'])}}
+                        @error('barang_id') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>
                     <div class="mb-2">
-                        {{ Form::select('jumlah',['750000'=>'Rp750.000,-'],null,
-                        ['class' => 'shadow appearance-none border rounded w-full py-2 px-3 text-blue-900','id' => 'jumlah','wire:model'=>'jumlah','placeholder'=>'Jumlah...'])}}
-                        @error('jumlah') <h1 class="text-red-500">{{$message}}</h1>@enderror
+                        <input wire:model="jumlah" type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
+                    </div>
+                    <div class="mb-2">
+                        <input wire:model="harga" type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
                     </div>
 
 
@@ -71,9 +72,6 @@
 
                         </div>
 
-                    </div>
-                    <div class="mb-2">
-                        <input wire:model="keterangan" type="textarea" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
                     </div>
               </div>
         </div>

@@ -71,13 +71,13 @@ class AnggotaAsrama extends Component
                 ->get();
                 if(count($cek_murid)!= 0){
                     // dd('234');
+                    $status = 1;
                     foreach($cek_murid as $cek){
                         DetailMurid::where('id',$cek->id)
                         ->update([
                             'asrama_id' => $this->asrama_id
                         ]);
                     }
-                    $status = 1;
                 }else{
                     $status = 2;
                 }

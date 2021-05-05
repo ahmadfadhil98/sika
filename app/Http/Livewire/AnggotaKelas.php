@@ -61,9 +61,9 @@ class AnggotaKelas extends Component
 
         $cek_kelas = KelasPeriode::find($this->kelas_id);
         $cek_asrama = AsramaPeriode::where('periode_id',$cek_kelas->periode_id)->get();
-
+        $status = 0;
         foreach($this->murid_id as $murid){
-
+            // dd($murid);
             foreach($cek_asrama as $id_asrama){
 
                 $cek_murid = DetailMurid::where('murid_id',$murid)
@@ -71,19 +71,20 @@ class AnggotaKelas extends Component
                 ->get();
                 if(count($cek_murid)!= 0){
                     // dd('234');
+                    $status = 1;
                     foreach($cek_murid as $cek){
                         DetailMurid::where('id',$cek->id)
                         ->update([
                             'kelas_id' => $this->kelas_id
                         ]);
                     }
-                    $status = 1;
+                    // $status = 1;
                 }else{
                     $status = 2;
                 }
             }
 
-            if($status==2){
+            if($status==2 || $status==0){
                 DetailMurid::create([
                     'kelas_id' => $this->kelas_id,
                     'murid_id' => $murid
@@ -96,7 +97,7 @@ class AnggotaKelas extends Component
         $this->dmurid_id = '';
         $this->anggota = '';
 
-        return redirect()->route('akelas', [$this->kelas_id]);
+        return redirect()->route('akelas', [$this->kelas_id,$this->di]);
     }
 
     public function delete($id){
