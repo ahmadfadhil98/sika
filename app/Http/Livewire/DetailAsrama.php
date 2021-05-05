@@ -31,7 +31,7 @@ class DetailAsrama extends Component
         ->select('asrama_periodes.id','asramas.name as asrama','asrama_periodes.periode_id','asrama_periodes.asrama_id','asrama_periodes.binsis_id')
         ->where('asramas.name','like',$searchParams)
         ->where('periode_id',$this->period)
-        ->paginate(5);
+        ->paginate(7);
 
         return view('livewire.detailasrama.index', [
             'dasrama' => $dasrama,

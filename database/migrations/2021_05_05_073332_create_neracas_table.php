@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePeriodesTable extends Migration
+class CreateNeracasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreatePeriodesTable extends Migration
      */
     public function up()
     {
-        Schema::create('periodes', function (Blueprint $table) {
+        Schema::create('neracas', function (Blueprint $table) {
             $table->id();
-            $table->integer('year');
-            $table->integer('period');
+            $table->integer('month');
+            $table->integer('uang_masuk');
+            $table->integer('pengeluaran');
             $table->timestamps();
-
-            $table->unique(['year','period']);
-
         });
     }
 
@@ -31,6 +29,6 @@ class CreatePeriodesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('periodes');
+        Schema::dropIfExists('neracas');
     }
 }

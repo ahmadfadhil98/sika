@@ -15,7 +15,7 @@ class Barangs extends Component
     public function render()
     {
         $searchParam = '%'.$this->search.'%';
-        $barangs = Barang::where('name','like',$searchParam)->paginate(5);
+        $barangs = Barang::where('name','like',$searchParam)->paginate(7);
         return view('livewire.barang.index',[
             'barangs' => $barangs
         ]);

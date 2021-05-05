@@ -30,7 +30,7 @@ class DetailKelas extends Component
                 ->select('kelas_periodes.id','kelas.name as kelas','kelas_periodes.periode_id','kelas_periodes.kelas_id','kelas_periodes.walas_id')
                 ->where('kelas.name','like',$searchParams)
                 ->where('periode_id',$this->period)
-            ->paginate(5);
+            ->paginate(7);
 
             return view('livewire.detailkelas.index', [
             'dkelas' => $dkelas,

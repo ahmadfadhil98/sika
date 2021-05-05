@@ -18,10 +18,11 @@ class Murids extends Component
     public function render()
     {
         $searchParams = '%'.$this->search.'%';
-        $murids = Murid::where('name','like', $searchParams)->paginate(5);
-
+        $murids = Murid::where('name','like', $searchParams)->paginate(7);
+        $gender = config('central.gender');
         return view('livewire.murid.index', [
-            'murids' => $murids
+            'murids' => $murids,
+            'gender' => $gender
         ]);
     }
 

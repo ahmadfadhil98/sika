@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAsramaPeriodesTable extends Migration
+class CreateUasPeriodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,13 @@ class CreateAsramaPeriodesTable extends Migration
      */
     public function up()
     {
-        Schema::create('asrama_periodes', function (Blueprint $table) {
+        Schema::create('uas_periodes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('asrama_id');
             $table->unsignedBigInteger('periode_id');
-            $table->unsignedBigInteger('binsis_id');
+            $table->integer('jumlah');
             $table->timestamps();
 
-            $table->foreign('asrama_id')->references('id')->on('asramas')->onDelete('cascade');
             $table->foreign('periode_id')->references('id')->on('periodes')->onDelete('cascade');
-            $table->foreign('binsis_id')->references('id')->on('guru_tendiks')->onDelete('cascade');
-
-            $table->unique(['asrama_id','periode_id']);
         });
     }
 
@@ -35,6 +30,6 @@ class CreateAsramaPeriodesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asrama_periodes');
+        Schema::dropIfExists('uas_periodes');
     }
 }

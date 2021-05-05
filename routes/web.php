@@ -13,6 +13,8 @@ use App\Http\Livewire\Murids;
 use App\Http\Livewire\Pengeluarans;
 use App\Http\Livewire\Barangs;
 use App\Http\Livewire\CreatePengeluarans;
+use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Neraca;
 use App\Http\Livewire\Periodes;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Posts;
@@ -40,9 +42,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('/', function () {
-        return view('dashboard');
-    });
+    Route::get('/', Dashboard::class)->name('dashboard');
+    // Route::get('/', function () {
+    //     return view('dashboard');
+    // });
     Route::get('/murids', Murids::class)->name('murids');
     Route::get('/posts', Posts::class)->name('posts');
     Route::get('/kelas', Kelases ::class)->name('kelas');
@@ -62,5 +65,6 @@ Route::group(['middleware' => ['auth']], function() {
     // Route::put('pengeluaran', [Pengeluaran::class,'store']);
     Route::get('report_masuk',ReportMasuk::class)->name('report_masuk');
     Route::get('report_keluar',ReportKeluar::class)->name('report_keluar');
+    Route::get('neraca',Neraca::class)->name('neraca');
 
 });

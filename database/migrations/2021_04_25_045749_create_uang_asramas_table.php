@@ -18,12 +18,12 @@ class CreateUangAsramasTable extends Migration
             $table->unsignedBigInteger('murid_id');
             $table->text('keterangan')->nullable();
             $table->integer('month');
-            $table->text('bukti');
+            // $table->text('bukti');
             $table->integer('jumlah');
-            $table->date('tgl');
+            // $table->date('tgl');
             $table->timestamps();
 
-            $table->foreign('murid_id')->references('id')->on('detail_murids');
+            $table->foreign('murid_id')->references('id')->on('detail_murids')->onDelete('cascade');
 
         });
     }

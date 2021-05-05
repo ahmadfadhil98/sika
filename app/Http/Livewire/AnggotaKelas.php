@@ -14,6 +14,7 @@ class AnggotaKelas extends Component
 {
     public $kelas_id,$dmurid_id,$search,$anggota,$di;
     public $murid_id = [];
+    public $isOpen;
 
 
     public function mount($id,$di){
@@ -33,7 +34,7 @@ class AnggotaKelas extends Component
 
         $kelas = Kelas::pluck('name','id');
         $dkelas = KelasPeriode::pluck('kelas_id','id');
-        $murids = DB::table('detail_murids')->join('murids','murids.id','detail_murids.murid_id')->select('detail_murids.*','murids.name as nama')->where('kelas_id',$this->kelas_id)->where('murids.name','like',$searchParams)->paginate(5);
+        $murids = DB::table('detail_murids')->join('murids','murids.id','detail_murids.murid_id')->select('detail_murids.*','murids.name as nama')->where('kelas_id',$this->kelas_id)->where('murids.name','like',$searchParams)->paginate(7);
 
         if($this->di==2){
             return view('livewire.detailkelas.anggota' ,[
@@ -98,6 +99,14 @@ class AnggotaKelas extends Component
         $this->anggota = '';
 
         return redirect()->route('akelas', [$this->kelas_id,$this->di]);
+    }
+
+    public function showModal() {
+        $this->isOpen = true;
+    }
+
+    public function hideModal() {
+        $this->isOpen = false;
     }
 
     public function delete($id){

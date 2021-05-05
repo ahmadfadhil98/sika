@@ -3,6 +3,24 @@
 return [
     'default_paginate_item' => 50,
 
+    'month1' => [
+        1 => 'Januari',
+        2 => 'Februari',
+        3 => 'Maret',
+        4 => 'April',
+        5 => 'Mei',
+        6 => 'Juni',
+    ],
+
+    'month2' => [
+        7 => 'Juli',
+        8 => 'Agustus',
+        9 => 'September',
+        10 => 'Oktober',
+        11 => 'November',
+        12 => 'Desember',
+    ],
+
     'month' => [
         1 => 'Januari',
         2 => 'Februari',
@@ -16,6 +34,16 @@ return [
         10 => 'Oktober',
         11 => 'November',
         12 => 'Desember',
+    ],
+
+    'gender' => [
+        1 => 'Laki-Laki',
+        2 => 'Perempuan',
+    ],
+
+    'period' => [
+        1 => 'Semester 2',
+        2 => 'Semester 1',
     ],
 
     'folder' => [
@@ -38,11 +66,6 @@ return [
        5 => 'Saudara Kandung',
        6 => 'Anak Angkat'
    ],
-
-    'gender' => [
-        1 => 'Pria',
-        2 => 'Wanita',
-    ],
 
     'active_status' => [
         1 => 'Aktif',

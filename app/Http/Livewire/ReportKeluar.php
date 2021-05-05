@@ -8,6 +8,7 @@ class ReportKeluar extends Component
 {
     public function render()
     {
+
         return view('livewire.report.report-keluar');
     }
 }

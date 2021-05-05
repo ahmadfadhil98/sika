@@ -19,9 +19,12 @@ class Periodes extends Component
     {
         $searchParams = '%'.$this->search.'%';
         $periodes = Periode::where('year','like', $searchParams)->latest()
-        ->paginate(5);
+        ->paginate(7);
+        $period = config('central.period');
+
         return view('livewire.periode.index', [
-            'periodes' => $periodes
+            'periodes' => $periodes,
+            'semester' => $period
         ]);
     }
 

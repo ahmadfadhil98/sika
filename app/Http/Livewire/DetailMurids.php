@@ -44,11 +44,12 @@ class DetailMurids extends Component
 
         if($period==1){
             $months = [1,2,3,4,5,6];
+            $month = config('central.month1');
         }else{
             $months = [7,8,9,10,11,12];
+            $month = config('central.month2');
         }
 
-        $month = config('central.month');
         $uas = UangAsrama::where('murid_id',$this->dmuridId)
         ->get();
         $murid = Murid ::pluck('name','id');
@@ -77,9 +78,13 @@ class DetailMurids extends Component
 
     public function store()
     {
-        dd($this->photo);
+        // dd($this->photo);
         $dmurid = DetailMurid::find($this->dmuridId);
         $bukti = $this->storeImage();
+        $dmurids = UangAsrama::updateorCreate([
+
+        ]);
+
         $dmurid->uang_asrama()->updateorCreate([
             'month' => $this->bulan,
             'keterangan' => $this->keterangan,

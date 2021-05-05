@@ -18,7 +18,7 @@ class Kelases extends Component
     public function render()
     {
         $searchParams = '%'.$this->search.'%';
-        $kelases = Kelas::where('name','like', $searchParams)->paginate(5);
+        $kelases = Kelas::where('name','like', $searchParams)->paginate(7);
 
         return view('livewire.kelas.index', [
             'kelases' => $kelases

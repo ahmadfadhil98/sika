@@ -29,10 +29,12 @@ class Asramas extends Component
              $this->gen = [2];
         }
 
+        $gender = config('central.gender');
         $asramas = Asrama::where('name','like', $searchParams)
-        ->whereIn('genre',$this->gen)->paginate(5);
+        ->whereIn('genre',$this->gen)->paginate(7);
         return view('livewire.asrama.index', [
-            'asramas' => $asramas
+            'asramas' => $asramas,
+            'gender' => $gender
         ]);
     }
 

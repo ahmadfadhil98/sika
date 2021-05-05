@@ -1,6 +1,10 @@
 <div>
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-5">
 
+                {{-- @if($isOpen)
+                         @include('livewire.detailkelas.form')
+                @endif --}}
+
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg px-4 py-4">
 
                     <div class="flex mb-4">
@@ -38,9 +42,12 @@
                             <tr>
                                 <th class="px-4 py-2 text-white w-20">No</th>
                                 <th class="px-4 py-2 text-white w-auto">Tanggal</th>
-                                <th class="px-4 py-2 text-white w-auto">Nama</th>
-                                <th class="px-4 py-2 text-white w-auto">Kelas</th>
-                                <th class="px-4 py-2 text-white w-auto">Jumlah
+                                <th class="px-4 py-2 text-white w-auto">Debit</th>
+                                <th class="px-4 py-2 text-white w-auto">Kredit</th>
+                                <th class="px-4 py-2 text-white w-auto">Saldo di akhir bulan
+                                    @if($month)
+                                        {{$months[$month]}}
+                                    @endif
                                 </th>
                             </tr>
                         </thead>

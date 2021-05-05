@@ -18,10 +18,12 @@ class GuruTendiks extends Component
     public function render()
     {
         $searchParams = '%'.$this->search.'%';
-        $gurutendiks = GuruTendik::where('name','like', $searchParams)->paginate(5);
+        $gurutendiks = GuruTendik::where('name','like', $searchParams)->paginate(7);
+        $gender = config('central.gender');
 
         return view('livewire.gurutendik.index', [
-            'gurutendiks' => $gurutendiks
+            'gurutendiks' => $gurutendiks,
+            'gender' => $gender
         ]);
     }
 

@@ -33,7 +33,7 @@ class AnggotaAsrama extends Component
 
         $asrama = Asrama::pluck('name','id');
         $dasrama = AsramaPeriode::pluck('asrama_id','id');
-        $murids = DB::table('detail_murids')->join('murids','murids.id','detail_murids.murid_id')->select('detail_murids.*','murids.name as nama')->where('asrama_id',$this->asrama_id)->where('murids.name','like',$searchParams)->paginate(5);
+        $murids = DB::table('detail_murids')->join('murids','murids.id','detail_murids.murid_id')->select('detail_murids.*','murids.name as nama')->where('asrama_id',$this->asrama_id)->where('murids.name','like',$searchParams)->paginate(7);
 
         if($this->di==2){
             return view('livewire.detailasrama.anggota' ,[
