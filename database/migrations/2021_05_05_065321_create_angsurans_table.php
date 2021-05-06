@@ -18,7 +18,6 @@ class CreateAngsuransTable extends Migration
             $table->unsignedBigInteger('uas_id');
             $table->integer('no');
             $table->integer('jumlah');
-            $table->text('bukti');
             $table->date('tgl');
             $table->timestamps();
 
