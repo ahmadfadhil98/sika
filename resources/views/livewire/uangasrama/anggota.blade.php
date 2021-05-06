@@ -4,11 +4,11 @@
                 <div class="mt-9 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4" >
 
                     <div class="flex mb-4">
-                    <div class="w-full md:w-1/2" id="content">
-                        Anggota Kelas {{ $askes[$daskes[$this->kelas_id]]}}
+                    <div class="w-full md:w-1/2 text-base py-2 px-1 font-bold" id="content">
+                        Daftar Peserta Didik Kelas {{ $askes[$daskes[$this->kelas_id]]}}
                     </div>
                     <div class="w-full md:w-1/2">
-                        <input wire:model="search" type="text" class="shadow appearance-none border w-full py-2 px-3 text-blue-900" placeholder="Cari nama...">
+                        <input wire:model="search" type="text" class="shadow appearance-none  w-full py-2 px-3 text-blue-900" placeholder="Cari nama...">
                     </div>
                     </div>
 
@@ -35,7 +35,7 @@
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">NIS</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,8 +45,8 @@
                                 <td>{{ $murid->nis }}</td>
                                 <td>{{ $murid->nama }}</td>
                                 <td>
-                                    <button onclick="location.href='{{ route('dmurid', [$murid->id,$this->di]) }}'" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
-                                        Bayar
+                                    <button onclick="location.href='{{ route('dmurid', [$murid->id,$this->di]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
+                                        Info Pembayaran
                                     </button>
 
                                 </td>

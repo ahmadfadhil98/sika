@@ -25,6 +25,7 @@ class DetailMurids extends Component
     public $no,$jumlahang,$tgl,$uas_id,$keterangan2;
     public $dmuridId,$di,$jumlah,$uasId;
     public $isOpen = 0;
+    public $isInfo = 0;
 
     public function mount($id,$di){
 
@@ -76,10 +77,24 @@ class DetailMurids extends Component
         $this->isOpen = false;
     }
 
+    public function showInfo() {
+        $this->isInfo = true;
+    }
+
+    public function hideInfo() {
+        $this->isInfo = false;
+    }
+
     public function create(){
         $this->murid_id = $this->dmuridId;
 
         $this->showModal();
+    }
+
+    public function show(){
+        // $this->murid_id = $this->dmuridId;
+
+        $this->showInfo();
     }
 
     public function store()

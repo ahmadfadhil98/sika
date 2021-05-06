@@ -24,7 +24,7 @@
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Kelas</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">NIS</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,8 +35,8 @@
                                 <td>{{ $nis[$murid->murid_id] }}</td>
                                 <td>{{ $name[$murid->murid_id] }}</td>
                                 <td>
-                                    <button onclick="location.href='{{ route('dmurid', [$murid->id,31]) }}'" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
-                                        Bayar
+                                    <button onclick="location.href='{{ route('dmurid', [$murid->id,31]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
+                                        Info Pembayaran
                                     </button>
                                 </td>
                             </tr>

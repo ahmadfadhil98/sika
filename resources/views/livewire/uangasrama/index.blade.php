@@ -5,14 +5,16 @@
                 </div>
 
                 <div class="mt-3 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4">
-
+                    <div class="text-xs text-blue-900 px-1 mt-1">
+                        *Untuk melihat Pemasukan Uang Asrama, Klik <b>"Pilih pemasukan semester"</b> dan <b>"Kelompokkan berdasarkan"</b>
+                    </div>
                     <div class="flex mb-4">
                     <div>
                         {{ Form::select('sem',$periodes,null,
-                        ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'sem','wire:change'=>'eksekusi()','wire:model'=>'sem','placeholder'=>'- Pilih semester -'])}}
+                        ['class' => 'bg-gray-500 text-white py-2 px-6 mt-4','id' => 'sem','wire:change'=>'eksekusi()','wire:model'=>'sem','placeholder'=>'- Pilih pemasukan semester -'])}}
 
                         {{ Form::select('jenis',['asrama' => 'Berdasarkan Asrama','kelas' => 'Berdasarkan Kelas'],null,
-                        ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'jenis','wire:change'=>'eksekusi()','wire:model'=>'jenis','placeholder'=>'- Berdasarkan -'])}}
+                        ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'jenis','wire:change'=>'eksekusi()','wire:model'=>'jenis','placeholder'=>'- Kelompokkan berdasarkan -'])}}
                     </div>
                     </div>
 
@@ -44,7 +46,7 @@
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Penanggung Jawab</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,11 +58,11 @@
                                 <td>
                                     @if ($this->jenis=='asrama')
                                         <button onclick="location.href='{{ route('aasrama', [$u->id,21]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
-                                            Anggota
+                                            Daftar Peserta Didik
                                         </button>
                                     @elseif ($this->jenis=='kelas')
                                         <button onclick="location.href='{{ route('akelas', [$u->id,31]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
-                                            Anggota
+                                            Daftar Peserta Didik
                                         </button>
                                     @endif
                                 </td>

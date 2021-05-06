@@ -6,7 +6,7 @@
 
                     <div class="flex mb-4">
                     <div class="w-full md:w-1/2" id="content">
-                        <h2 class="text-base py-2 px-1">
+                        <h2 class="text-base py-2 px-1 font-bold">
                             Nama-Nama Anggota Asrama
                     </div>
                     <div class="w-full md:w-1/2">

@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        <h1 class="text-base text-gray-400">Home</h1>
+                        <h1 class="text-base text-blue-900 hover:text-blue-600 font-bold">Home</h1>
                     </x-jet-nav-link>
                 </div>
 
@@ -21,7 +21,7 @@
                     <x-jet-dropdown align="left" width="48">
                         <x-slot name="trigger">
 
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">
+                            <button class="flex items-center text-sm font-medium text-gray-300 hover:text-blue-300 hover:border-blue-300 focus:outline-none focus:text-blue-300 focus:border-gray-300 transition duration-150 ease-in-out">
                                 <div class="text-base">Manajemen Database</div>
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -85,7 +85,7 @@
                     <x-jet-dropdown align="left" width="48">
                         <x-slot name="trigger">
 
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">
+                            <button class="flex items-center text-sm font-medium text-gray-300 hover:text-blue-300 hover:border-blue-300 focus:outline-none focus:text-blue-300 focus:border-gray-300 transition duration-150 ease-in-out">
                                 <div class="text-base">Pengelompokan Data</div>
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -115,7 +115,7 @@
                     <x-jet-dropdown align="left" width="48">
                         <x-slot name="trigger">
 
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">
+                            <button class="flex items-center text-sm font-medium text-blue-900 hover:text-blue-600 hover:border-blue-600 focus:outline-none focus:text-blue-600 focus:border-blue-900 transition duration-150 ease-in-out font-bold">
                                 <div class="text-base">Transaksi</div>
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -131,7 +131,7 @@
                             </div>
                             <div class="border-t border-gray-50"></div>
                             <x-jet-dropdown-link href="{{ route('uas') }}">
-                                <h2 class="text-sm">Uang Asrama</h2>
+                                <h2 class="text-sm">Pemasukan</h2>
                             </x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('pengeluarans') }}">
                                 <h2 class="text-sm">Pengeluaran</h2>
@@ -144,7 +144,7 @@
                     <x-jet-dropdown align="left" width="48">
                         <x-slot name="trigger">
 
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">
+                            <button class="flex items-center text-sm font-medium text-blue-900 hover:text-blue-600 hover:border-blue-600 focus:outline-none focus:text-blue-600 focus:border-blue-900 transition duration-150 ease-in-out font-bold">
                                 <div class="text-base">Laporan</div>
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
