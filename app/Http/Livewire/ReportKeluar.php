@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class ReportKeluar extends Component
 {
+
     public function render()
     {
 

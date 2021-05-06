@@ -25,52 +25,9 @@
                         @error('bulan') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>
                     <div class="mb-2">
-                        {{ Form::select('jumlah',['750000'=>'Rp750.000,-'],null,
-                        ['class' => 'shadow appearance-none border rounded w-full py-2 px-3 text-blue-900','id' => 'jumlah','wire:model'=>'jumlah','placeholder'=>'Jumlah...'])}}
+                        <label for="name" class="block py-1">Jumlah</label>
+                        <input wire:model="name" name="name" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Input kelas">
                         @error('jumlah') <h1 class="text-red-500">{{$message}}</h1>@enderror
-                    </div>
-
-
-                    <div class="mb-2"> <span>Attachments</span>
-                        <div class="shadow appearance-none h-40 rounded border border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
-
-                                <div x-data="{photoName: null, photoPreview: null}" class="absolute">
-                                    <!-- Profile Photo File Input -->
-
-                                    <input type="file" id="bukti" class="hidden"
-                                                wire:model="photo"
-                                                x-ref="photo"
-                                                x-on:change="
-                                                        photoName = $refs.photo.files[0].name;
-                                                        const reader = new FileReader();
-                                                        reader.onload = (e) => {
-                                                            photoPreview = e.target.result;
-                                                        };
-                                                        reader.readAsDataURL($refs.photo.files[0]);
-                                                " />
-
-                                    <!-- Current Profile Photo -->
-                                    <div class="mt-2 text-center" x-show="! photoPreview">
-                                        <i class="fa fa-cloud-upload fa-3x text-gray-200 text-center"></i>
-                                        <span class="block text-gray-400 font-normal">Attach you files here</span>
-                                        <span class="block text-gray-400 font-normal">or</span>
-                                        <span class="block text-blue-400 font-normal">Browse files</span>
-                                    </div>
-
-                                    <!-- New Profile Photo Preview -->
-                                    <div class="mt-2 text-center" x-show="photoPreview">
-                                        <span class="block rounded-full w-20 h-20"
-                                              x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
-                                        </span>
-                                    </div>
-
-                                    <x-jet-input-error for="photo" class="mt-2" />
-                                </div>
-                                <x-jet-secondary-button class="h-full w-full opacity-0" type="button" onclick="document.getElementById('bukti').click()">
-                                </x-jet-secondary-button>
-
-                        </div>
-
                     </div>
                     <div class="mb-2">
                         <input wire:model="keterangan" type="textarea" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">

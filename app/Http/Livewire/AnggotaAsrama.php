@@ -98,4 +98,13 @@ class AnggotaAsrama extends Component
 
         return redirect()->route('aasrama', [$this->asrama_id]);
     }
+
+    public function delete($id){
+
+        $dmurid = DetailMurid::find($id);
+        $dmurid->update([
+            'asrama_id' => null
+        ]);
+        session()->flash('delete','Anggota Kelas Successfully Deleted');
+    }
 }

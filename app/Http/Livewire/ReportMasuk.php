@@ -30,7 +30,7 @@ class ReportMasuk extends Component
         $dkelas = KelasPeriode::pluck('kelas_id','id');
 
         if($this->month){
-            $tgl = Angsuran::whereMonth('tgl',$this->month)->select('id','tgl')->paginate(7);
+            $tgl = Angsuran::whereMonth('tgl',$this->month)->select('id','tgl','uas_id','jumlah')->paginate(7);
         }else{
             $tgl = Angsuran::paginate(7);
         }

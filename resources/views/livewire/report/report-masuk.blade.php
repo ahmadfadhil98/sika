@@ -50,11 +50,9 @@
                                 <td class="px-2 py-3">{{ $tgl->firstitem() + $key }}</td>
 
                                 <td>{{ $t->tgl }}</td>
-                                <td> {{ $debit->where('tgl',$t->tgl) }} </td>
-                                <td> {{ $kredit->where('tgl',$t->tgl) }} </td>
-                                <td>
-
-                                </td>
+                                <td> {{ $murid[$dmurid[$uas_dmurid[$t->uas_id]]] }} </td>
+                                <td> {{ $kelas[$dkelas[$dmuridkelas[$uas_dmurid[$t->uas_id]]]] }} </td>
+                                <td>{{$t->jumlah}}</td>
                             </tr>
                             @endforeach
                         </tbody>

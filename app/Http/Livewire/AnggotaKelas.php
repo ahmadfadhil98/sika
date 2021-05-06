@@ -111,7 +111,10 @@ class AnggotaKelas extends Component
 
     public function delete($id){
 
-
+        $dmurid = DetailMurid::find($id);
+        $dmurid->update([
+            'kelas_id' => null
+        ]);
         session()->flash('delete','Anggota Kelas Successfully Deleted');
     }
 
