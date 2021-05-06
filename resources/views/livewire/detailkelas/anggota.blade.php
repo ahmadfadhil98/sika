@@ -36,7 +36,7 @@
                             <tr>
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Action</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>

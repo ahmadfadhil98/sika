@@ -27,7 +27,7 @@
                     @endif
 
                     @if(session()->has('info'))
-                        <div class="bg-green-500 border-2 border-green-600 rounded-b mb-2 py-3 px-3">
+                        <div class="bg-green-500 border-2 border-green-600 mb-2 py-3 px-3">
                             <div>
                                 <h1 class="text-white font-bold">{{ session('info') }}</h1>
                             </div>
@@ -36,7 +36,7 @@
                     @endif
 
                       @if(session()->has('delete'))
-                        <div class="bg-red-500 border-2 border-red-600 rounded-b mb-2 py-3 px-3">
+                        <div class="bg-red-500 border-2 border-red-600 mb-2 py-3 px-3">
                             <div>
                                 <h1 class="text-white font-bold">{{ session('delete') }}</h1>
                             </div>

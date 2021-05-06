@@ -26,7 +26,7 @@
                   </div>
                   <div class="mb-2">
                       <label for="name" class="block py-1">Nama Peserta Didik</label>
-                      <input wire:model="name" name="name" class="border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Input peserta didik">
+                      <input wire:model="name" name="name" class="border w-full py-2 px-3 text-blue-900 text-sm uppercase" placeholder="Input peserta didik">
                       @error('name') <h1 class="text-red-500">{{$message}}</h1>@enderror
                   </div>
                   <div class="mb-2">

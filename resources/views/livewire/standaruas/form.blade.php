@@ -22,7 +22,7 @@
                   <div class="mb-2">
                     <label for="periode_id" class="block py-1">Kelas</label>
                     {{ Form::select('periode_id',$periode,null,
-                      ['class' => 'shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm','id' => 'periode_id','wire:model'=>'periode_id','placeholder'=>'- Pilih Semester -'])}}
+                      ['class' => 'shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm','id' => 'periode_id','wire:model'=>'periode_id','placeholder'=>'- Pilih semester -'])}}
                       @error('periode_id') <h1 class="text-red-500">{{$message}}</h1>@enderror
                   </div>
                   <div class="mb-2">

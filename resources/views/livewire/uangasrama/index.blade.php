@@ -1,17 +1,18 @@
 <div>
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-5">
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg px-4 py-4">
+    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-12">
+                <div class="text-base text-white text-blue-50">
+                    Pemasukan Uang Asrama
+                </div>
+
+                <div class="mt-3 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4">
 
                     <div class="flex mb-4">
-                    <div class="w-full md:w-1/2">
+                    <div>
                         {{ Form::select('sem',$periodes,null,
-                        ['class' => 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded','id' => 'sem','wire:change'=>'eksekusi()','wire:model'=>'sem','placeholder'=>'- Pilih periode -'])}}
+                        ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'sem','wire:change'=>'eksekusi()','wire:model'=>'sem','placeholder'=>'- Pilih semester -'])}}
 
                         {{ Form::select('jenis',['asrama' => 'Berdasarkan Asrama','kelas' => 'Berdasarkan Kelas'],null,
-                        ['class' => 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded','id' => 'jenis','wire:change'=>'eksekusi()','wire:model'=>'jenis','placeholder'=>'- Berdasarkan -'])}}
-                    </div>
-                    <div class="w-full md:w-1/2">
-                        <input wire:model="search" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900" placeholder="Cari asrama...">
+                        ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'jenis','wire:change'=>'eksekusi()','wire:model'=>'jenis','placeholder'=>'- Berdasarkan -'])}}
                     </div>
                     </div>
 
@@ -21,48 +22,48 @@
                     @endif
 
                     @if(session()->has('info'))
-                        <div class="bg-green-500 border-2 border-green-600 rounded-b mb-2 py-3 px-3">
+                        <div class="bg-green-500 mb-4 py-2 px-6">
                             <div>
-                                <h1 class="text-white font-bold">{{ session('info') }}</h1>
+                                <h1 class="text-white text-sm">{{ session('info') }}</h1>
                             </div>
                         </div>
 
                     @endif
 
                     @if(session()->has('delete'))
-                        <div class="bg-red-500 border-2 border-red-600 rounded-b mb-2 py-3 px-3">
+                        <div class="bg-red-700 mb-4 py-2 px-6">
                             <div>
-                                <h1 class="text-white font-bold">{{ session('delete') }}</h1>
+                                <h1 class="text-white text-sm">{{ session('delete') }}</h1>
                             </div>
                         </div>
                     @endif
 
                     <table class="table-fixed w-full text-center">
-                        <thead class="bg-blue-500">
+                        <thead class="bg-blue-900">
                             <tr>
-                                <th class="px-4 py-2 text-white w-20">No</th>
-                                <th class="px-4 py-2 text-white w-auto">Nama</th>
-                                <th class="px-4 py-2 text-white w-auto">Penanggung Jawab</th>
-                                <th class="px-4 py-2 text-white w-auto">Aksi</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Penanggung Jawab</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($uas as  $key=>$u)
                             <tr>
-                                <td>{{$key+1}}</td>
+                                <td class="px-2 py-3">{{$key+1}}</td>
                                 <td>{{ $u->askes }}</td>
                                 <td>{{ $guten[$u->pj] }}</td>
                                 <td>
                                     @if ($this->jenis=='asrama')
-                                        <button onclick="location.href='{{ route('aasrama', [$u->id,21]) }}'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">
+                                        <button onclick="location.href='{{ route('aasrama', [$u->id,21]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
                                             Anggota
                                         </button>
                                     @elseif ($this->jenis=='kelas')
-                                        <button onclick="location.href='{{ route('akelas', [$u->id,31]) }}'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">
+                                        <button onclick="location.href='{{ route('akelas', [$u->id,31]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
                                             Anggota
                                         </button>
                                     @endif
-                                    <button wire:click="delete({{ $u->id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 rounded">
+                                    <button wire:click="delete({{ $u->id }})" class="text-sm bg-red-700 hover:bg-red-900 text-white py-2 px-6">
                                     Hapus
                                     </button>
                                 </td>

@@ -21,12 +21,12 @@
                   </div>
                   <div class="mb-2">
                       <label for="year" class="block py-1">Tahun</label>
-                      <input wire:model="year" type="text" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Input tahun">
+                      <input wire:model="year" type="number" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Input tahun">
                       @error('year') <h1 class="text-red-500">{{$message}}</h1>@enderror
                   </div>
                   <div class="mb-2">
-                      <label for="period" class="block py-1">Semester</label>
-                      <input wire:model="period" name="period" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Input semester">
+                      <label for="period" class="block py-1">Periode</label>
+                      <input wire:model="period" type="number" name="period" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Input periode">
                       @error('period') <h1 class="text-red-500">{{$message}}</h1>@enderror
                   </div>
               </div>

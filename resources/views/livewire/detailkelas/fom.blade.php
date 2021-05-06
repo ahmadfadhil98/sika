@@ -9,7 +9,7 @@
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
 
 
-      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+      <div class="inline-block align-bottom bg-white text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
         <form>
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div>
@@ -25,7 +25,7 @@
                         <div class="mb-2" wire:ignore>
                           <label for="anggota" class="block">Murid</label>
                           {{ Form::select('anggota[]',$anggota,null,
-                            ['class' => 'shadow appearance-none border rounded  py-2 px-3 text-blue-900','id' => 'anggota','wire:model'=>'anggota','multiple'=>'true','style'=>'width:33vw'])}}
+                            ['class' => 'shadow appearance-none border py-2 px-3 text-blue-900','id' => 'anggota','wire:model'=>'anggota','multiple'=>'true','style'=>'width:33vw'])}}
 
 
                         </div>

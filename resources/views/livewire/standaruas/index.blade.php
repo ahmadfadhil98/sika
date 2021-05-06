@@ -12,7 +12,7 @@
                         </button>
                     </div>
                     <div class="w-full md:w-1/2">
-                        <input wire:model="search" type="text" class="shadow appearance-none  w-full py-2 px-3 text-blue-900" placeholder="Cari Standar Uang Asrama...">
+                        <input wire:model="search" type="text" class="shadow appearance-none  w-full py-2 px-3 text-blue-900" placeholder="Cari standar uang asrama...">
                     </div>
                     </div>
 
