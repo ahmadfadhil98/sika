@@ -63,9 +63,6 @@
                                             Anggota
                                         </button>
                                     @endif
-                                    <button wire:click="delete({{ $u->id }})" class="text-sm bg-red-700 hover:bg-red-900 text-white py-2 px-6">
-                                    Hapus
-                                    </button>
                                 </td>
                             </tr>
                             @endforeach

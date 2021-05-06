@@ -5,7 +5,7 @@
 
                     <div class="flex mb-4">
                     <div class="w-full md:w-1/2" id="content">
-
+                        Anggota Kelas {{ $askes[$daskes[$this->kelas_id]]}}
                     </div>
                     <div class="w-full md:w-1/2">
                         <input wire:model="search" type="text" class="shadow appearance-none border w-full py-2 px-3 text-blue-900" placeholder="Cari nama...">
@@ -33,6 +33,7 @@
                         <thead class="bg-blue-900">
                             <tr>
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">NIS</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
                             </tr>
@@ -41,7 +42,7 @@
                             @foreach($murids as  $key=>$murid)
                             <tr>
                                 <td class="px-2 py-3">{{ $murids->firstitem() + $key }}</td>
-
+                                <td>{{ $murid->nis }}</td>
                                 <td>{{ $murid->nama }}</td>
                                 <td>
                                     <button onclick="location.href='{{ route('dmurid', [$murid->id,$this->di]) }}'" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">

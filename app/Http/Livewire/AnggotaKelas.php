@@ -34,7 +34,7 @@ class AnggotaKelas extends Component
 
         $kelas = Kelas::pluck('name','id');
         $dkelas = KelasPeriode::pluck('kelas_id','id');
-        $murids = DB::table('detail_murids')->join('murids','murids.id','detail_murids.murid_id')->select('detail_murids.*','murids.name as nama')->where('kelas_id',$this->kelas_id)->where('murids.name','like',$searchParams)->paginate(7);
+        $murids = DB::table('detail_murids')->join('murids','murids.id','detail_murids.murid_id')->select('detail_murids.*','murids.name as nama','murids.nis as nis')->where('kelas_id',$this->kelas_id)->where('murids.name','like',$searchParams)->paginate(7);
 
         if($this->di==2){
             return view('livewire.detailkelas.anggota' ,[

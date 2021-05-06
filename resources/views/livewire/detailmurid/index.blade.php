@@ -10,7 +10,7 @@
                         </button>
                     </div>
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <input wire:model="search" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900" placeholder="Search kelas...">
+                        Uang Asrama {{ $murid[$dmurid->murid_id]}}
                     </div>
                     </div>
 
