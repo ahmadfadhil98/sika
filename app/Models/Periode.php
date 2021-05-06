@@ -16,6 +16,10 @@ class Periode extends Model
         return $this->hasMany(KelasPeriode::class,'periode_id','id');
     }
 
+    public function uasperiode(){
+        return $this->hasMany(UasPeriode::class,'periode_id','id');
+    }
+
     public function dasrama(){
         return $this->hasMany(AsramaPeriode::class,'periode_id','id');
     }

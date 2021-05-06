@@ -15,4 +15,8 @@ class UangAsrama extends Model
     public function murid(){
         return $this->belongsTo(DetailMurid::class);
     }
+
+    public function angsuran(){
+        return $this->hasMany(Angsuran::class,'uas_id','id');
+    }
 }

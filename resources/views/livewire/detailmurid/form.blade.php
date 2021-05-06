@@ -20,16 +20,22 @@
                         <input wire:model="dmuridId" type="hidden" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
                     </div>
                     <div class="mb-2">
+                        <label for="bulan" class="block py-1">Bulan</label>
                         {{ Form::select('bulan',$month,null,
-                        ['class' => 'shadow appearance-none border rounded w-full py-2 px-3 text-blue-900','id' => 'bulan','wire:model'=>'bulan','placeholder'=>'Untuk Bulan'])}}
+                        ['class' => 'shadow appearance-none border rounded w-full py-2 px-3 text-blue-900','id' => 'bulan','wire:model'=>'bulan','placeholder'=>'Pembayaran untuk bulan...'])}}
                         @error('bulan') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>
                     <div class="mb-2">
-                        <label for="name" class="block py-1">Jumlah</label>
-                        <input wire:model="name" name="name" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Input kelas">
+                        <label for="tgl" class="block py-1">Tanggal</label>
+                        <input wire:model="tgl" type="date" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
+                    </div>
+                    <div class="mb-2">
+                        <label for="jumlah" class="block py-1">Jumlah</label>
+                        <input type="number" wire:model="jumlah" name="jumlah" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Input kelas">
                         @error('jumlah') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>
                     <div class="mb-2">
+                        <label for="keterangan" class="block py-1">Keterangan</label>
                         <input wire:model="keterangan" type="textarea" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
                     </div>
               </div>

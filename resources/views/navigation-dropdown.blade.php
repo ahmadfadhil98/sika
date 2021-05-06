@@ -67,7 +67,15 @@
                             <x-jet-dropdown-link href="{{ route('barangs') }}">
                                 <h2 class="text-sm">Barang</h2>
                             </x-jet-dropdown-link>
+                            <div class="border-t border-gray-50"></div>
+                            <div class="block px-4 py-2 text-xs text-gray-300">
+                                {{ __('Database Lainnya') }}
+                            </div>
+                            <div class="border-t border-gray-50"></div>
 
+                            <x-jet-dropdown-link href="{{ route('uasperiode') }}">
+                                <h2 class="text-sm">Standar Uang Asrama</h2>
+                            </x-jet-dropdown-link>
                         </x-slot>
 
                     </x-jet-dropdown>

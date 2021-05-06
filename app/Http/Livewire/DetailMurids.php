@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Angsuran;
 use App\Models\AsramaPeriode;
 use App\Models\DetailMurid;
 use App\Models\KelasPeriode;
@@ -9,6 +10,7 @@ use App\Models\Murid;
 use App\Models\Periode;
 use App\Models\UangAsrama;
 use DateTime;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
@@ -17,8 +19,11 @@ use Intervention\Image\ImageManagerStatic;
 class DetailMurids extends Component
 {
     use WithFileUploads;
-    public $dmuridId,$di,$mon,$photo;
-    public $murid_id,$tgl,$bulan,$jumlah,$keterangan;
+    // public $dmuridId,$di,$mon,$photo;
+    // public $murid_id,$tgl,$bulan,$jumlah,$keterangan;
+    public $keterangan,$bulan,$jumlahuas;
+    public $no,$jumlahang,$tgl,$uas_id;
+    public $dmuridId,$di,$jumlah,$uasId;
     public $isOpen = 0;
 
     public function mount($id,$di){
@@ -80,18 +85,55 @@ class DetailMurids extends Component
     {
         // dd($this->photo);
         $dmurid = DetailMurid::find($this->dmuridId);
-        $bukti = $this->storeImage();
-        $dmurids = UangAsrama::updateorCreate([
+        // $bukti = $this->storeImage();
+        $uas = UangAsrama::where('murid_id',$this->dmuridId)->where('month',$this->bulan)->get();
+        // dd(count($uas));
+        if(count($uas)==0){
+            $dmurids = UangAsrama::create([
+                'murid_id' => $this->dmuridId,
+                'keterangan' => $this->keterangan,
+                'month' => $this->bulan,
+                'jumlah' => $this->jumlah
+            ]);
+            // dd($dmurids->id);
+            $angsuran = Angsuran::create([
+                'uas_id' => $dmurids->id,
+                'tgl' => $this->tgl,
+                'jumlah' => $this->jumlah,
+                'no' => 1
+            ]);
 
-        ]);
+        }else{
+            foreach($uas as $u){
+                $uas_id = $u->id;
+                $angsurans = Angsuran::where('uas_id',$uas_id)->get();
+                $no = count($angsurans);
+                $angsuran = Angsuran::select(DB::raw('SUM(jumlah) as debit'))->where('uas_id',$uas_id)->get();
+                $debit = $angsuran[0]->debit;
 
-        $dmurid->uang_asrama()->updateorCreate([
-            'month' => $this->bulan,
-            'keterangan' => $this->keterangan,
-            'bukti' => $bukti,
-            'jumlah' => $this->jumlah,
-            'tgl' => date("Y-m-d")
-        ]);
+                $dmurids = UangAsrama::where('id',$uas_id)->update([
+                    'keterangan' => $this->keterangan,
+                    'jumlah' => $debit+$this->jumlah,
+                ]);
+
+                $angsuran = Angsuran::create([
+                    'uas_id' => $uas_id,
+                    'tgl' => $this->tgl,
+                    'jumlah' => $this->jumlah,
+                    'no' => $no+1
+                ]);
+
+            }
+        }
+
+        $this->hideModal();
+
+        session()->flash('info', 'Uang Asrama Oke' );
+
+        $this->bulan = '';
+        $this->tgl = '';
+        $this->keterangan = '';
+        $this->jumlah = '';
 
     }
 

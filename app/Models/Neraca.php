@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Neraca extends Model
 {
     use HasFactory;
+    protected $table = "neracas";
+    protected $fillable = ['month','uang_masuk','pengeluaran'];
 }

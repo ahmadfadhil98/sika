@@ -13,32 +13,23 @@
         <form>
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div>
-              <h1 class="font-bold text-center mb-4">INPUT DETAIL KELAS</h1>
+              <h1 class="font-bold text-center mb-4">INPUT STANDAR UANG ASRAMA</h1>
             </div>
               <div>
-                    <div class="mb-2">
-                      <input wire:model="dkelas_id" type="hidden" class="shadow appearance-none border w-full py-2 px-3 text-blue-900" >
-                    </div>
-                    <div class="mb-2">
-                      <label for="kelas_id" class="block py-1">Kelas</label>
-                      {{ Form::select('kelas_id',$kelas,null,
-                        ['class' => 'shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm','id' => 'kelas_id','wire:model'=>'kelas_id','placeholder'=>'- Pilih kelas -'])}}
-                        @error('kelas_id') <h1 class="text-red-500">{{$message}}</h1>@enderror
-                    </div>
-                    <div class="mb-2">
-                        <label for="periode_id" class="block py-1">Semester</label>
-                        {{ Form::select('periode_id',$periode,null,
-                          ['class' => 'shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm','id' => 'periode_id','wire:model'=>'periode_id','placeholder'=>'- Pilih semester -'])}}
-                          @error('periode_id') <h1 class="text-red-500">{{$message}}</h1>@enderror
-
-                      </div>
-                      <div class="mb-2">
-                        <label for="walas_id" class="block py-1">Wali Kelas</label>
-                        {{ Form::select('walas_id',$walas,null,
-                          ['class' => 'shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm','id' => 'walas_id','wire:model'=>'walas_id','placeholder'=>'- Pilih wali kelas -'])}}
-                          @error('walas_id') <h1 class="text-red-500">{{$message}}</h1>@enderror
-
-                      </div>
+                  <div class="mb-2">
+                      <input wire:model="muasId" type="hidden" class="shadow appearance-none border w-full py-2 px-3 text-blue-900">
+                  </div>
+                  <div class="mb-2">
+                    <label for="periode_id" class="block py-1">Kelas</label>
+                    {{ Form::select('periode_id',$periode,null,
+                      ['class' => 'shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm','id' => 'periode_id','wire:model'=>'periode_id','placeholder'=>'- Pilih Semester -'])}}
+                      @error('periode_id') <h1 class="text-red-500">{{$message}}</h1>@enderror
+                  </div>
+                  <div class="mb-2">
+                      <label for="jumlah" class="block py-1">Jumlah</label>
+                      <input  type="number" wire:model="jumlah" name="jumlah" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Input jumlah">
+                      @error('jumlah') <h1 class="text-red-500">{{$message}}</h1>@enderror
+                  </div>
               </div>
         </div>
         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">

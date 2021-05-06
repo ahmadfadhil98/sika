@@ -21,6 +21,7 @@ use App\Http\Livewire\Posts;
 use App\Http\Livewire\ReportKeluar;
 use App\Http\Livewire\ReportMasuk;
 use App\Http\Livewire\UangAsramas;
+use App\Http\Livewire\UasPeriodes;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,5 +67,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('report_masuk',ReportMasuk::class)->name('report_masuk');
     Route::get('report_keluar',ReportKeluar::class)->name('report_keluar');
     Route::get('neraca',Neraca::class)->name('neraca');
+    Route::get('uasperiode',UasPeriodes::class)->name('uasperiode');
 
 });
