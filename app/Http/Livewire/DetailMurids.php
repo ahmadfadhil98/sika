@@ -21,8 +21,8 @@ class DetailMurids extends Component
     use WithFileUploads;
     // public $dmuridId,$di,$mon,$photo;
     // public $murid_id,$tgl,$bulan,$jumlah,$keterangan;
-    public $keterangan,$bulan,$jumlahuas;
-    public $no,$jumlahang,$tgl,$uas_id;
+    public $keterangan1,$bulan,$jumlahuas;
+    public $no,$jumlahang,$tgl,$uas_id,$keterangan2;
     public $dmuridId,$di,$jumlah,$uasId;
     public $isOpen = 0;
 
@@ -56,7 +56,8 @@ class DetailMurids extends Component
         }
 
         $uas = UangAsrama::where('murid_id',$this->dmuridId)
-        ->get();
+        ->where('keterangan','Lunas')->get();
+        // $ket = UangAsrama::where('')
         $murid = Murid ::pluck('name','id');
         return view('livewire.detailmurid.index',[
             'uas' => $uas,
@@ -83,23 +84,21 @@ class DetailMurids extends Component
 
     public function store()
     {
-        // dd($this->photo);
         $dmurid = DetailMurid::find($this->dmuridId);
-        // $bukti = $this->storeImage();
         $uas = UangAsrama::where('murid_id',$this->dmuridId)->where('month',$this->bulan)->get();
-        // dd(count($uas));
+
         if(count($uas)==0){
             $dmurids = UangAsrama::create([
                 'murid_id' => $this->dmuridId,
-                'keterangan' => $this->keterangan,
+                'keterangan' => $this->keterangan1,
                 'month' => $this->bulan,
                 'jumlah' => $this->jumlah
             ]);
-            // dd($dmurids->id);
             $angsuran = Angsuran::create([
                 'uas_id' => $dmurids->id,
                 'tgl' => $this->tgl,
                 'jumlah' => $this->jumlah,
+                'keterangan' => $this->keterangan2,
                 'no' => 1
             ]);
 
@@ -112,7 +111,7 @@ class DetailMurids extends Component
                 $debit = $angsuran[0]->debit;
 
                 $dmurids = UangAsrama::where('id',$uas_id)->update([
-                    'keterangan' => $this->keterangan,
+                    'keterangan' => $this->keterangan1,
                     'jumlah' => $debit+$this->jumlah,
                 ]);
 
@@ -120,6 +119,7 @@ class DetailMurids extends Component
                     'uas_id' => $uas_id,
                     'tgl' => $this->tgl,
                     'jumlah' => $this->jumlah,
+                    'keterangan' => $this->keterangan2,
                     'no' => $no+1
                 ]);
 
@@ -132,7 +132,8 @@ class DetailMurids extends Component
 
         $this->bulan = '';
         $this->tgl = '';
-        $this->keterangan = '';
+        $this->keterangan1 = '';
+        $this->keterangan2 = '';
         $this->jumlah = '';
 
     }

@@ -62,7 +62,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/barang', Barangs::class)->name('barangs');
     Route::get('/pengeluarans', Pengeluarans::class)->name('pengeluarans');
     Route::get('/tambah_pengeluaran',CreatePengeluarans::class)->name('create_spend');
-    // Route::resource('/pengeluaran', Pengeluaran::class);
+    Route::resource('/pengeluaran', Pengeluaran::class);
     // Route::put('pengeluaran', [Pengeluaran::class,'store']);
     Route::get('report_masuk',ReportMasuk::class)->name('report_masuk');
     Route::get('report_keluar',ReportKeluar::class)->name('report_keluar');

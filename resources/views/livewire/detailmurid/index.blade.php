@@ -46,21 +46,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($uas as $u)
-                                <tr>
-                                    <td><img src="{{ URL::asset('storage/'.$u->bukti) }}" alt="" class="rounded"></td>
-                                </tr>
-                            @endforeach --}}
                             @foreach ($months as $key=>$m)
-                            @php
-                                $this->mon = $m;
-                            @endphp
 
                             <tr>
                                 <td class="px-2 py-3">{{ $key+1 }}</td>
                                 <td> {{$month[$m]}} </td>
                                 <td class="text-center">
-                                    @if (count($uas->where('month',$this->mon))!=0)
+                                    @if (count($uas->where('month',$m))!=0)
                                         <button disabled="disabled" class="bg-green-500 text-white font-bold py-1 px-4 rounded">Lunas</button>
                                     @else
                                         <button disabled="disabled" class="bg-orange-500 text-white font-bold py-1 px-4 rounded">Belum Lunas</button>

@@ -10,7 +10,7 @@ class Angsuran extends Model
     use HasFactory;
 
     protected $table = "angsurans";
-    protected $fillable = ['uas_id','no','jumlah','tgl'];
+    protected $fillable = ['uas_id','no','jumlah','tgl','keterangan'];
 
     public function uas(){
         return $this->belongsTo(UangAsrama::class);

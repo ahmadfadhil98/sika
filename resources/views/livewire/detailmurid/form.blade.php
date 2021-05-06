@@ -35,8 +35,12 @@
                         @error('jumlah') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>
                     <div class="mb-2">
-                        <label for="keterangan" class="block py-1">Keterangan</label>
-                        <input wire:model="keterangan" type="textarea" class="shadow appearance-none border rounded w-full py-2 px-3 text-blue-900">
+                        <label for="keterangan1" class="block py-1">Keterangan</label>
+                        {{ Form::select('keterangan2',['Lunas'=>'Lunas','Belum Lunas'=>'Belum Lunas'],null,
+                        ['class' => 'shadow appearance-none border rounded w-full py-2 px-3 text-blue-900','id' => 'keterangan1','wire:model'=>'keterangan1','placeholder'=>'Pilih Status Lunasnya...'])}}
+                    </div>
+                    <div class="mb-2">
+                        <input wire:model="keterangan2" type="textarea" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Keterangan tambahan...">
                     </div>
               </div>
         </div>

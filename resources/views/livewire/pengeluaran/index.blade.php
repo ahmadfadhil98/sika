@@ -8,7 +8,8 @@
 
                     <div class="flex mb-4">
                     <div class="w-full md:w-1/2">
-                        <button wire:click="showModal()"
+                        <button
+                        wire:click="showModal()"
                         {{-- onclick="location.href='{{ route('create_spend') }}'" --}}
                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded">
                                           Input Pengeluaran
