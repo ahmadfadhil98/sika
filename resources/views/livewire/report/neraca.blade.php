@@ -10,7 +10,7 @@
                     <div class="flex mb-4">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         {{ Form::select('period',$periode,null,
-                        ['class' => 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded mb-2','id' => 'period','wire:click'=>'month()','wire:model'=>'period','placeholder'=>'Pilih Periode'])}}
+                        ['class' => 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded mb-2','id' => 'period','wire:change'=>'month()','wire:model'=>'period','placeholder'=>'Pilih Periode'])}}
 
                         {{ Form::select('month',$months,null,
                         ['class' => 'bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-4 rounded mb-2','id' => 'month','wire:model'=>'month','placeholder'=>'Pilih Bulan'])}}
@@ -57,8 +57,22 @@
                                 <td class="px-2 py-3">{{ $tgl->firstitem() + $key }}</td>
 
                                 <td>{{ $t->tgl }}</td>
-                                <td> {{ $debit->where('tgl',$t->tgl) }} </td>
-                                <td> {{ $kredit->where('tgl',$t->tgl) }} </td>
+                                <td>
+                                @php
+                                    $debt = $debit->where('tgl',$t->tgl)->get();
+                                @endphp
+                                @foreach ($debt as $d)
+                                    {{$d->debit}}
+                                @endforeach
+                                </td>
+                                <td>
+                                    @php
+                                        $credit = $kredit->where('tgl',$t->tgl)->get();
+                                    @endphp
+                                    @foreach ($credit as $c)
+                                        {{$c->kredit}}
+                                    @endforeach
+                                    </td>
                                 <td>
 
                                 </td>

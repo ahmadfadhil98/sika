@@ -8,6 +8,7 @@ use App\Models\Kelas;
 use App\Models\KelasPeriode;
 use App\Models\Murid;
 use App\Models\Periode;
+use App\Models\Post;
 use App\Models\UangAsrama;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -29,10 +30,18 @@ class ReportMasuk extends Component
         $dmuridkelas = DetailMurid::pluck('kelas_id','id');
         $dkelas = KelasPeriode::pluck('kelas_id','id');
 
+        $uas = UangAsrama::where('month',$this->month)->get();
+        $uas_id = [];
+
+        foreach($uas as $u){
+            array_push($uas_id,$u->id);
+        }
+        // dd($uas_id);
         if($this->month){
-            $tgl = Angsuran::whereMonth('tgl',$this->month)->select('id','tgl','uas_id','jumlah')->paginate(7);
+            // dd($this->month);
+            $tgl = DB::table('angsurans')->whereIn('uas_id',$uas_id)->select('tgl','uas_id','jumlah')->paginate(7);
         }else{
-            $tgl = Angsuran::paginate(7);
+            $tgl = Post::paginate(7);
         }
 
         return view('livewire.report.report-masuk',[
@@ -50,10 +59,10 @@ class ReportMasuk extends Component
     }
 
     public function month(){
-        $periode = $this->period;
-        if($periode==1){
+        $periode = Periode::find($this->period);
+        if($periode->period==1){
             $this->months = config('central.month1');
-        }elseif($periode==2){
+        }elseif($periode->period==2){
             $this->months = config('central.month2');
         }
     }
