@@ -14,17 +14,19 @@ class Pengeluarans extends Component
 {
     use WithFileUploads;
     public $spendId,$search,$isOpen,$photo;
-    public $barang_id,$jumlah,$harga,$bukti;
-
+    public $barang_id,$jumlah,$harga,$bukti,$tgl;
+    public $satuan = 'Satuan';
     public function render()
     {
         $searchParam = '%'.$this->search.'%';
+        $stuan = Barang::pluck('satuan','id');
         $barangs = Barang::pluck('name','id');
         $spends = Pengeluaran::paginate(7);
-
         return view('livewire.pengeluaran.index',[
             'spends' => $spends,
-            'barangs' => $barangs
+            'barangs' => $barangs,
+            'stuan' => $stuan,
+            'satuan' => $this->satuan
         ]);
     }
 
@@ -45,16 +47,12 @@ class Pengeluarans extends Component
             ]
         );
 
-        // dd(date('Y-m-d'));
-        $bukti = $this->storeImage();
-        // dd($this->photo);
         try {
             Pengeluaran::updateOrCreate(['id' => $this->spendId], [
                 'barang_id' => $this->barang_id,
                 'jumlah' => $this->jumlah,
                 'harga' => $this->harga,
-                'bukti' => $bukti,
-                'tgl' => date('Y-m-d')
+                'tgl' => $this->tgl
             ]);
             session()->flash('info', $this->spendId ? 'Pengeluaran Update Successfully' : 'Pengeluaran Created Successfully' );
         } catch (QueryException $e){
@@ -86,6 +84,27 @@ class Pengeluarans extends Component
     public function delete($id){
         Pengeluaran::find($id)->delete();
         session()->flash('delete','Pengeluaran Successfully Deleted');
+    }
+
+    public function satuan(){
+        $satbar = Barang::find($this->barang_id);
+        $this->satuan = $satbar->satuan;
+    }
+
+    public function rupiahh(){
+        if($this->satuan=='Rupiah'){
+            $this->harga = $this->jumlah;
+        }
+    }
+
+    public function today(){
+        $this->tgl = date('Y-m-d');
+    }
+
+    public function rupiahj(){
+        if($this->satuan=='Rupiah'){
+            $this->jumlah = $this->harga;
+        }
     }
 
     public function storeImage()

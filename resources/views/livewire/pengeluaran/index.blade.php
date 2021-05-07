@@ -44,17 +44,21 @@
                     <table class="table-fixed w-full text-center">
                         <thead class="bg-blue-900">
                             <tr>
-                                <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Tanggal</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Barang</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Jumlah</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Harga</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($spends as  $key=>$spend)
                             <tr>
-                                <td class="px-2 py-3">{{ $spends->firstitem() + $key }}</td>
+                                <td>{{ $spend->tgl }}</td>
 
                                 <td>{{ $barangs[$spend->barang_id] }}</td>
+                                <td>{{ $spend->jumlah }} {{ $stuan[$spend->barang_id] }}</td>
+                                <td>Rp {{ $spend->harga }},-</td>
                                 <td>
                                     <button wire:click="edit({{ $spend->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
                                     Edit

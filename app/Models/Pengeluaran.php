@@ -10,7 +10,7 @@ class Pengeluaran extends Model
     use HasFactory;
 
     protected $table = "pengeluarans";
-    protected $fillable = ['barang_id','jumlah','harga','bukti','tgl'];
+    protected $fillable = ['barang_id','jumlah','harga','keterangan','tgl'];
 
     public function barang(){
         return $this->belongsTo(Barang::class);

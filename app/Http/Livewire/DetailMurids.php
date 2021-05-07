@@ -26,6 +26,7 @@ class DetailMurids extends Component
     public $dmuridId,$di,$jumlah,$uasId;
     public $isOpen = 0;
     public $isInfo = 0;
+    public $angsur;
 
     public function mount($id,$di){
 
@@ -47,6 +48,7 @@ class DetailMurids extends Component
             $periodes = Periode::find($kelas->periode_id);
             $period = $periodes->period;
         }
+        $periode = Periode::select('id', DB::raw("CONCAT(if(period=1,concat(year-1,'/',year),concat(year,'/',year+1)),'-',if(period=1,'Semester 2','Semester 1')) AS semester"))->orderBy('id','desc')->pluck('semester','id');
 
         if($period==1){
             $months = [1,2,3,4,5,6];
@@ -62,11 +64,17 @@ class DetailMurids extends Component
         $murid = Murid ::pluck('name','id');
         return view('livewire.detailmurid.index',[
             'uas' => $uas,
+            'periodes' => $periodes,
+            'periode' => $periode,
             'month' => $month,
             'months' => $months,
             'murid' => $murid,
             'dmurid' => $dmurid
         ]);
+    }
+
+    public function today(){
+        $this->tgl = date('Y-m-d');
     }
 
     public function showModal() {
@@ -82,6 +90,7 @@ class DetailMurids extends Component
     }
 
     public function hideInfo() {
+        $this->angsur = [];
         $this->isInfo = false;
     }
 
@@ -91,9 +100,13 @@ class DetailMurids extends Component
         $this->showModal();
     }
 
-    public function show(){
-        // $this->murid_id = $this->dmuridId;
+    public function show($mont){
 
+        $uas = UangAsrama::where('murid_id',$this->dmuridId)->where('month',$mont)->get();
+
+        foreach ($uas as $u){
+            $this->angsur = Angsuran::where('uas_id',$u->id)->get();
+        }
         $this->showInfo();
     }
 

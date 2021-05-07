@@ -10,7 +10,7 @@ class UangAsrama extends Model
     use HasFactory;
 
     protected $table = "uang_asramas";
-    protected $fillable = ['murid_id','month','keterangan','bukti','jumlah','tgl',];
+    protected $fillable = ['murid_id','month','keterangan','jumlah',];
 
     public function murid(){
         return $this->belongsTo(DetailMurid::class);

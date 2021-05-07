@@ -43,7 +43,7 @@ class ReportMasuk extends Component
         }else{
             $tgl = Post::paginate(7);
         }
-
+        $angsuran = Angsuran::select('tgl','id');
         return view('livewire.report.report-masuk',[
             'tgl' => $tgl,
             'periode' => $periode,
@@ -54,6 +54,7 @@ class ReportMasuk extends Component
             'dmurid' => $dmurid,
             'dmuridkelas' => $dmuridkelas,
             'dkelas' => $dkelas,
+            'angsuran' => $angsuran,
             'months' => $this->months
         ]);
     }

@@ -6,7 +6,7 @@
                     <div class="flex mb-4">
                     <div class="w-full md:w-1/2 mt-1.5">
                         <button wire:click="create()" class="text-base bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
-                            Bayar Uang Asrama - 2020/2021-Semester 2
+                            Bayar Uang Asrama {{$periode[$periodes->id]}}
                         </button>
                     </div>
 
@@ -68,7 +68,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button wire:click="show()" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
+                                    <button wire:click="show({{$m}})" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
                                     Detail Pembayaran
                                     </button>
                                 </td>

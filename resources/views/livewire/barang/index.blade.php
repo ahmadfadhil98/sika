@@ -43,6 +43,7 @@
                             <tr>
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Satuan</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
                             </tr>
                         </thead>
@@ -52,6 +53,7 @@
                                 <td class="px-2 py-3">{{ $barangs->firstitem() + $key }}</td>
 
                                 <td>{{ $barang->name }}</td>
+                                <td>{{ $barang->satuan }}</td>
                                 <td>
                                     <button wire:click="edit({{ $barang->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
                                     Edit

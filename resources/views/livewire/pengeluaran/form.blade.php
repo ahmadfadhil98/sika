@@ -5,73 +5,61 @@
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
       </div>
 
-
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
 
-
-      <div class="inline-block align-bottom bg-white -lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+      <div class="inline-block align-bottom bg-white text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
         <form>
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div>
-              <h1 class=" uppercase font-bold text-center mb-4">PENGELUARAN UANG ASRAMA</h1>
+              <h1 class=" font-bold text-center mb-4">PENGELUARAN UANG ASRAMA </h1>
             </div>
               <div>
                     <div class="mb-2">
-                        <input wire:model="dmuridId" type="hidden" class="shadow appearance-none border w-full py-2 px-3 text-blue-900">
+                        <input wire:model="spendId" type="hidden" class="shadow appearance-none border w-full py-2 px-3 text-blue-900">
                     </div>
                     <div class="mb-2">
+                        <label for="tgl" class="block py-1">Tanggal Pembayaran</label>
+                        <div class="mt-1 relative border rounded-md shadow-sm">
+                          <input type="date" wire:model="tgl" name="tgl" id="tgl" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pl-3 pr-20 sm:text-sm border-gray-300 rounded-md">
+                          <div class="absolute inset-y-0 right-0 flex items-center">
+                            <input type="button" wire:click='today()' class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" value="Hari ini">
+                          </div>
+                        </div>
+                        @error('tgl') <h1 class="text-red-500">{{$message}}</h1>@enderror
+                    </div>
+                    <div class="mb-2">
+                        <label for="barang_id" class="block py-1">Barang</label>
                         {{ Form::select('barang_id',$barangs,null,
-                        ['class' => 'shadow appearance-none border w-full py-2 px-3 text-blue-900','id' => 'barang_id','wire:model'=>'barang_id','placeholder'=>'Untuk barang_id'])}}
+                        ['class' => 'shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm','id' => 'barang_id','wire:change'=>'satuan()','wire:model'=>'barang_id','placeholder'=>'- Pilih barang -'])}}
                         @error('barang_id') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>
                     <div class="mb-2">
-                        <input wire:model="jumlah" type="number" class="shadow appearance-none border w-full py-2 px-3 text-blue-900">
+                        <label for="jumlah" class="block py-1">Jumlah</label>
+                        <div class="mt-1 relative border rounded-md shadow-sm">
+                          <input type="number" wire:model="jumlah" name="jumlah" id="jumlah" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pl-3 pr-15 sm:text-sm border-gray-300 rounded-md" wire:change="rupiahh()" placeholder="  Input jumlah pembayaran">
+                          <div class="absolute inset-y-0 right-0 flex items-center">
+                            <span class="text-gray-500 sm:text-sm pr-3">
+                                {{$satuan}}
+                            </span>
+                          </div>
+                        </div>
+                        @error('jumlah') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>
                     <div class="mb-2">
-                        <input wire:model="harga" type="number" class="shadow appearance-none border w-full py-2 px-3 text-blue-900">
-                    </div>
-
-
-                    <div class="mb-2"> <span>Bukti Pengeluaran</span>
-                        <div class="shadow appearance-none h-40 border border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
-
-                                <div x-data="{photoName: null, photoPreview: null}" class="absolute">
-                                    <!-- Profile Photo File Input -->
-
-                                    <input type="file" id="bukti" class="hidden"
-                                                wire:model="photo"
-                                                x-ref="photo"
-                                                x-on:change="
-                                                        photoName = $refs.photo.files[0].name;
-                                                        const reader = new FileReader();
-                                                        reader.onload = (e) => {
-                                                            photoPreview = e.target.result;
-                                                        };
-                                                        reader.readAsDataURL($refs.photo.files[0]);
-                                                " />
-
-                                    <!-- Current Profile Photo -->
-                                    <div class="mt-2 text-center" x-show="! photoPreview">
-                                        <i class="fa fa-cloud-upload fa-3x text-gray-200 text-center"></i>
-                                        <span class="text-xs block text-gray-400 font-normal py-2">Seret data ke sini</span>
-                                        <span class="text-xs block text-gray-400 font-normal">atau</span>
-                                        <span class="text-base block text-blue-400 py-2 font-normal">Cari file</span>
-                                    </div>
-
-                                    <!-- New Profile Photo Preview -->
-                                    <div class="mt-2 text-center" x-show="photoPreview">
-                                        <span class="block w-20 h-20"
-                                              x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
-                                        </span>
-                                    </div>
-
-                                    <x-jet-input-error for="photo" class="mt-2" />
-                                </div>
-                                <x-jet-secondary-button class="h-full w-full opacity-0" type="button" onclick="document.getElementById('bukti').click()">
-                                </x-jet-secondary-button>
-
+                        <label for="harga" class="block py-1">Harga</label>
+                        <div class="mt-1 relative border rounded-md shadow-sm">
+                          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="text-gray-500 sm:text-sm">
+                              Rp
+                            </span>
+                          </div>
+                          <input type="number" wire:change="rupiahj()" wire:model="harga" name="harga" id="harga" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pr-3 pl-10 sm:text-sm border-gray-300 rounded-md" placeholder="  Input harga pembayaran">
                         </div>
-
+                        @error('harga') <h1 class="text-red-500">{{$message}}</h1>@enderror
+                    </div>
+                    <div class="mb-2">
+                        <label for="keterangan" class="block py-1">Keterangan</label>
+                        <input wire:model="keterangan" type="textarea" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Keterangan tambahan...">
                     </div>
               </div>
         </div>
