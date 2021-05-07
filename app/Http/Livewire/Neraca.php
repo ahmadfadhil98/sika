@@ -20,17 +20,15 @@ class Neraca extends Component
         $periode = Periode::select('id', DB::raw("CONCAT(if(period=1,concat(year-1,'/',year),concat(year,'/',year+1)),'-',if(period=1,'Semester 2','Semester 1')) AS semester"))->orderBy('id','desc')->pluck('semester','id');
         $debit = Angsuran::select(DB::raw('SUM(jumlah) as debit'));
         $kredit = Pengeluaran::select(DB::raw('SUM(harga) as kredit'));
+
         $uas = UangAsrama::where('month',$this->month)->get();
         $uas_id = [];
 
         foreach($uas as $u){
             array_push($uas_id,$u->id);
         }
-        // dd($uas_id);
         if($this->month){
-            // dd($this->month);
             $tgl = DB::table('angsurans')->whereIn('uas_id',$uas_id)->select('tgl')->paginate(7);
-            // dd($tgl);
         }else{
             $tgl = Post::paginate(5);
         }
