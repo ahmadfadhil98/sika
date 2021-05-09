@@ -15,14 +15,14 @@
             </div>
               <div>
                     <div class="mb-2">
-                        <input wire:model="spendId" type="hidden" class="shadow appearance-none border w-full py-2 px-3 text-blue-900">
+                        <input wire:model="spendId" type="hidden" class="border w-full py-2 px-3 text-blue-900">
                     </div>
                     <div class="mb-2">
                         <label for="tgl" class="block py-1">Tanggal Pembayaran</label>
-                        <div class="mt-1 relative border rounded-md shadow-sm">
-                          <input type="date" wire:model="tgl" name="tgl" id="tgl" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pl-3 pr-20 sm:text-sm border-gray-300 rounded-md">
+                        <div class="mt-1 relative border">
+                          <input type="date" wire:model="tgl" name="tgl" id="tgl" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pl-3 pr-20 sm:text-sm border-gray-300">
                           <div class="absolute inset-y-0 right-0 flex items-center">
-                            <input type="button" wire:click='today()' class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" value="Hari ini">
+                            <input type="button" wire:click='today()' class="text-sm bg-blue-700 leading-6 text-white hover:bg-blue-900 transition ease-in-out duration-150 w-full py-2 px-3" value="Hari ini">
                           </div>
                         </div>
                         @error('tgl') <h1 class="text-red-500">{{$message}}</h1>@enderror
@@ -30,13 +30,13 @@
                     <div class="mb-2">
                         <label for="barang_id" class="block py-1">Barang</label>
                         {{ Form::select('barang_id',$barangs,null,
-                        ['class' => 'shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm','id' => 'barang_id','wire:change'=>'satuan()','wire:model'=>'barang_id','placeholder'=>'- Pilih barang -'])}}
+                        ['class' => 'border w-full py-2 px-3 text-blue-900 text-sm','id' => 'barang_id','wire:change'=>'satuan()','wire:model'=>'barang_id','placeholder'=>'- Pilih barang -'])}}
                         @error('barang_id') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>
                     <div class="mb-2">
                         <label for="jumlah" class="block py-1">Jumlah</label>
-                        <div class="mt-1 relative border rounded-md shadow-sm">
-                          <input type="number" wire:model="jumlah" name="jumlah" id="jumlah" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pl-3 pr-15 sm:text-sm border-gray-300 rounded-md" wire:change="rupiahh()" placeholder="  Input jumlah pembayaran">
+                        <div class="mt-1 relative border">
+                          <input type="number" wire:model="jumlah" name="jumlah" id="jumlah" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pl-3 pr-15 sm:text-sm border-gray-300" wire:change="rupiahh()" placeholder="  Input jumlah pembayaran">
                           <div class="absolute inset-y-0 right-0 flex items-center">
                             <span class="text-gray-500 sm:text-sm pr-3">
                                 {{$satuan}}
@@ -47,19 +47,19 @@
                     </div>
                     <div class="mb-2">
                         <label for="harga" class="block py-1">Harga</label>
-                        <div class="mt-1 relative border rounded-md shadow-sm">
+                        <div class="mt-1 relative border">
                           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <span class="text-gray-500 sm:text-sm">
                               Rp
                             </span>
                           </div>
-                          <input type="number" wire:change="rupiahj()" wire:model="harga" name="harga" id="harga" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pr-3 pl-10 sm:text-sm border-gray-300 rounded-md" placeholder="  Input harga pembayaran">
+                          <input type="number" wire:change="rupiahj()" wire:model="harga" name="harga" id="harga" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pr-3 pl-10 sm:text-sm border-gray-300" placeholder="  Input harga pembayaran">
                         </div>
                         @error('harga') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>
                     <div class="mb-2">
                         <label for="keterangan" class="block py-1">Keterangan</label>
-                        <input wire:model="keterangan" type="textarea" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Keterangan tambahan...">
+                        <input wire:model="keterangan" type="textarea" class="border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Keterangan tambahan...">
                     </div>
               </div>
         </div>

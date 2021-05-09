@@ -16,20 +16,20 @@
             </div>
               <div>
                     <div class="mb-2">
-                        <input wire:model="dmuridId" type="hidden" class="shadow appearance-none border w-full py-2 px-3 text-blue-900">
+                        <input wire:model="dmuridId" type="hidden" class="border w-full py-2 px-3 text-blue-900">
                     </div>
                     <div class="mb-2">
                         <label for="bulan" class="block py-1">Bulan</label>
                         {{ Form::select('bulan',$month,null,
-                        ['class' => 'shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm','id' => 'bulan','wire:model'=>'bulan','placeholder'=>'- Pembayaran untuk bulan -'])}}
+                        ['class' => 'border w-full py-2 px-3 text-blue-900 text-sm','id' => 'bulan','wire:model'=>'bulan','placeholder'=>'- Pembayaran untuk bulan -'])}}
                         @error('bulan') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>
                     <div class="mb-2">
                         <label for="tgl" class="block py-1">Tanggal Pembayaran</label>
-                        <div class="mt-1 relative border rounded-md shadow-sm">
-                          <input type="date" wire:model="tgl" name="tgl" id="tgl" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pl-3 pr-20 sm:text-sm border-gray-300 rounded-md">
+                        <div class="mt-1 relative border">
+                          <input type="date" wire:model="tgl" name="tgl" id="tgl" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pl-3 pr-20 sm:text-sm border-gray-300">
                           <div class="absolute inset-y-0 right-0 flex items-center">
-                            <input type="button" wire:click='today()' class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" value="Hari ini">
+                            <input type="button" wire:click='today()' class="text-sm bg-blue-700 leading-6 text-white hover:bg-blue-900 transition ease-in-out duration-150 w-full py-2 px-3" value="Hari ini">
                           </div>
                         </div>
                         @error('tgl') <h1 class="text-red-500">{{$message}}</h1>@enderror
@@ -37,13 +37,13 @@
 
                     <div class="mb-2">
                         <label for="jumlah" class="block py-1">Jumlah</label>
-                        <div class="mt-1 relative border rounded-md shadow-sm">
+                        <div class="mt-1 relative border">
                           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <span class="text-gray-500 sm:text-sm">
                               Rp
                             </span>
                           </div>
-                          <input type="number" wire:model="jumlah" name="jumlah" id="jumlah" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pr-3 pl-10 sm:text-sm border-gray-300 rounded-md" placeholder="  Input jumlah pembayaran">
+                          <input type="number" wire:model="jumlah" name="jumlah" id="jumlah" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full py-2 pr-3 pl-10 sm:text-sm border-gray-300" placeholder="  Input jumlah pembayaran">
                         </div>
                         @error('jumlah') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>
@@ -51,10 +51,10 @@
                     <div class="mb-2">
                         <label for="keterangan1" class="block py-1">Status Pembayaran & Keterangan</label>
                         {{ Form::select('keterangan2',['LUNAS'=>'LUNAS','BELUM LUNAS'=>'BELUM LUNAS'],null,
-                        ['class' => 'shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm','id' => 'keterangan1','wire:model'=>'keterangan1','placeholder'=>'- Pilih status pembayaran -'])}}
+                        ['class' => 'border w-full py-2 px-3 text-blue-900 text-sm','id' => 'keterangan1','wire:model'=>'keterangan1','placeholder'=>'- Pilih status pembayaran -'])}}
                     </div>
                     <div class="mb-2">
-                        <input wire:model="keterangan2" type="textarea" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Keterangan tambahan...">
+                        <input wire:model="keterangan2" type="textarea" class="border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Keterangan tambahan...">
                     </div>
               </div>
         </div>
