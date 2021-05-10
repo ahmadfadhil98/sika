@@ -67,25 +67,19 @@
 
                                 <td>{{ $t->tgl }}</td>
                                 <td>
-                                @php
-                                    $debt = $debit->where('tgl',$t->tgl)->get();
-                                @endphp
-                                @foreach ($debt as $d)
-                                    {{$d->debit}}
-                                @endforeach
+
                                 </td>
                                 <td>
-                                    @php
-                                        $credit = $kredit->where('tgl',$t->tgl)->get();
-                                    @endphp
-                                    @foreach ($credit as $c)
-                                        {{$c->kredit}}
-                                    @endforeach
-                                    </td>
+
+                                </td>
                                 <td>
 
                                 </td>
                             </tr>
+                            @php
+                                $debt = null;
+                                $credit = null;
+                            @endphp
                             @endforeach
                         </tbody>
                     </table>

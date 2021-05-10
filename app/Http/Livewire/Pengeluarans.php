@@ -14,7 +14,7 @@ class Pengeluarans extends Component
 {
     use WithFileUploads;
     public $spendId,$search,$isOpen,$photo;
-    public $barang_id,$jumlah,$harga,$bukti,$tgl;
+    public $barang_id,$jumlah,$harga,$bukti,$tgl,$keterangan;
     public $satuan = 'Satuan';
     public function render()
     {
@@ -39,6 +39,7 @@ class Pengeluarans extends Component
     }
 
     public function store(){
+        // dd($this->tgl);
         $this->validate(
             [
                 'barang_id' => 'required',
@@ -52,13 +53,14 @@ class Pengeluarans extends Component
                 'barang_id' => $this->barang_id,
                 'jumlah' => $this->jumlah,
                 'harga' => $this->harga,
-                'tgl' => $this->tgl
+                'tgl' => $this->tgl,
+                'keterangan' => $this->keterangan
             ]);
             session()->flash('info', $this->spendId ? 'Pengeluaran Update Successfully' : 'Pengeluaran Created Successfully' );
         } catch (QueryException $e){
             $errorCode = $e->errorInfo[1];
             if($errorCode == 1062){
-                session()->flash('delete', 'Duplcate Entry');
+                session()->flash('delete', 'Duplicate Entry');
             }
         }
 
@@ -67,7 +69,11 @@ class Pengeluarans extends Component
         session()->flash('info', $this->spendId ? 'Pengeluaran Update Successfully' : 'Pengeluaran Created Successfully' );
 
         $this->spendId = '';
-        $this->name = '';
+        $this->jumlah = '';
+        $this->harga = '';
+        $this->tgl = '';
+        $this->barang_id = '';
+        $this->keterangan = '';
     }
 
     public function edit($id){
@@ -76,7 +82,7 @@ class Pengeluarans extends Component
         $this->barang_id = $spend->barang_id;
         $this->harga = $spend->harga;
         $this->jumlah = $spend->jumlah;
-        $this->photo = $spend->bukti;
+        // $this->photo = $spend->bukti;
 
         $this->showModal();
     }

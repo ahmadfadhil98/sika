@@ -28,7 +28,7 @@ class ReportKeluar extends Component
         $pengeluaran = Pengeluaran::select('tgl','id');
         $peng =  Pengeluaran::pluck('barang_id','id');
         $jenis = Barang::pluck('jenis','id');
-        $barangs = Barang::get();
+        $barangs = Barang::where('jenis','!=',2)->get();
         return view('livewire.report.report-keluar',[
             'periode' => $periode,
             'tgl' => $tgl,

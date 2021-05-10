@@ -58,8 +58,6 @@
                                 <th class="w-auto">Kecap</th>
                                 <th class="w-auto">Gaji TK Masak</th>
                                 <th class="w-auto">Pabukoan</th> --}}
-                                <th class="w-auto">Taktis</th>
-                                <th class="w-auto">Dll</th>
                                 <th class="w-auto">Jumlah</th>
                             </tr>
                         </thead>
@@ -76,27 +74,18 @@
                                 <td rowspan="{{ $span}}">{{$t->tgl }}</td>
                                 @endif
                                 <td> {{ $barang[$t->barang_id]}} {{$t->jumlah}} {{ $satuan[$t->barang_id]}} </td>
-
                                 <td>
                                     @if ( $jenis[$peng[$t->id]] == 2 )
                                         {{$t->harga}}
                                     @endif
                                 </td>
-                                <td>
-                                    @if ( $barang[$peng[$t->id]] == 1 )
-                                        {{$t->harga}}
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ( $jenis[$peng[$t->id]] == 2 )
-                                        {{$t->harga}}
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ( $jenis[$peng[$t->id]] == 2 )
-                                        {{$t->harga}}
-                                    @endif
-                                </td>
+                                @foreach ($barangs as $b)
+                                    <td>
+                                        @if ( $barang[$peng[$t->id]] == $b->name )
+                                            {{$t->harga}}
+                                        @endif
+                                    </td>
+                                @endforeach
                                 <td>{{$t->jumlah}}</td>
                             </tr>
                             @php

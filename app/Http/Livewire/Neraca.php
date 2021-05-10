@@ -18,12 +18,13 @@ class Neraca extends Component
     public function render()
     {
         $periode = Periode::select('id', DB::raw("CONCAT(if(period=1,concat(year-1,'/',year),concat(year,'/',year+1)),'-',if(period=1,'Semester 2','Semester 1')) AS semester"))->orderBy('id','desc')->pluck('semester','id');
+
         $debit = Angsuran::select(DB::raw('SUM(jumlah) as debit'));
         $kredit = Pengeluaran::select(DB::raw('SUM(harga) as kredit'));
 
-
         if($this->month){
-            $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl')->paginate(7);
+            $t = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl','jumlah');
+            $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl',)->distinct()->paginate(7);
         }else{
             $tgl = Post::paginate(5);
         }
