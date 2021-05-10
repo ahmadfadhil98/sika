@@ -34,7 +34,6 @@ class ReportMasuk extends Component
 
 
         if($this->month){
-            // dd($this->month);
             $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl','uas_id','jumlah')->paginate(7);
         }else{
             $tgl = Post::paginate(7);
