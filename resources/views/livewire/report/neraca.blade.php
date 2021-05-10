@@ -23,7 +23,7 @@
                             {{ Form::select('month',$months,null,
                             ['class' => 'bg-gray-500 text-white py-2 px-6 mt-4','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
 
-                            <button onclick="location.href='{{ route('report') }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
+                            <button onclick="location.href='{{ route('report',[$this->period,$this->month,1]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
                                 Laporan
                             </button>
                         </div>

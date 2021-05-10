@@ -13,7 +13,9 @@ use Livewire\Component;
 class Neraca extends Component
 {
     public $months=[];
-    public $period,$month,$year;
+    public $period=0;
+    public $month=0;
+    public $year;
 
     public function render()
     {

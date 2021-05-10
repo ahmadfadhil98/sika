@@ -12,7 +12,9 @@ use Livewire\Component;
 class ReportKeluar extends Component
 {
     public $months = [];
-    public $month,$period,$year;
+    public $period=0;
+    public $month=0;
+    public $year;
 
     public function render()
     {

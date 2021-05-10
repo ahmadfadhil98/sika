@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class Report extends Controller
 {
-    public function report(){
+    public function report($period,$month){
 
         return view('report.neraca');
     }
