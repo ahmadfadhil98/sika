@@ -36,8 +36,9 @@ class DetailMurids extends Component
 
     public function render()
     {
-        $dmurid = DetailMurid::find($this->dmuridId);
 
+        $dmurid = DetailMurid::find($this->dmuridId);
+        // dd($dmurid);
         if($this->di==21){
             $asramas = AsramaPeriode::find($dmurid->asrama_id);
             $periodes = Periode::find($asramas->periode_id);
@@ -105,7 +106,7 @@ class DetailMurids extends Component
         $uas = UangAsrama::where('murid_id',$this->dmuridId)->where('month',$mont)->get();
 
         foreach ($uas as $u){
-            $this->angsur = Angsuran::where('uas_id',$u->id)->get();
+            $this->angsur = DB::table('angsurans')->join('uang_asramas','uang_asramas.id','angsurans.uas_id')->select('angsurans.*','uang_asramas.keterangan as keteranganuas')->where('uas_id',$u->id)->get();
         }
         $this->showInfo();
     }

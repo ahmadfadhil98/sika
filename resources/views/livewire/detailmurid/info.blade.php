@@ -29,7 +29,7 @@
                                 <td class="px-3 font-bold">{{$a->tgl}}</td>
                             </tr>
                         </table>
-                                <div class="border-t mt-2"></div></td>
+                                <div class="border-t mt-2"></div>
                         <table class="mt-2 px-3">
                             <tr>
                                 <td class="px-3 text-sm">Jumlah Pembayaran</td>
@@ -40,6 +40,10 @@
                                 <td class="px-3 text-sm">: {{$a->keterangan}}</td>
                             </tr>
                         </table>
+                        <div class="border-t mt-2"></div>
+                        <div class="text-center">
+                            {{$a->keteranganuas}}
+                        </div>
                     </div>
                 @endforeach
             @else
@@ -49,6 +53,10 @@
                         Belum ada pembayaran
                     </div>
                 </table>
+                <div class="border-t mt-2"></div>
+                        <div class="text-center">
+                            Belum Lunas
+                        </div>
             </div>
             @endif
 

@@ -13,7 +13,7 @@ use Livewire\Component;
 class Neraca extends Component
 {
     public $months=[];
-    public $period,$month;
+    public $period,$month,$year;
 
     public function render()
     {
@@ -21,14 +21,9 @@ class Neraca extends Component
         $debit = Angsuran::select(DB::raw('SUM(jumlah) as debit'));
         $kredit = Pengeluaran::select(DB::raw('SUM(harga) as kredit'));
 
-        $uas = UangAsrama::where('month',$this->month)->get();
-        $uas_id = [];
 
-        foreach($uas as $u){
-            array_push($uas_id,$u->id);
-        }
         if($this->month){
-            $tgl = DB::table('angsurans')->whereIn('uas_id',$uas_id)->select('tgl')->paginate(7);
+            $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl')->paginate(7);
         }else{
             $tgl = Post::paginate(5);
         }
@@ -44,7 +39,7 @@ class Neraca extends Component
 
     public function month(){
         $periode = Periode::find($this->period);
-
+        $this->year = $periode->year;
         if($periode->period==1){
             $this->months = config('central.month1');
         }elseif($periode->period==2){

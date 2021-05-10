@@ -17,7 +17,7 @@ use Livewire\Component;
 class ReportMasuk extends Component
 {
     public $months=[];
-    public $period,$month;
+    public $period,$month,$year;
 
     public function render()
     {
@@ -30,16 +30,10 @@ class ReportMasuk extends Component
         $dmuridkelas = DetailMurid::pluck('kelas_id','id');
         $dkelas = KelasPeriode::pluck('kelas_id','id');
 
-        $uas = UangAsrama::where('month',$this->month)->get();
-        $uas_id = [];
 
-        foreach($uas as $u){
-            array_push($uas_id,$u->id);
-        }
-        // dd($uas_id);
         if($this->month){
             // dd($this->month);
-            $tgl = DB::table('angsurans')->whereIn('uas_id',$uas_id)->select('tgl','uas_id','jumlah')->paginate(7);
+            $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl','uas_id','jumlah')->paginate(7);
         }else{
             $tgl = Post::paginate(7);
         }
@@ -61,6 +55,7 @@ class ReportMasuk extends Component
 
     public function month(){
         $periode = Periode::find($this->period);
+        $this->year = $periode->year;
         if($periode->period==1){
             $this->months = config('central.month1');
         }elseif($periode->period==2){

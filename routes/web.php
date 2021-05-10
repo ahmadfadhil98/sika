@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Pengeluaran;
+use App\Http\Controllers\Report;
 use App\Http\Livewire\AnggotaAsrama;
 use App\Http\Livewire\AnggotaKelas;
 use App\Http\Livewire\Asramas;
@@ -68,5 +69,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('report_keluar',ReportKeluar::class)->name('report_keluar');
     Route::get('neraca',Neraca::class)->name('neraca');
     Route::get('uasperiode',UasPeriodes::class)->name('uasperiode');
-
+    Route::get('report',[Report::class,'report'])->name('report');
 });

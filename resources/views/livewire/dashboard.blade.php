@@ -32,8 +32,8 @@
                             <tr>
                                 <td class="px-2 py-3">{{ $murids->firstitem() + $key }}</td>
                                 <td>{{ $n_kelas[$dkelas[$murid->kelas_id]] }}</td>
-                                <td>{{ $nis[$murid->murid_id] }}</td>
-                                <td>{{ $name[$murid->murid_id] }}</td>
+                                <td>{{ $murid->nis }}</td>
+                                <td>{{ $murid->name }}</td>
                                 <td>
                                     <button onclick="location.href='{{ route('dmurid', [$murid->id,31]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
                                         Info Pembayaran

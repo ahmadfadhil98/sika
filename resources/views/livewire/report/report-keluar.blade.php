@@ -41,11 +41,26 @@
                     <table class="table-fixed w-full text-center" id="myTable">
                         <thead class="bg-blue-900">
                             <tr>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Tanggal</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Kelas</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Jumlah
-                                </th>
+                                <th class="w-auto">Tanggal</th>
+                                <th class="w-auto">Nama Barang</th>
+                                <th class="w-auto">Lauk/Sayur</th>
+                                @foreach ($barangs as $b)
+                                    <th class="w-auto">{{$b->name}}</th>
+                                @endforeach
+                                {{-- <th class="w-auto">Air</th>
+                                <th class="w-auto">Gas</th>
+                                <th class="w-auto">Beras</th>
+                                <th class="w-auto">Telur</th>
+                                <th class="w-auto">MG</th>
+                                <th class="w-auto">Pulsa</th>
+                                <th class="w-auto">Alat Dapur</th>
+                                <th class="w-auto">Token</th>
+                                <th class="w-auto">Kecap</th>
+                                <th class="w-auto">Gaji TK Masak</th>
+                                <th class="w-auto">Pabukoan</th> --}}
+                                <th class="w-auto">Taktis</th>
+                                <th class="w-auto">Dll</th>
+                                <th class="w-auto">Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,13 +70,33 @@
                             @foreach($tgl as  $key=>$t)
                             <tr>
                                 @php
-                                    $span = count($angsuran->where('tgl',$t->tgl)->get());
+                                    $span = count($pengeluaran->where('tgl',$t->tgl)->get());
                                 @endphp
                                 @if ($date != $t->tgl)
                                 <td rowspan="{{ $span}}">{{$t->tgl }}</td>
                                 @endif
-                                <td> {{ $murid[$dmurid[$uas_dmurid[$t->uas_id]]] }} </td>
-                                <td> {{ $kelas[$dkelas[$dmuridkelas[$uas_dmurid[$t->uas_id]]]] }} </td>
+                                <td> {{ $barang[$t->barang_id]}} {{$t->jumlah}} {{ $satuan[$t->barang_id]}} </td>
+
+                                <td>
+                                    @if ( $jenis[$peng[$t->id]] == 2 )
+                                        {{$t->harga}}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ( $barang[$peng[$t->id]] == 1 )
+                                        {{$t->harga}}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ( $jenis[$peng[$t->id]] == 2 )
+                                        {{$t->harga}}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ( $jenis[$peng[$t->id]] == 2 )
+                                        {{$t->harga}}
+                                    @endif
+                                </td>
                                 <td>{{$t->jumlah}}</td>
                             </tr>
                             @php

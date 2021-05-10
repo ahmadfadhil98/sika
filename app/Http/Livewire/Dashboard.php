@@ -7,13 +7,17 @@ use App\Models\Kelas;
 use App\Models\KelasPeriode;
 use App\Models\Murid;
 use App\Models\Periode;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Dashboard extends Component
 {
+    public $search;
+
     public function render()
     {
         $kelas=[];
+        $searchParam = '%'.$this->search.'%';
         $year = date('Y');
         $month = date('m');
         if($month<7){
@@ -34,7 +38,7 @@ class Dashboard extends Component
         $dkelas = KelasPeriode::pluck('kelas_id','id');
         $n_kelas = Kelas::pluck('name','id');
 
-        $murids = DetailMurid::whereIn('kelas_id',$kelasId)->paginate(7);
+        $murids = DB::table('detail_murids')->join('murids','murids.id','detail_murids.murid_id')->select('detail_murids.id','detail_murids.kelas_id','murids.name','murids.nis')->where('murids.name','like',$searchParam)->whereIn('kelas_id',$kelasId)->orderBy('murids.nis')->paginate(7);
         $name = Murid::pluck('name','id');
         $nis = Murid::pluck('nis','id');
         return view('livewire.dashboard',[

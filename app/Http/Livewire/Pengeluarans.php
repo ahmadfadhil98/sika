@@ -20,7 +20,7 @@ class Pengeluarans extends Component
     {
         $searchParam = '%'.$this->search.'%';
         $stuan = Barang::pluck('satuan','id');
-        $barangs = Barang::pluck('name','id');
+        $barangs = Barang::orderBy('name','asc')->pluck('name','id');
         $spends = Pengeluaran::paginate(7);
         return view('livewire.pengeluaran.index',[
             'spends' => $spends,
