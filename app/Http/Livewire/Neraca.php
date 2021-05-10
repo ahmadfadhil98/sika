@@ -23,7 +23,7 @@ class Neraca extends Component
         $kredit = Pengeluaran::select(DB::raw('SUM(harga) as kredit'));
 
         if($this->month){
-            $t = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl','jumlah');
+            $t = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl');
             $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl',)->distinct()->paginate(7);
         }else{
             $tgl = Post::paginate(5);
