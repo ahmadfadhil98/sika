@@ -86,7 +86,7 @@
                                         @endif
                                     </td>
                                 @endforeach
-                                <td>{{$t->jumlah}}</td>
+                                <td>{{$t->harga}}</td>
                             </tr>
                             @php
                                 $date = $t->tgl;

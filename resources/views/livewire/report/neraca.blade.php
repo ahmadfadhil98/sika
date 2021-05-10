@@ -67,19 +67,19 @@
 
                                 <td>{{ $t->tgl }}</td>
                                 <td>
-
+                                    @if($t->debit!=null)
+                                        {{$t->debit}}
+                                    @endif
                                 </td>
                                 <td>
-
+                                    @if($t->kredit!=null)
+                                        {{$t->kredit}}
+                                    @endif
                                 </td>
                                 <td>
 
                                 </td>
                             </tr>
-                            @php
-                                $debt = null;
-                                $credit = null;
-                            @endphp
                             @endforeach
                         </tbody>
                     </table>

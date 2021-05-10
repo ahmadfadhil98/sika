@@ -23,8 +23,12 @@ class Neraca extends Component
         $kredit = Pengeluaran::select(DB::raw('SUM(harga) as kredit'));
 
         if($this->month){
-            $t = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl');
-            $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl',)->distinct()->paginate(7);
+
+            $tgl = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->paginate(7);
+
+            // $t = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl',DB::raw('null as debit'),DB::raw('SUM(harga) as kredit'))->groupBy('tgl')->get();
+
+            // $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl',DB::raw('SUM(jumlah) as debit'),DB::raw('null as kredit'))->groupBy('tgl')->union($t)->paginate(7);
         }else{
             $tgl = Post::paginate(5);
         }
