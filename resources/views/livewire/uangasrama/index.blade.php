@@ -47,8 +47,8 @@
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Penanggung Jawab</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
-                            </tr>
                         </thead>
+
                         <tbody>
                             @foreach($uas as  $key=>$u)
                             <tr>

@@ -23,7 +23,7 @@ class DetailMurids extends Component
     // public $murid_id,$tgl,$bulan,$jumlah,$keterangan;
     public $keterangan1,$bulan,$jumlahuas;
     public $no,$jumlahang,$tgl,$uas_id,$keterangan2;
-    public $dmuridId,$di,$jumlah,$uasId;
+    public $dmuridId,$di,$jumlah,$uasId,$ketuas;
     public $isOpen = 0;
     public $isInfo = 0;
     public $angsur;
@@ -106,7 +106,9 @@ class DetailMurids extends Component
         $uas = UangAsrama::where('murid_id',$this->dmuridId)->where('month',$mont)->get();
 
         foreach ($uas as $u){
-            $this->angsur = DB::table('angsurans')->join('uang_asramas','uang_asramas.id','angsurans.uas_id')->select('angsurans.*','uang_asramas.keterangan as keteranganuas')->where('uas_id',$u->id)->get();
+            $this->angsur = Angsuran::where('uas_id',$u->id)->get();
+            // $this->angsur = DB::table('angsurans')->join('uang_asramas','uang_asramas.id','angsurans.uas_id')->select('angsurans.*','uang_asramas.keterangan as keteranganuas')->where('uas_id',$u->id)->get();
+        $this->ketuas = $u->keterangan;
         }
         $this->showInfo();
     }

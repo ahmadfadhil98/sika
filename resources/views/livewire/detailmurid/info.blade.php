@@ -40,29 +40,35 @@
                                 <td class="px-3 text-sm">: {{$a->keterangan}}</td>
                             </tr>
                         </table>
-                        <div class="border-t mt-2"></div>
-                        <div class="text-center">
-                            {{$a->keteranganuas}}
-                        </div>
                     </div>
                 @endforeach
+                @if ($ketuas=='LUNAS')
+                    <div class="text-center">
+                        <button disabled="disabled" class="text-sm bg-green-500 text-white py-2 px-6">{{$ketuas}}</button>
+                    </div>
+                @else
+                    <div class="text-center">
+                        <button disabled="disabled" class="text-sm bg-red-500 text-white py-2 px-6">{{$ketuas}}</button>
+                    </div>
+                @endif
+
+
             @else
-            <div class="border mb-5 py-2 text-center">
+            <div class="border mb-5 py-3 text-center">
                 <table>
-                    <div class="text-sm">
+                    <div class="text-lg font-bold underline">
+                        Rp 0,-
+                    </div>
+                    <div class="mt-1.5 text-sm">
                         Belum ada pembayaran
                     </div>
                 </table>
-                <div class="border-t mt-2"></div>
-                        <div class="text-center">
-                            Belum Lunas
-                        </div>
             </div>
             @endif
 
 
         </div>
-        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <div class="mt-1.5 bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
           <span class="mt-3 flex w-full shadow-sm sm:mt-0 sm:w-auto">
             <button wire:click="hideInfo()" type="button" class="inline-flex justify-center w-full border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5">
               Kembali
