@@ -5,7 +5,7 @@
 
                     <div class="flex mb-4">
                     <div class="w-full md:w-1/2 mt-1.5">
-                        <button wire:click="create()" class="text-base bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
+                        <button wire:click="create()" class="text-base bg-blue-700 hover:bg-blue-900 text-white py-2 px-6 focus:outline-none focus:ring-blue-900 focus:border-blue-900 focus:z-10">
                             Bayar Uang Asrama {{$periode[$periodes->id]}}
                         </button>
                     </div>
@@ -51,6 +51,7 @@
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Pembayaran Bulan</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Status Pembayaran</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Tagihan</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
                             </tr>
                         </thead>
@@ -60,15 +61,39 @@
                             <tr>
                                 <td class="px-2 py-3">{{ $key+1 }}</td>
                                 <td> {{$month[$m]}} </td>
-                                <td class="text-center">
-                                    @if (count($uas->where('month',$m))!=0)
+                                {{$uas->where('keterangan','Lunas')->where('month',$m)}}
+                                @if (count($uas->where('keterangan','Lunas')->where('month',$m))!=0)
+                                    <td class="text-center">
                                         <button disabled="disabled" class="text-sm bg-green-500 text-white py-2 px-6">LUNAS</button>
-                                    @else
+                                    </td>
+                                    <td class="px-3 text-sm">
+                                        @php
+                                            $jmlh = $uas->where('month',$m);
+                                        @endphp
+                                        @foreach ($uasperiode as $up)
+                                            @foreach ($jmlh as $jml)
+                                                {{$up->jumlah-$jml->jumlah}}
+                                            @endforeach
+                                        @endforeach
+                                    </td>
+                                @else
+                                    <td class="text-center">
                                         <button disabled="disabled" class="text-sm bg-red-700 text-white py-2 px-6">BELUM LUNAS</button>
-                                    @endif
-                                </td>
+                                    </td>
+                                    <td class="px-3 text-sm">
+                                        @php
+                                            $jmlh = $uas->where('month',$m);
+                                        @endphp
+                                        @foreach ($uasperiode as $up)
+                                            @foreach ($jmlh as $jml)
+                                                {{$up->jumlah-$jml->jumlah}}
+                                            @endforeach
+                                        @endforeach
+                                    </td>
+                                @endif
+
                                 <td>
-                                    <button wire:click="show({{$m}})" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
+                                    <button wire:click="show({{$m}})" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6 focus:outline-none">
                                     Detail Pembayaran
                                     </button>
                                 </td>

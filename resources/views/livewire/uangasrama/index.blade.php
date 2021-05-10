@@ -11,10 +11,10 @@
                     <div class="flex mb-4">
                     <div>
                         {{ Form::select('sem',$periodes,null,
-                        ['class' => 'bg-gray-500 text-white py-2 px-6 mt-4','id' => 'sem','wire:change'=>'eksekusi()','wire:model'=>'sem','placeholder'=>'- Pilih pemasukan semester -'])}}
+                        ['class' => 'bg-gray-500 text-white py-2 px-6 mt-4 focus:outline-none','id' => 'sem','wire:change'=>'eksekusi()','wire:model'=>'sem','placeholder'=>'- Pilih pemasukan semester -'])}}
 
                         {{ Form::select('jenis',['asrama' => 'Berdasarkan Asrama','kelas' => 'Berdasarkan Kelas'],null,
-                        ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'jenis','wire:change'=>'eksekusi()','wire:model'=>'jenis','placeholder'=>'- Kelompokkan berdasarkan -'])}}
+                        ['class' => 'bg-gray-500 text-white py-2 px-6 focus:outline-none','id' => 'jenis','wire:change'=>'eksekusi()','wire:model'=>'jenis','placeholder'=>'- Kelompokkan berdasarkan -'])}}
                     </div>
                     </div>
 
@@ -57,11 +57,11 @@
                                 <td>{{ $guten[$u->pj] }}</td>
                                 <td>
                                     @if ($this->jenis=='asrama')
-                                        <button onclick="location.href='{{ route('aasrama', [$u->id,21]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
+                                        <button onclick="location.href='{{ route('aasrama', [$u->id,21]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6 focus:outline-none">
                                             Daftar Peserta Didik
                                         </button>
                                     @elseif ($this->jenis=='kelas')
-                                        <button onclick="location.href='{{ route('akelas', [$u->id,31]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
+                                        <button onclick="location.href='{{ route('akelas', [$u->id,31]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6 focus:outline-none">
                                             Daftar Peserta Didik
                                         </button>
                                     @endif

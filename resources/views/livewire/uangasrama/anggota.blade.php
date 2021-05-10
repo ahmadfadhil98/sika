@@ -8,7 +8,7 @@
                         Daftar Peserta Didik Kelas {{ $askes[$daskes[$this->kelas_id]]}}
                     </div>
                     <div class="w-full md:w-1/2">
-                        <input wire:model="search" type="text" class="shadow appearance-none  w-full py-2 px-3 text-blue-900" placeholder="Cari nama...">
+                        <input wire:model="search" type="text" class="shadow appearance-none  w-full py-2 px-3 text-blue-900 focus:outline-none" placeholder="Cari nama...">
                     </div>
                     </div>
 
@@ -45,7 +45,7 @@
                                 <td>{{ $murid->nis }}</td>
                                 <td>{{ $murid->nama }}</td>
                                 <td>
-                                    <button onclick="location.href='{{ route('dmurid', [$murid->id,$this->di]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
+                                    <button onclick="location.href='{{ route('dmurid', [$murid->id,$this->di]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6 focus:outline-none">
                                         Info Pembayaran
                                     </button>
 

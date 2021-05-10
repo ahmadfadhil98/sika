@@ -9,6 +9,7 @@ use App\Models\KelasPeriode;
 use App\Models\Murid;
 use App\Models\Periode;
 use App\Models\UangAsrama;
+use App\Models\UasPeriode;
 use DateTime;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -60,14 +61,16 @@ class DetailMurids extends Component
         }
 
         $uas = UangAsrama::where('murid_id',$this->dmuridId)
-        ->where('keterangan','Lunas')->get();
+        ->get();
         // $ket = UangAsrama::where('')
+        $uasperiode = UasPeriode::where('periode_id',$periodes->id)->get();
         $murid = Murid ::pluck('name','id');
         return view('livewire.detailmurid.index',[
             'uas' => $uas,
             'periodes' => $periodes,
             'periode' => $periode,
             'month' => $month,
+            'uasperiode' => $uasperiode,
             'months' => $months,
             'murid' => $murid,
             'dmurid' => $dmurid
