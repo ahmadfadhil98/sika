@@ -8,8 +8,8 @@ use Livewire\WithPagination;
 use App\Models\KelasPeriode;
 use App\Models\Kelas;
 use App\Models\Periode;
-use DB;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 
 class DetailKelas extends Component
 {

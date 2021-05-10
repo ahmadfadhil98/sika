@@ -1,5 +1,5 @@
 <div>
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-12">
+    <div class="max-w-full mx-auto sm:px-6 lg:px-8 mt-12">
                 <div class="text-base text-white text-blue-50">
                     Pemasukan Uang Asrama
                 </div>

@@ -1,17 +1,17 @@
 <div>
     @include('livewire.detailkelas._form')
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-5">
+    <div class="max-w-full mx-auto sm:px-6 lg:px-8">
 
-                <div class="mt-1 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4" >
+                <div class="mt-4 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4" >
 
                     <div class="flex mb-4">
-                    <div class="w-full md:w-1/2" id="content">
-                        <h2 class="text-base py-2 px-1 font-bold">
-                            Nama-Nama Anggota Kelas
-                    </div>
-                    <div class="w-full md:w-1/2">
-                        <input wire:model="search" type="text" class="shadow appearance-none  w-full py-2 px-3 text-blue-900" placeholder="Cari kelas...">
-                    </div>
+                        <div class="w-full md:w-1/2" id="content">
+                            <h2 class="text-base py-2 px-1 font-bold">
+                                Nama-Nama Anggota Kelas
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <input wire:model="search" type="text" class="shadow appearance-none  w-full py-2 px-3 text-blue-900" placeholder="Cari peserta didik...">
+                        </div>
                     </div>
 
                     @if(session()->has('info'))
@@ -35,15 +35,16 @@
                         <thead class="bg-blue-900">
                             <tr>
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">NIS</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama Peserta Didik</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($murids as  $key=>$murid)
                             <tr>
-                                <td class="px-2 py-3">{{ $murids->firstitem() + $key }}</td>
-
+                                <td class="px-2 py-3">{{ $key + 1 }}</td>
+                                <td>{{ $murid->nis }}</td>
                                 <td>{{ $murid->nama }}</td>
                                 <td>
                                     <button id="memberout" wire:click="delete({{ $murid->id }})" class="text-sm bg-red-700 hover:bg-red-900 text-white py-2 px-6">
@@ -55,7 +56,7 @@
                         </tbody>
                     </table>
                     <div class="mt-4">
-                          {{$murids->links()}}
+                          {{-- {{$murids->links()}} --}}
                     </div>
 
                 </div>

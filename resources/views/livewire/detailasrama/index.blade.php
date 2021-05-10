@@ -1,5 +1,5 @@
 <div>
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-12">
+    <div class="max-w-full mx-auto sm:px-6 lg:px-8 mt-12">
                 <div class="text-base text-white text-blue-50">
                    Pengelompokan Asrama
               </div>
@@ -44,9 +44,9 @@
                         <thead class="bg-blue-900">
                             <tr>
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Asrama</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama Asrama</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Pembina Asrama</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,7 +58,7 @@
                                 <td> {{ $pemas[$asrama->binsis_id] }} </td>
                                 <td>
                                     <button onclick="location.href='{{ route('aasrama', [$asrama->id,2]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
-                                    Anggota
+                                    Lihat Anggota Asrama
                                     </button>
                                     <button wire:click="edit({{ $asrama->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
                                     Edit

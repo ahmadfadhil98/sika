@@ -1,5 +1,5 @@
 <div>
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-12">
+    <div class="max-w-full mx-auto sm:px-6 lg:px-8 mt-12">
 
                 <div class="text-base text-white text-blue-50">
                     Laporan Uang Keluar
@@ -12,14 +12,16 @@
                     </div>
 
                     <div class="flex mb-4">
-                        <div class="w-full md:w-1/2">
+                        <div class="w-full md:w-1/2 text-left mt-4">
                             {{ Form::select('period',$periode,null,
-                            ['class' => 'bg-gray-500 text-white py-2 px-6 mt-4','id' => 'period','wire:change'=>'month()','wire:model'=>'period','placeholder'=>'- Pilih uang keluar semester -'])}}
+                            ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'period','wire:change'=>'month()','wire:model'=>'period','placeholder'=>'- Pilih uang keluar semester -'])}}
 
                             {{ Form::select('month',$months,null,
-                            ['class' => 'bg-gray-500 text-white py-2 px-6 mt-4','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
+                            ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
+                        </div>
 
-                            <button onclick="location.href='{{ route('report',[$this->period,$this->month,2]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
+                        <div class="w-full md:w-1/2 text-right mt-4 ">
+                            <button onclick="location.href='{{ route('report',[$this->period,$this->month,2]) }}'" class="bg-green-500 text-white py-2 px-6">
                                 Laporan
                             </button>
                         </div>
@@ -42,14 +44,14 @@
                         </div>
                     @endif
 
-                    <table class="table-fixed w-full text-center" id="myTable">
+                    <table class="table-fixed w-full text-center text-white" id="myTable">
                         <thead class="bg-blue-900">
                             <tr>
-                                <th class="w-auto">Tanggal</th>
-                                <th class="w-auto">Nama Barang</th>
-                                <th class="w-auto">Lauk/Sayur</th>
+                                <th class="text-sm font-normal px-4 py-2 w-auto">Tanggal</th>
+                                <th class="text-sm font-normal px-4 py-2 w-auto">Nama Barang</th>
+                                <th class="text-xs font-normal px-4 py-2 w-auto">Lauk/Sayur</th>
                                 @foreach ($barangs as $b)
-                                    <th class="w-auto">{{$b->name}}</th>
+                                    <th class="text-xs font-normal px-4 py-2 w-auto">{{$b->name}}</th>
                                 @endforeach
                                 {{-- <th class="w-auto">Air</th>
                                 <th class="w-auto">Gas</th>
@@ -62,7 +64,7 @@
                                 <th class="w-auto">Kecap</th>
                                 <th class="w-auto">Gaji TK Masak</th>
                                 <th class="w-auto">Pabukoan</th> --}}
-                                <th class="w-auto">Jumlah</th>
+                                <th class="text-sm font-normal px-4 py-2 w-auto">Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>

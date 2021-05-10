@@ -1,5 +1,5 @@
 <div>
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-12">
+    <div class="max-w-full mx-auto sm:px-6 lg:px-8 mt-12">
 
                 <div class="text-base text-white text-blue-50">
                     Neraca Keuangan Asrama
@@ -16,14 +16,16 @@
                     </div>
 
                     <div class="flex mb-4">
-                        <div class="w-full md:w-1/2">
+                        <div class="w-full md:w-1/2 text-left mt-4">
                             {{ Form::select('period',$periode,null,
-                            ['class' => 'bg-gray-500 text-white py-2 px-6 mt-4','id' => 'period','wire:change'=>'month()','wire:model'=>'period','placeholder'=>'- Pilih neraca semester -'])}}
+                            ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'period','wire:change'=>'month()','wire:model'=>'period','placeholder'=>'- Pilih neraca semester -'])}}
 
                             {{ Form::select('month',$months,null,
-                            ['class' => 'bg-gray-500 text-white py-2 px-6 mt-4','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
+                            ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
+                        </div>
 
-                            <button onclick="location.href='{{ route('report',[$this->period,$this->month,1]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6">
+                        <div class="w-full md:w-1/2 text-right mt-4 ">
+                            <button onclick="location.href='{{ route('report',[$this->period,$this->month,1]) }}'" class="bg-green-500 text-white py-2 px-6">
                                 Laporan
                             </button>
                         </div>

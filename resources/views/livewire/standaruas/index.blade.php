@@ -1,5 +1,5 @@
 <div>
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 mt-12">
+    <div class="max-w-full mx-auto sm:px-6 lg:px-8 mt-12">
                 <div class="text-base text-white text-blue-50">
                    Database Standar Uang Asrama
               </div>
@@ -42,9 +42,9 @@
                         <thead class="bg-blue-900">
                             <tr>
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Periode</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Standar</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Semester</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Standar Uang Asrama</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
                             </tr>
                         </thead>
                         <tbody>
