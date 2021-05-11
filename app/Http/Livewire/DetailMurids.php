@@ -28,6 +28,7 @@ class DetailMurids extends Component
     public $isOpen = 0;
     public $isInfo = 0;
     public $angsur;
+    public $mont;
 
     public function mount($id,$di){
 
@@ -59,7 +60,6 @@ class DetailMurids extends Component
             $months = [7,8,9,10,11,12];
             $month = config('central.month2');
         }
-
         $uas = UangAsrama::where('murid_id',$this->dmuridId)
         ->get();
         $uasperiode = UasPeriode::where('periode_id',$periodes->id)->get();
@@ -104,7 +104,7 @@ class DetailMurids extends Component
     }
 
     public function show($mont){
-
+        $this->mont = $mont;
         $uas = UangAsrama::where('murid_id',$this->dmuridId)->where('month',$mont)->get();
 
         foreach ($uas as $u){

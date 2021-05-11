@@ -76,7 +76,7 @@
                                 @if ($date != $t->tgl)
                                     @foreach ($pengeluaran as $a)
                                         @if ($a->tgl == $t->tgl)
-                                        <td rowspan="{{ $a->span}}">{{$t->tgl }}</td>
+                                        <td rowspan="{{ $a->span}}">{{date('d-m-Y', strtotime($t->tgl)) }}</td>
                                         @endif
                                     @endforeach
                                 @endif

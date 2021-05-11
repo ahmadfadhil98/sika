@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Barang;
 use App\Models\Pengeluaran;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic;
 use Livewire\Component;
@@ -21,7 +22,7 @@ class Pengeluarans extends Component
         $searchParam = '%'.$this->search.'%';
         $stuan = Barang::pluck('satuan','id');
         $barangs = Barang::orderBy('name','asc')->pluck('name','id');
-        $spends = Pengeluaran::paginate(7);
+        $spends = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.name','like',$searchParam)->orWhere('pengeluarans.tgl','like',$searchParam)->paginate(7);
         return view('livewire.pengeluaran.index',[
             'spends' => $spends,
             'barangs' => $barangs,

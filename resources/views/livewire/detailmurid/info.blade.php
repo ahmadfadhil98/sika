@@ -13,7 +13,7 @@
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
 
             <div class="font-bold text-base text-center">
-                DETAIL PEMBAYARAN
+                Detail Pembayaran Bulan {{$month[$this->mont]}}
             </div>
 
 
@@ -26,7 +26,7 @@
                     <div class="border mb-5 py-2">
                         <table>
                             <tr>
-                                <td class="px-3 font-bold">{{$a->tgl}}</td>
+                                <td class="px-3 font-bold">{{date('d-m-Y', strtotime($a->tgl))}}</td>
                             </tr>
                         </table>
                                 <div class="border-t mt-2"></div>

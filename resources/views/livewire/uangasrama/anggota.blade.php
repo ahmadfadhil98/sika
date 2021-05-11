@@ -41,7 +41,7 @@
                         <tbody>
                             @foreach($murids as  $key=>$murid)
                             <tr>
-                                <td class="px-2 py-3">{{ $murids->firstitem() + $key }}</td>
+                                <td class="px-2 py-3">{{$key+1 }}</td>
                                 <td>{{ $murid->nis }}</td>
                                 <td>{{ $murid->nama }}</td>
                                 <td>
@@ -55,7 +55,7 @@
                         </tbody>
                     </table>
                     <div class="mt-4">
-                          {{$murids->links()}}
+                          {{-- {{$murids->links()}} --}}
                     </div>
 
                 </div>

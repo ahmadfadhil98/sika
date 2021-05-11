@@ -67,7 +67,7 @@
                             <tr>
                                 <td class="px-2 py-3">{{ $tgl->firstitem() + $key }}</td>
 
-                                <td>{{ $t->tgl }}</td>
+                                <td>{{ date('d-m-Y', strtotime($t->tgl)) }}</td>
                                 <td>
                                     @if($t->debit!=null)
                                         {{$t->debit}}

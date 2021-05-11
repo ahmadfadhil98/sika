@@ -54,7 +54,7 @@
                         <tbody>
                             @foreach($spends as  $key=>$spend)
                             <tr>
-                                <td>{{ $spend->tgl }}</td>
+                                <td>{{ date('d-m-Y', strtotime($spend->tgl)) }}</td>
 
                                 <td>{{ $barangs[$spend->barang_id] }}</td>
                                 <td>{{ $spend->jumlah }} {{ $stuan[$spend->barang_id] }}</td>
