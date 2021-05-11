@@ -60,11 +60,12 @@
                             @endphp
                             @foreach($tgl as  $key=>$t)
                             <tr>
-                                @php
-                                    $span = count($angsuran->where('tgl',$t->tgl)->get());
-                                @endphp
                                 @if ($date != $t->tgl)
-                                <td rowspan="{{ $span}}">{{$t->tgl }}</td>
+                                    @foreach ($angsuran as $a)
+                                        @if ($a->tgl == $t->tgl)
+                                        <td rowspan="{{ $a->span}}">{{$t->tgl }}</td>
+                                        @endif
+                                    @endforeach
                                 @endif
                                 <td> {{ $murid[$dmurid[$uas_dmurid[$t->uas_id]]] }} </td>
                                 <td> {{ $kelas[$dkelas[$dmuridkelas[$uas_dmurid[$t->uas_id]]]] }} </td>

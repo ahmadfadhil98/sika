@@ -19,6 +19,7 @@ class ReportKeluar extends Component
     public function render()
     {
         $periode = Periode::select('id', DB::raw("CONCAT(if(period=1,concat(year-1,'/',year),concat(year,'/',year+1)),'-',if(period=1,'Semester 2','Semester 1')) AS semester"))->orderBy('id','desc')->pluck('semester','id');
+        $pengeluaran = DB::table('pengeluarans')->select('tgl',DB::raw('COUNT(id) as span'))->groupBy('tgl')->get();
 
         if($this->month){
             $tgl = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->paginate(7);
@@ -27,7 +28,6 @@ class ReportKeluar extends Component
         }
         $barang = Barang::pluck('name','id');
         $satuan = Barang::pluck('satuan','id');
-        $pengeluaran = Pengeluaran::select('tgl','id');
         $peng =  Pengeluaran::pluck('barang_id','id');
         $jenis = Barang::pluck('jenis','id');
         $barangs = Barang::where('jenis','!=',2)->get();

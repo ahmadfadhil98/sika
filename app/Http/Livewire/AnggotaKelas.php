@@ -7,8 +7,8 @@ use App\Models\DetailMurid;
 use App\Models\Kelas;
 use App\Models\KelasPeriode;
 use App\Models\Murid;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-use DB;
 
 class AnggotaKelas extends Component
 {

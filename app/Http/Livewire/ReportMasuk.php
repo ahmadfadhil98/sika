@@ -32,13 +32,12 @@ class ReportMasuk extends Component
         $dmuridkelas = DetailMurid::pluck('kelas_id','id');
         $dkelas = KelasPeriode::pluck('kelas_id','id');
 
-
+        $angsuran = DB::table('angsurans')->select('tgl',DB::raw('COUNT(id) as span'))->groupBy('tgl')->get();
         if($this->month){
             $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl','uas_id','jumlah')->paginate(7);
         }else{
             $tgl = Post::paginate(7);
         }
-        $angsuran = Angsuran::select('tgl','id');
         return view('livewire.report.report-masuk',[
             'tgl' => $tgl,
             'periode' => $periode,

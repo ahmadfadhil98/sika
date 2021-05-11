@@ -62,7 +62,6 @@ class DetailMurids extends Component
 
         $uas = UangAsrama::where('murid_id',$this->dmuridId)
         ->get();
-        // $ket = UangAsrama::where('')
         $uasperiode = UasPeriode::where('periode_id',$periodes->id)->get();
         $murid = Murid ::pluck('name','id');
         return view('livewire.detailmurid.index',[
@@ -110,7 +109,6 @@ class DetailMurids extends Component
 
         foreach ($uas as $u){
             $this->angsur = Angsuran::where('uas_id',$u->id)->get();
-            // $this->angsur = DB::table('angsurans')->join('uang_asramas','uang_asramas.id','angsurans.uas_id')->select('angsurans.*','uang_asramas.keterangan as keteranganuas')->where('uas_id',$u->id)->get();
         $this->ketuas = $u->keterangan;
         }
         $this->showInfo();

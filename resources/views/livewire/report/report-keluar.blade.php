@@ -44,8 +44,8 @@
                         </div>
                     @endif
 
-                    <table class="table-fixed w-full text-center text-white" id="myTable">
-                        <thead class="bg-blue-900">
+                    <table class="table-fixed w-full text-center" id="myTable">
+                        <thead class="bg-blue-900 text-white">
                             <tr>
                                 <th class="text-sm font-normal px-4 py-2 w-auto">Tanggal</th>
                                 <th class="text-sm font-normal px-4 py-2 w-auto">Nama Barang</th>
@@ -73,11 +73,12 @@
                             @endphp
                             @foreach($tgl as  $key=>$t)
                             <tr>
-                                @php
-                                    $span = count($pengeluaran->where('tgl',$t->tgl)->get());
-                                @endphp
                                 @if ($date != $t->tgl)
-                                <td rowspan="{{ $span}}">{{$t->tgl }}</td>
+                                    @foreach ($pengeluaran as $a)
+                                        @if ($a->tgl == $t->tgl)
+                                        <td rowspan="{{ $a->span}}">{{$t->tgl }}</td>
+                                        @endif
+                                    @endforeach
                                 @endif
                                 <td> {{ $barang[$t->barang_id]}} {{$t->jumlah}} {{ $satuan[$t->barang_id]}} </td>
                                 <td>

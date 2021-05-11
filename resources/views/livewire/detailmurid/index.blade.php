@@ -61,8 +61,8 @@
                             <tr>
                                 <td class="px-2 py-3">{{ $key+1 }}</td>
                                 <td> {{$month[$m]}} </td>
-                                {{$uas->where('keterangan','Lunas')->where('month',$m)}}
-                                @if (count($uas->where('keterangan','Lunas')->where('month',$m))!=0)
+
+                                @if (count($uas->where('keterangan','LUNAS')->where('month',$m))!=0)
                                     <td class="text-center">
                                         <button disabled="disabled" class="text-sm bg-green-500 text-white py-2 px-6">LUNAS</button>
                                     </td>
@@ -72,7 +72,7 @@
                                         @endphp
                                         @foreach ($uasperiode as $up)
                                             @foreach ($jmlh as $jml)
-                                                {{$up->jumlah-$jml->jumlah}}
+                                                Rp {{$up->jumlah-$jml->jumlah}},-
                                             @endforeach
                                         @endforeach
                                     </td>
@@ -86,7 +86,7 @@
                                         @endphp
                                         @foreach ($uasperiode as $up)
                                             @foreach ($jmlh as $jml)
-                                                {{$up->jumlah-$jml->jumlah}}
+                                                Rp {{$up->jumlah-$jml->jumlah}},-
                                             @endforeach
                                         @endforeach
                                     </td>
