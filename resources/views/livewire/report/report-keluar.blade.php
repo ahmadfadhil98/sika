@@ -19,12 +19,13 @@
                             {{ Form::select('month',$months,null,
                             ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
                         </div>
-
-                        <div class="w-full md:w-1/2 text-right mt-4 ">
-                            <button onclick="location.href='{{ route('report',[$this->period,$this->month,2]) }}'" class="bg-green-500 text-white py-2 px-6">
-                                Laporan
-                            </button>
-                        </div>
+                        @if ($this->period!=0&&$this->month!=0)
+                            <div class="w-full md:w-1/2 text-right mt-4 ">
+                                <button onclick="location.href='{{ route('report',[$this->period,$this->month,2]) }}'" class="bg-green-500 text-white py-2 px-6">
+                                    Laporan
+                                </button>
+                            </div>
+                        @endif
                     </div>
 
                     @if(session()->has('info'))
@@ -70,30 +71,33 @@
                         <tbody>
                             @php
                                 $date = 0;
+                                // echo $pengeluaran;
                             @endphp
                             @foreach($tgl as  $key=>$t)
                             <tr>
                                 @if ($date != $t->tgl)
-                                    @foreach ($pengeluaran as $a)
+                                    @foreach ($pengeluaran as $key=>$a)
                                         @if ($a->tgl == $t->tgl)
-                                        <td rowspan="{{ $a->span}}">{{date('d-m-Y', strtotime($t->tgl)) }}</td>
+                                        <td rowspan="{{ $a->span}}">
+                                            {{date('d-m-Y', strtotime($t->tgl)) }}
+                                        </td>
                                         @endif
                                     @endforeach
                                 @endif
                                 <td> {{ $barang[$t->barang_id]}} {{$t->jumlah}} {{ $satuan[$t->barang_id]}} </td>
                                 <td>
                                     @if ( $jenis[$peng[$t->id]] == 2 )
-                                        {{$t->harga}}
+                                        Rp {{number_format($t->harga)}},-
                                     @endif
                                 </td>
                                 @foreach ($barangs as $b)
                                     <td>
                                         @if ( $barang[$peng[$t->id]] == $b->name )
-                                            {{$t->harga}}
+                                            Rp {{($t->harga)}},-
                                         @endif
                                     </td>
                                 @endforeach
-                                <td>{{$t->harga}}</td>
+                                <td>Rp{{number_format($t->harga)}},-</td>
                             </tr>
                             @php
                                 $date = $t->tgl;

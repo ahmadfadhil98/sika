@@ -19,12 +19,14 @@
                             {{ Form::select('month',$months,null,
                             ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
                         </div>
+                        @if ($this->period!=0&&$this->month!=0)
 
-                        <div class="w-full md:w-1/2 text-right mt-4 ">
-                            <button onclick="location.href='{{ route('report',[$this->period,$this->month,3]) }}'" class="bg-green-500 text-white py-2 px-6">
-                                Laporan
-                            </button>
-                        </div>
+                            <div class="w-full md:w-1/2 text-right mt-4 ">
+                                <button onclick="location.href='{{ route('report',[$this->period,$this->month,3]) }}'" class="bg-green-500 text-white py-2 px-6">
+                                    Laporan
+                                </button>
+                            </div>
+                        @endif
                     </div>
 
                     @if(session()->has('info'))
@@ -69,7 +71,7 @@
                                 @endif
                                 <td> {{ $murid[$dmurid[$uas_dmurid[$t->uas_id]]] }} </td>
                                 <td> {{ $kelas[$dkelas[$dmuridkelas[$uas_dmurid[$t->uas_id]]]] }} </td>
-                                <td>{{$t->jumlah}}</td>
+                                <td>Rp {{number_format($t->jumlah)}},-</td>
                             </tr>
                             @php
                                 $date = $t->tgl;

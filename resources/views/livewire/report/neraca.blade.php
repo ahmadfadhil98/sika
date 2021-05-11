@@ -23,12 +23,14 @@
                             {{ Form::select('month',$months,null,
                             ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
                         </div>
+                        @if ($this->period!=0&&$this->month!=0)
+                            <div class="w-full md:w-1/2 text-right mt-4 ">
+                                <button onclick="location.href='{{ route('report',[$this->period,$this->month,1]) }}'" class="bg-green-500 text-white py-2 px-6">
+                                    Laporan
+                                </button>
+                            </div>
+                        @endif
 
-                        <div class="w-full md:w-1/2 text-right mt-4 ">
-                            <button onclick="location.href='{{ route('report',[$this->period,$this->month,1]) }}'" class="bg-green-500 text-white py-2 px-6">
-                                Laporan
-                            </button>
-                        </div>
                     </div>
 
                     @if(session()->has('info'))
@@ -70,12 +72,12 @@
                                 <td>{{ date('d-m-Y', strtotime($t->tgl)) }}</td>
                                 <td>
                                     @if($t->debit!=null)
-                                        {{$t->debit}}
+                                        Rp{{number_format($t->debit)}},-
                                     @endif
                                 </td>
                                 <td>
                                     @if($t->kredit!=null)
-                                        {{$t->kredit}}
+                                        Rp{{number_format($t->kredit)}},-
                                     @endif
                                 </td>
                                 <td>
