@@ -15,7 +15,7 @@
                         <button
                         wire:click="showModal()"
                         {{-- onclick="location.href='{{ route('create_spend') }}'" --}}
-                        class="text-base bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
+                        class="focus:outline-none text-base bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
                                           Input Pengeluaran
                         </button>
                     </div>
@@ -44,26 +44,28 @@
                     <table class="table-fixed w-full text-center">
                         <thead class="bg-blue-900">
                             <tr>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Tanggal</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Barang</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Jumlah</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Tanggal Pengeluaran</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Pengeluaran Untuk</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Satuan</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Harga</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Aksi</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($spends as  $key=>$spend)
                             <tr>
+                                <td class="px-2 py-3">{{$key+1}}</td>
                                 <td>{{ date('d-m-Y', strtotime($spend->tgl)) }}</td>
 
                                 <td>{{ $barangs[$spend->barang_id] }}</td>
                                 <td>{{ $spend->jumlah }} {{ $stuan[$spend->barang_id] }}</td>
                                 <td>Rp {{ $spend->harga }},-</td>
                                 <td>
-                                    <button wire:click="edit({{ $spend->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
+                                    <button wire:click="edit({{ $spend->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6 focus:outline-none">
                                     Edit
                                     </button>
-                                    <button wire:click="delete({{ $spend->id }})" class="text-sm bg-red-700 hover:bg-red-900 text-white py-2 px-6">
+                                    <button wire:click="delete({{ $spend->id }})" class="text-sm bg-red-700 hover:bg-red-900 text-white py-2 px-6 focus:outline-none">
                                     Hapus
                                     </button>
                                 </td>

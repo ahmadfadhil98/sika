@@ -44,7 +44,7 @@
                         <thead class="bg-blue-900">
                             <tr>
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama Peserta Didik</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Penanggung Jawab</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
                         </thead>

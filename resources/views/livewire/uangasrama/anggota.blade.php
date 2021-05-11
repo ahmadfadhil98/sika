@@ -3,13 +3,15 @@
 
                 <div class="mt-9 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4" >
 
-                    <div class="flex mb-4">
-                    <div class="w-full md:w-1/2 text-base py-2 px-1 font-bold" id="content">
-                        Daftar Peserta Didik Kelas {{ $askes[$daskes[$this->kelas_id]]}}
-                    </div>
-                    <div class="w-full md:w-1/2">
-                        <input wire:model="search" type="text" class="shadow appearance-none  w-full py-2 px-3 text-blue-900 focus:outline-none" placeholder="Cari nama...">
-                    </div>
+                    <div class="flex mb-5 mt-1">
+                        <div class="w-full text-center" id="content">
+                            <div class="text-lg font-bold">
+                                DAFTAR PESERTA DIDIK
+                            </div>
+                            <div class="text-base">
+                                Kelas {{ $askes[$daskes[$this->kelas_id]]}}
+                            </div>
+                        </div>
                     </div>
 
                     @if(session()->has('info'))
@@ -30,23 +32,23 @@
                     @endif
 
                     <table class="table-fixed w-full text-center">
-                        <thead class="bg-blue-900">
+                        <thead class="border border-blue-900 bg-blue-900">
                             <tr>
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">NIS</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-80">NIS</th>
+                                <th class="text-base text-left font-normal px-15 py-2 text-white w-100">Nama Peserta Didik</th>
+                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Pembayaran Uang Asrama</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($murids as  $key=>$murid)
-                            <tr>
-                                <td class="px-2 py-3">{{$key+1 }}</td>
-                                <td>{{ $murid->nis }}</td>
-                                <td>{{ $murid->nama }}</td>
-                                <td>
-                                    <button onclick="location.href='{{ route('dmurid', [$murid->id,$this->di]) }}'" class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-2 px-6 focus:outline-none">
-                                        Info Pembayaran
+                            <tr class="border border-gray-100 hover:bg-gray-200">
+                                <td class="text-sm px-2 py-3">{{$key+1 }}.</td>
+                                <td class="text-sm">{{ $murid->nis }}</td>
+                                <td class="text-sm px-15 text-left">{{ $murid->nama }}</td>
+                                <td class="text-sm px-12">
+                                    <button onclick="location.href='{{ route('dmurid', [$murid->id,$this->di]) }}'" class="text-sm hover:bg-gray-500 hover:text-white bg-white focus:outline-none shadow appearance-none py-2.5 w-full">
+                                        Lihat Info Pembayaran
                                     </button>
 
                                 </td>
@@ -54,7 +56,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="mt-4">
+                    <div class="py-5">
                           {{-- {{$murids->links()}} --}}
                     </div>
 
