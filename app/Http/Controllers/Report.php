@@ -21,48 +21,25 @@ class Report extends Controller
 {
     public $tgl;
 
-    public function neraca($period,$month){
+    public function report($period,$month,$jenis){
 
-        $periode = Periode::find($period);
-        $months = config('central.month');
+        if($jenis==1){
+            $periode = Periode::find($period);
+            $months = config('central.month');
 
+            $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->paginate(7);
+            $pdf = PDF::loadview('report.neraca',[
+                'tgl'=>$this->tgl,
+                'month' => $month,
+                'months' => $months
+            ]);
+            return $pdf->download('Neraca Uang Makan '.$months[$month].' '.$periode->year.'.pdf');
 
-        $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->paginate(7);
-        $pdf = PDF::loadview('report.neraca',[
-            'tgl'=>$this->tgl,
-            'month' => $month,
-            'months' => $months
-        ]);
-        return $pdf->download('Neraca Uang Makan '.$months[$month].' '.$periode->year.'.pdf');
-    }
+        }elseif($jenis==2){
 
-    public function report_masuk($period,$month){
+        }elseif($jenis==3){
 
-        $periode = Periode::find($period);
-        $months = config('central.month');
+        }
 
-
-        $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->paginate(7);
-        $pdf = PDF::loadview('report.neraca',[
-            'tgl'=>$this->tgl,
-            'month' => $month,
-            'months' => $months
-        ]);
-        return $pdf->download('Neraca Uang Makan '.$months[$month].' '.$periode->year.'.pdf');
-    }
-
-    public function report_keluar($period,$month){
-
-        $periode = Periode::find($period);
-        $months = config('central.month');
-
-
-        $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->paginate(7);
-        $pdf = PDF::loadview('report.neraca',[
-            'tgl'=>$this->tgl,
-            'month' => $month,
-            'months' => $months
-        ]);
-        return $pdf->download('Neraca Uang Makan '.$months[$month].' '.$periode->year.'.pdf');
     }
 }
