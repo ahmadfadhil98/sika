@@ -69,5 +69,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('report_keluar',ReportKeluar::class)->name('report_keluar');
     Route::get('neraca',Neraca::class)->name('neraca');
     Route::get('uasperiode',UasPeriodes::class)->name('uasperiode');
-    Route::get('/report/{period}/{month}/{jenis}',[Report::class,'report'])->name('report');
+    Route::get('/report/{period}/{month}',[Report::class,'neraca'])->name('neraca');
+    Route::get('/report/{period}/{month}',[Report::class,'report_keluar'])->name('report_keluar');
+    Route::get('/report/{period}/{month}',[Report::class,'report_masuk'])->name('report_masuk');
 });

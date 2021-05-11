@@ -20,7 +20,8 @@ use Maatwebsite\Excel\Facades\Excel;
 class Report extends Controller
 {
     public $tgl;
-    public function report($period,$month,$jenise){
+
+    public function neraca($period,$month){
 
         $periode = Periode::find($period);
         $months = config('central.month');
@@ -35,11 +36,33 @@ class Report extends Controller
         return $pdf->download('Neraca Uang Makan '.$months[$month].' '.$periode->year.'.pdf');
     }
 
-    public function baju($period,$month,$jenis){
+    public function report_masuk($period,$month){
+
         $periode = Periode::find($period);
-        $tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->paginate(7);
         $months = config('central.month');
-        $slot = [];
-        return view('report.neraca',compact('months','month','tgl','slot'));
+
+
+        $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->paginate(7);
+        $pdf = PDF::loadview('report.neraca',[
+            'tgl'=>$this->tgl,
+            'month' => $month,
+            'months' => $months
+        ]);
+        return $pdf->download('Neraca Uang Makan '.$months[$month].' '.$periode->year.'.pdf');
+    }
+
+    public function report_keluar($period,$month){
+
+        $periode = Periode::find($period);
+        $months = config('central.month');
+
+
+        $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->paginate(7);
+        $pdf = PDF::loadview('report.neraca',[
+            'tgl'=>$this->tgl,
+            'month' => $month,
+            'months' => $months
+        ]);
+        return $pdf->download('Neraca Uang Makan '.$months[$month].' '.$periode->year.'.pdf');
     }
 }
