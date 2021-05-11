@@ -1,14 +1,21 @@
 <div>
-    <div class="max-w-full mx-auto sm:px-6 lg:px-8 mt-12">
-
-                <div class="text-base text-white text-blue-50">
-                    Pengeluaran Uang Asrama
-                </div>
+    <div class="max-w-full mx-auto sm:px-6 lg:px-8">
 
             @if($isOpen)
                     @include('livewire.pengeluaran.form')
             @endif
-                <div class="mt-3 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4">
+                <div class="mt-9 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4">
+
+
+                    <div class="w-full text-center">
+                        <div class="text-xl font-bold text-blue-900">
+                            Pengeluaran Uang Asrama
+                        </div>
+                        <div class="w-full mt-2.5">
+                            <input wire:model="search" type="text" class="w-4/12 py-2 hover:bg-gray-100 text-sm text-center focus:outline-none border border-gray-200" placeholder="Cari pengeluaran untuk...">
+                        </div>
+                    </div>
+
 
                     <div class="flex mb-4">
                     <div class="w-full md:w-1/2">
@@ -19,9 +26,7 @@
                                           Input Pengeluaran
                         </button>
                     </div>
-                    <div class="w-full md:w-1/2">
-                        <input wire:model="search" type="text" class="shadow appearance-none  w-full py-2 px-3 text-blue-900" placeholder="Cari pengeluaran...">
-                    </div>
+
                     </div>
 
                     @if(session()->has('info'))
@@ -42,7 +47,7 @@
                     @endif
 
                     <table class="table-fixed w-full text-center">
-                        <thead class="bg-blue-900">
+                        <thead class="border border-blue-900 bg-blue-900">
                             <tr>
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Tanggal Pengeluaran</th>
@@ -54,13 +59,13 @@
                         </thead>
                         <tbody>
                             @foreach($spends as  $key=>$spend)
-                            <tr>
-                                <td class="px-2 py-3">{{$key+1}}</td>
-                                <td>{{ date('d-m-Y', strtotime($spend->tgl)) }}</td>
+                            <tr class="border border-gray-100 hover:bg-gray-200">
+                                <td class="text-sm px-2 py-3">{{$key+1}}.</td>
+                                <td class="text-sm">{{ date('d-m-Y', strtotime($spend->tgl)) }}</td>
 
-                                <td>{{ $barangs[$spend->barang_id] }}</td>
-                                <td>{{ $spend->jumlah }} {{ $stuan[$spend->barang_id] }}</td>
-                                <td>Rp {{ $spend->harga }},-</td>
+                                <td class="text-sm">{{ $barangs[$spend->barang_id] }}</td>
+                                <td class="text-sm">{{ $spend->jumlah }} {{ $stuan[$spend->barang_id] }}</td>
+                                <td class="text-sm">Rp {{ $spend->harga }},-</td>
                                 <td>
                                     <button wire:click="edit({{ $spend->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6 focus:outline-none">
                                     Edit

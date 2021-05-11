@@ -1,37 +1,32 @@
 <div>
-    <div class="max-w-full mx-auto sm:px-6 lg:px-8 mt-12">
+    <div class="max-w-full mx-auto sm:px-6 lg:px-8">
 
-                <div class="text-base text-white text-blue-50">
-                    Neraca Keuangan Asrama
-                </div>
+                <div class="mt-9 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4">
 
-                {{-- @if($isOpen)
-                         @include('livewire.detailkelas.form')
-                @endif --}}
-
-                <div class="mt-3 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4">
-
-                    <div class="text-xs text-blue-900 px-1 mt-1">
-                        *Untuk melihat Neraca Keuangan Asrama, Klik <b>"Pilih neraca semester"</b> dan <b>"Pilih bulan"</b>
-                    </div>
-
-                    <div class="flex mb-4">
-                        <div class="w-full md:w-1/2 text-left mt-4">
+                    <div class="w-full text-center mb-4">
+                        <div class="text-xl font-bold text-blue-900">
+                            Laporan Neraca
+                        </div>
+                        <div class="text-sm text-blue-900 mt-2">
+                            Untuk menampilkan <b>Laporan Neraca</b>, Klik "Pilih neraca semester" dan "Pilih bulan"
+                        </div>
+                        <div class="text-center mt-2 text-sm">
                             {{ Form::select('period',$periode,null,
-                            ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'period','wire:change'=>'month()','wire:model'=>'period','placeholder'=>'- Pilih neraca semester -'])}}
+                            ['class' => 'border border-gray-100 hover:bg-gray-100 text-gray-700 py-2 px-6 mt-4 focus:outline-none','id' => 'period','wire:change'=>'month()','wire:model'=>'period','placeholder'=>'- Pilih neraca semester -'])}}
 
                             {{ Form::select('month',$months,null,
-                            ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
+                            ['class' => 'border border-gray-100 hover:bg-gray-100 text-gray-700 py-2 px-6 mt-4 focus:outline-none','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
                         </div>
+
                         @if ($this->period!=0&&$this->month!=0)
-                            <div class="w-full md:w-1/2 text-right mt-4 ">
-                                <button onclick="location.href='{{ route('report',[$this->period,$this->month,1]) }}'" class="bg-green-500 text-white py-2 px-6">
-                                    Laporan
-                                </button>
+                            <div class="w-full text-right">
+                               <button onclick="location.href='{{ route('report',[$this->period,$this->month,1]) }}'" class="bg-green-500 hover:bg-green-800 text-white py-2 px-6">
+                                  Download Laporan
+                               </button>
                             </div>
                         @endif
-
                     </div>
+
 
                     @if(session()->has('info'))
                         <div class="bg-green-500 mb-4 py-2 px-6">
@@ -51,7 +46,7 @@
                     @endif
 
                     <table class="table-fixed w-full text-center">
-                        <thead class="bg-blue-900">
+                        <thead class="border border-blue-900 bg-blue-900">
                             <tr>
                                 <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Tanggal</th>
@@ -66,21 +61,21 @@
                         </thead>
                         <tbody>
                             @foreach($tgl as  $key=>$t)
-                            <tr>
-                                <td class="px-2 py-3">{{ $tgl->firstitem() + $key }}</td>
+                            <tr class="border border-gray-100">
+                                <td class="text-sm px-2 py-3">{{ $tgl->firstitem() + $key }}.</td>
 
-                                <td>{{ date('d-m-Y', strtotime($t->tgl)) }}</td>
-                                <td>
+                                <td class="text-sm">{{ date('d-m-Y', strtotime($t->tgl)) }}</td>
+                                <td class="text-sm">
                                     @if($t->debit!=null)
                                         Rp{{number_format($t->debit)}},-
                                     @endif
                                 </td>
-                                <td>
+                                <td class="text-sm">
                                     @if($t->kredit!=null)
                                         Rp{{number_format($t->kredit)}},-
                                     @endif
                                 </td>
-                                <td>
+                                <td class="text-sm">
 
                                 </td>
                             </tr>

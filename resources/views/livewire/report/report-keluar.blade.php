@@ -1,28 +1,27 @@
 <div>
-    <div class="max-w-full mx-auto sm:px-6 lg:px-8 mt-12">
+    <div class="max-w-full mx-auto sm:px-6 lg:px-8">
 
-                <div class="text-base text-white text-blue-50">
-                    Laporan Uang Keluar
-                </div>
+                <div class="mt-9 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4">
 
-                <div class="mt-3 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4">
-
-                    <div class="text-xs text-blue-900 px-1 mt-1">
-                        *Untuk melihat Laporan Uang Keluar, Klik <b>"Pilih uang keluar semester"</b> dan <b>"Pilih bulan"</b>
-                    </div>
-
-                    <div class="flex mb-4">
-                        <div class="w-full md:w-1/2 text-left mt-4">
+                    <div class="w-full text-center mb-4">
+                        <div class="text-xl font-bold text-blue-900">
+                            Laporan Uang Keluar
+                        </div>
+                        <div class="text-sm text-blue-900 mt-2">
+                            Untuk menampilkan <b>Laporan Uang Keluar</b>, Klik "Pilih uang keluar" dan "Pilih bulan"
+                        </div>
+                        <div class="text-center mt-2 text-sm">
                             {{ Form::select('period',$periode,null,
-                            ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'period','wire:change'=>'month()','wire:model'=>'period','placeholder'=>'- Pilih uang keluar semester -'])}}
+                            ['class' => 'border border-gray-100 hover:bg-gray-100 text-gray-700 py-2 px-6 mt-4 focus:outline-none','id' => 'period','wire:change'=>'month()','wire:model'=>'period','placeholder'=>'- Pilih uang keluar semester -'])}}
 
                             {{ Form::select('month',$months,null,
-                            ['class' => 'bg-gray-500 text-white py-2 px-6','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
+                            ['class' => 'border border-gray-100 hover:bg-gray-100 text-gray-700 py-2 px-6 mt-4 focus:outline-none','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
                         </div>
+
                         @if ($this->period!=0&&$this->month!=0)
-                            <div class="w-full md:w-1/2 text-right mt-4 ">
-                                <button onclick="location.href='{{ route('report',[$this->period,$this->month,2]) }}'" class="bg-green-500 text-white py-2 px-6">
-                                    Laporan
+                            <div class="w-full text-right">
+                                <button onclick="location.href='{{ route('report',[$this->period,$this->month,2]) }}'" class="bg-green-500 hover:bg-green-800 text-white py-2 px-6">
+                                    Download Laporan
                                 </button>
                             </div>
                         @endif
@@ -46,10 +45,10 @@
                     @endif
 
                     <table class="table-fixed w-full text-center" id="myTable">
-                        <thead class="bg-blue-900 text-white">
+                        <thead class="border border-blue-900 bg-blue-900 text-white">
                             <tr>
-                                <th class="text-sm font-normal px-4 py-2 w-auto">Tanggal</th>
-                                <th class="text-sm font-normal px-4 py-2 w-auto">Nama Barang</th>
+                                <th class="text-xs font-normal px-4 py-2 w-20">Tanggal</th>
+                                <th class="text-xs font-normal px-4 py-2 w-auto">Nama Barang</th>
                                 <th class="text-xs font-normal px-4 py-2 w-auto">Lauk/Sayur</th>
                                 @foreach ($barangs as $b)
                                     <th class="text-xs font-normal px-4 py-2 w-auto">{{$b->name}}</th>
@@ -65,7 +64,7 @@
                                 <th class="w-auto">Kecap</th>
                                 <th class="w-auto">Gaji TK Masak</th>
                                 <th class="w-auto">Pabukoan</th> --}}
-                                <th class="text-sm font-normal px-4 py-2 w-auto">Jumlah</th>
+                                <th class="text-xs font-normal px-4 py-2 w-auto">Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,30 +73,30 @@
                                 // echo $pengeluaran;
                             @endphp
                             @foreach($tgl as  $key=>$t)
-                            <tr>
+                            <tr class="border border-gray-100">
                                 @if ($date != $t->tgl)
                                     @foreach ($pengeluaran as $key=>$a)
                                         @if ($a->tgl == $t->tgl)
-                                        <td rowspan="{{ $a->span}}">
+                                        <td class="text-xs border border-gray-100 px-2 py-3" rowspan={{ $a->span}}">
                                             {{date('d-m-Y', strtotime($t->tgl)) }}
                                         </td>
                                         @endif
                                     @endforeach
                                 @endif
-                                <td> {{ $barang[$t->barang_id]}} {{$t->jumlah}} {{ $satuan[$t->barang_id]}} </td>
-                                <td>
+                                <td class="text-xs border border-gray-100 px-2 py-3"> {{ $barang[$t->barang_id]}} {{$t->jumlah}} {{ $satuan[$t->barang_id]}} </td>
+                                <td class="text-xs border border-gray-100 px-2 py-3">
                                     @if ( $jenis[$peng[$t->id]] == 2 )
                                         Rp {{number_format($t->harga)}},-
                                     @endif
                                 </td>
                                 @foreach ($barangs as $b)
-                                    <td>
+                                    <td class="text-xs border border-gray-100 px-2 py-3">
                                         @if ( $barang[$peng[$t->id]] == $b->name )
                                             Rp {{($t->harga)}},-
                                         @endif
                                     </td>
                                 @endforeach
-                                <td>Rp{{number_format($t->harga)}},-</td>
+                                <td class="text-xs border border-gray-100 px-2 py-3">Rp{{number_format($t->harga)}},-</td>
                             </tr>
                             @php
                                 $date = $t->tgl;

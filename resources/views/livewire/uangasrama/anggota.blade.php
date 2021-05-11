@@ -46,9 +46,9 @@
                                 <td class="text-sm px-2 py-3">{{$key+1 }}.</td>
                                 <td class="text-sm">{{ $murid->nis }}</td>
                                 <td class="text-sm px-15 text-left">{{ $murid->nama }}</td>
-                                <td class="text-sm px-12">
-                                    <button onclick="location.href='{{ route('dmurid', [$murid->id,$this->di]) }}'" class="text-sm hover:bg-gray-500 hover:text-white bg-white focus:outline-none shadow appearance-none py-2.5 w-full">
-                                        Lihat Info Pembayaran
+                                <td class="text-sm px-15">
+                                    <button onclick="location.href='{{ route('dmurid', [$murid->id,$this->di]) }}'" class="text-sm text-black bg-yellow-300 hover:bg-yellow-400 bg-white focus:outline-none py-2 w-full">
+                                        Info Pembayaran
                                     </button>
 
                                 </td>
