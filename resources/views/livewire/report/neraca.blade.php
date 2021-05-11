@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="w-full md:w-1/2 text-right mt-4 ">
-                            <button onclick="location.href='{{ route('neraca',[$this->period,$this->month]) }}'" class="bg-green-500 text-white py-2 px-6">
+                            <button onclick="location.href='{{ route('neracas',[$this->period,$this->month]) }}'" class="bg-green-500 text-white py-2 px-6">
                                 Laporan
                             </button>
                         </div>
