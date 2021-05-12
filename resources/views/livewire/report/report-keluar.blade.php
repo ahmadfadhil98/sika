@@ -20,7 +20,7 @@
 
                         @if ($this->period!=0&&$this->month!=0)
                             <div class="w-full text-right">
-                                <button onclick="location.href='{{ route('report',[$this->period,$this->month,2]) }}'" class="bg-green-500 hover:bg-green-800 text-white py-2 px-6">
+                                <button onclick="location.href='{{ route('report',[$this->period,$this->month,2]) }}'" class="bg-green-500 hover:bg-green-800 text-white py-2 px-6 focus:outline-none">
                                     Download Laporan
                                 </button>
                             </div>

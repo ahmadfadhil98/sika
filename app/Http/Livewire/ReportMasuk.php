@@ -34,7 +34,7 @@ class ReportMasuk extends Component
 
         $angsuran = DB::table('angsurans')->select('tgl',DB::raw('COUNT(id) as span'))->groupBy('tgl')->get();
         if($this->month){
-            $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl','uas_id','jumlah')->orderByDesc('tgl')->paginate(7);
+            $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl','uas_id','jumlah')->orderByDesc('tgl')->get();
         }else{
             $tgl = Post::paginate(7);
         }

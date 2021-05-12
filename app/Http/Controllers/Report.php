@@ -55,7 +55,7 @@ class Report extends Controller
             $peng =  Pengeluaran::pluck('barang_id','id');
             $jenis = Barang::pluck('jenis','id');
             $barangs = Barang::where('jenis','!=',2)->get();
-            $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->paginate(7);
+            $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->get();
             $pdf = PDF::loadview('report.report_keluar',[
                 'tgl' => $this->tgl,
                 'barang' => $barang,
@@ -81,7 +81,7 @@ class Report extends Controller
             $dkelas = KelasPeriode::pluck('kelas_id','id');
 
             $angsuran = DB::table('angsurans')->select('tgl',DB::raw('COUNT(id) as span'))->groupBy('tgl')->get();
-            $this->tgl = DB::table('angsurans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl','uas_id','jumlah')->paginate(7);
+            $this->tgl = DB::table('angsurans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl','uas_id','jumlah')->orderBy('tgl')->get();
             $pdf = PDF::loadview('report.report_masuk',[
                 'tgl' => $this->tgl,
                 'murid' => $murid,
@@ -135,7 +135,7 @@ class Report extends Controller
         $peng =  Pengeluaran::pluck('barang_id','id');
         $jenis = Barang::pluck('jenis','id');
         $barangs = Barang::where('jenis','!=',2)->get();
-        $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->orderBy('tgl')->paginate(7);
+        $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->orderBy('tgl')->get();
         return view('report.report_keluar',[
             'tgl' => $this->tgl,
             'barang' => $barang,
@@ -160,7 +160,7 @@ class Report extends Controller
         $dkelas = KelasPeriode::pluck('kelas_id','id');
 
         $angsuran = DB::table('angsurans')->select('tgl',DB::raw('COUNT(id) as span'))->groupBy('tgl')->get();
-        $this->tgl = DB::table('angsurans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl','uas_id','jumlah')->orderBy('tgl')->paginate(7);
+        $this->tgl = DB::table('angsurans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl','uas_id','jumlah')->orderBy('tgl')->get();
         return view('report.report_masuk',[
             'tgl' => $this->tgl,
             'murid' => $murid,

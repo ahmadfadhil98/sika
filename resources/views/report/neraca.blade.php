@@ -30,7 +30,7 @@
   </head>
   <body>
     <div class="head">
-        NERACA UANG MAKAN {{$months[$month]}} {{$periode->year}}
+        <b>NERACA UANG MAKAN {{$months[$month]}} {{$periode->year}}</b>
     </div>
     <table class="item">
         <thead class="border">
@@ -75,21 +75,21 @@
             <tr>
                 <td class="ttd">
                 Mengetahui, <br>
-                Kepala Sekolah SMAN 2 Harau <br>
+                Kepala SMAN 2 Harau <br>
                 <br>
                 <br>
                 <br>
-                LELI HANAFIAH, S.Pd, M.Si <br>
-                NIP.19611110 198512 2 002 <br>
+                <b>Lely Hanafiah, S.Pd, M.Si</b><br>
+                NIP 19611110 198512 2 002 <br>
                 </td>
                 <td>
                 Tarantang, &emsp; {{$months[$month]}} {{$periode->year}} <br>
-                Bendahara  uang makan <br>
+                Bendahara Uang Asrama <br>
                 <br>
                 <br>
                 <br>
-                ROSIDAH,S.Pd <br>
-                NIP.19641231 199003 2 031 <br>
+                <b>Rosidah, S.Pd</b><br>
+                NIP 19641231 199003 2 031 <br>
                 </td>
             </tr>
         </tbody>

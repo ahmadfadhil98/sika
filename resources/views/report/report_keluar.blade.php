@@ -25,21 +25,34 @@
             text-align: center;
             text-transform: uppercase;
         }
+
+        .center{
+            text-align: center;
+        }
+
+        .jarakhead{
+            padding: 7px;
+        }
+
+        .jarakbody{
+            padding: 3px;
+        }
+
         </style>
     <title></title>
   </head>
   <body>
     <div class="head">
-        Buku pembantu pengeluaran dapur bulan {{$months[$month]}} {{$periode->year}}
+        <b>BUKU PEMBANTU PENGELUARAN DAPUR BULAN {{$months[$month]}} {{$periode->year}}</b>
     </div>
     <table class="item" id="myTable">
         <thead class="border">
             <tr>
-                <th class="border">Tanggal</th>
-                <th class="border">Nama Barang</th>
-                <th class="border">Lauk/Sayur</th>
+                <th class="border jarakhead">Tanggal</th>
+                <th class="border jarakhead">Nama Barang</th>
+                <th class="border jarakhead">Lauk/Sayur</th>
                 @foreach ($barangs as $b)
-                    <th class="border">{{$b->name}}</th>
+                    <th class="border jarakhead">{{$b->name}}</th>
                 @endforeach
                 {{-- <th class="w-auto">Air</th>
                 <th class="w-auto">Gas</th>
@@ -52,7 +65,7 @@
                 <th class="w-auto">Kecap</th>
                 <th class="w-auto">Gaji TK Masak</th>
                 <th class="w-auto">Pabukoan</th> --}}
-                <th class="border">Jumlah</th>
+                <th class="border jarakhead">Jumlah</th>
             </tr>
         </thead>
         <tbody class="border">
@@ -64,24 +77,24 @@
                 @if ($date != $t->tgl)
                     @foreach ($pengeluaran as $a)
                         @if ($a->tgl == $t->tgl)
-                        <td rowspan="{{ $a->span}}" class="border">{{date('d', strtotime($t->tgl)) }}</td>
+                        <td rowspan="{{ $a->span}}" class="border center jarakbody">{{date('d-m-Y', strtotime($t->tgl)) }}</td>
                         @endif
                     @endforeach
                 @endif
-                <td class="border"> {{ $barang[$t->barang_id]}} {{$t->jumlah}} {{ $satuan[$t->barang_id]}} </td>
-                <td class="border">
+                <td class="border center jarakbody"> {{ $barang[$t->barang_id]}} {{$t->jumlah}} {{ $satuan[$t->barang_id]}} </td>
+                <td class="border center jarakbody">
                     @if ( $jenis[$peng[$t->id]] == 2 )
                         {{number_format($t->harga)}}
                     @endif
                 </td>
                 @foreach ($barangs as $b)
-                    <td class="border">
+                    <td class="border center jarakbody">
                         @if ( $barang[$peng[$t->id]] == $b->name )
                             {{number_format($t->harga)}}
                         @endif
                     </td>
                 @endforeach
-                <td class="border">{{number_format($t->harga)}}</td>
+                <td class="border center jarakbody">{{number_format($t->harga)}}</td>
             </tr>
             @php
                 $date = $t->tgl;
@@ -95,21 +108,21 @@
             <tr>
                 <td class="ttd">
                 Mengetahui, <br>
-                Kepala Sekolah SMAN 2 Harau <br>
+                Kepala SMAN 2 Harau <br>
                 <br>
                 <br>
                 <br>
-                LELI HANAFIAH, S.Pd, M.Si <br>
-                NIP.19611110 198512 2 002 <br>
+                <b>Lely Hanafiah, S.Pd, M.Si</b><br>
+                NIP 19611110 198512 2 002 <br>
                 </td>
                 <td>
                 Tarantang, &emsp; {{$months[$month]}} {{$periode->year}} <br>
-                Bendahara  uang makan <br>
+                Bendahara Uang Asrama <br>
                 <br>
                 <br>
                 <br>
-                ROSIDAH,S.Pd <br>
-                NIP.19641231 199003 2 031 <br>
+                <b>Rosidah, S.Pd</b><br>
+                NIP 19641231 199003 2 031 <br>
                 </td>
             </tr>
         </tbody>

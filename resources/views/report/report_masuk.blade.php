@@ -25,20 +25,37 @@
             text-align: center;
             text-transform: uppercase;
         }
+
+        .center{
+            text-align: center;
+        }
+
+        .padding{
+            padding-left: 15px;
+        }
+
+        .jarakhead{
+            padding: 7px;
+        }
+
+        .jarakbody{
+            padding: 3px;
+        }
+
         </style>
     <title></title>
   </head>
   <body>
     <div class="head">
-        Pembayaran UANG MAKAN {{$months[$month]}} {{$periode->year}}
+        <b>PEMBAYARAN UANG ASRAMA BULAN {{$months[$month]}} {{$periode->year}}</b>
     </div>
     <table class="item" id="myTable">
         <thead class="border">
             <tr>
-                <th class="border">Tanggal</th>
-                <th class="border">Nama</th>
-                <th class="border">Kelas</th>
-                <th class="border">Jumlah
+                <th class="border jarakhead">Tanggal</th>
+                <th class="border jarakhead">Nama</th>
+                <th class="border jarakhead">Kelas</th>
+                <th class="border jarakhead">Jumlah
                 </th>
             </tr>
         </thead>
@@ -51,13 +68,13 @@
                 @if ($date != $t->tgl)
                     @foreach ($angsuran as $a)
                         @if ($a->tgl == $t->tgl)
-                        <td class="border" rowspan="{{ $a->span}}">{{date('d-m-Y', strtotime($t->tgl)) }}</td>
+                        <td class="border center" rowspan="{{ $a->span}}">{{date('d-m-Y', strtotime($t->tgl)) }}</td>
                         @endif
                     @endforeach
                 @endif
-                <td class="border"> {{ $murid[$dmurid[$uas_dmurid[$t->uas_id]]] }} </td>
-                <td class="border"> {{ $kelas[$dkelas[$dmuridkelas[$uas_dmurid[$t->uas_id]]]] }} </td>
-                <td class="border">Rp {{number_format($t->jumlah)}},-</td>
+                <td class="border padding"> {{ $murid[$dmurid[$uas_dmurid[$t->uas_id]]] }} </td>
+                <td class="border center jarakbody"> {{ $kelas[$dkelas[$dmuridkelas[$uas_dmurid[$t->uas_id]]]] }} </td>
+                <td class="border center jarakbody">Rp {{number_format($t->jumlah)}},-</td>
             </tr>
             @php
                 $date = $t->tgl;
@@ -70,21 +87,21 @@
             <tr>
                 <td class="ttd">
                 Mengetahui, <br>
-                Kepala Sekolah SMAN 2 Harau <br>
+                Kepala SMAN 2 Harau <br>
                 <br>
                 <br>
                 <br>
-                LELI HANAFIAH, S.Pd, M.Si <br>
-                NIP.19611110 198512 2 002 <br>
+                <b>Lely Hanafiah, S.Pd, M.Si</b><br>
+                NIP 19611110 198512 2 002 <br>
                 </td>
                 <td>
                 Tarantang, &emsp; {{$months[$month]}} {{$periode->year}} <br>
-                Bendahara  uang makan <br>
+                Bendahara Uang Asrama <br>
                 <br>
                 <br>
                 <br>
-                ROSIDAH,S.Pd <br>
-                NIP.19641231 199003 2 031 <br>
+                <b>Rosidah, S.Pd</b><br>
+                NIP 19641231 199003 2 031 <br>
                 </td>
             </tr>
         </tbody>
