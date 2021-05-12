@@ -27,12 +27,12 @@
                         <table class="w-full">
                             <tr>
                                 <td>
-                                    <div class="flex mb-4">
-                                        <div class="px-3 font-bold w-full md:w-1/2 mt-1.5">
+                                    <div class="flex mb-2">
+                                        <div class="px-3 font-bold w-full mt-1.5">
                                             {{date('d-m-Y', strtotime($a->tgl))}}
                                         </div>
-                                        <div class="px-3 w-full md:w-1/2 text-right">
-                                            <button wire:click="edit({{ $a->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
+                                        <div class="px-3 w-full text-right">
+                                            <button wire:click="edit({{ $a->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6 focus:outline-none">
                                                 Edit
                                                 </button>
                                         </div>
@@ -40,7 +40,7 @@
                                 </td>
                             </tr>
                         </table>
-                                <div class="border-t mt-2"></div>
+                                <div class="border-t"></div>
                         <table class="mt-2 px-3">
                             <tr>
                                 <td class="px-3 text-sm">Jumlah Pembayaran</td>

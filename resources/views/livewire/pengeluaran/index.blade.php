@@ -79,7 +79,7 @@
                         </tbody>
                     </table>
                     <div class="mt-4">
-                          {{$spends->links()}}
+                          {{-- {{$spends->links()}} --}}
                     </div>
 
                 </div>

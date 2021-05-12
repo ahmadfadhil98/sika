@@ -22,7 +22,7 @@ class ReportKeluar extends Component
         $pengeluaran = DB::table('pengeluarans')->select('tgl',DB::raw('COUNT(id) as span'))->groupBy('tgl')->get();
 
         if($this->month){
-            $tgl = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->orderByDesc('tgl')->paginate(7);
+            $tgl = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->orderByDesc('tgl')->get();
         }else{
             $tgl = Post::paginate(7);
         }

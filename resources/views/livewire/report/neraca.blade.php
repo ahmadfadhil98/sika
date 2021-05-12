@@ -108,7 +108,7 @@
                         </tfoot>
                     </table>
                     <div class="mt-4">
-                          {{$tgl->links()}}
+                          {{-- {{$tgl->links()}} --}}
                     </div>
                     @endif
                 </div>

@@ -44,6 +44,7 @@
                         </div>
                     @endif
 
+                    @if ($tgl!=[])
                     <table class="table-fixed w-full text-center" id="myTable">
                         <thead class="border border-blue-900 bg-blue-900 text-white">
                             <tr>
@@ -105,9 +106,9 @@
                         </tbody>
                     </table>
                     <div class="mt-4">
-                          {{$tgl->links()}}
+                          {{-- {{$tgl->links()}} --}}
                     </div>
-
+                    @endif
                 </div>
 
             </div>
