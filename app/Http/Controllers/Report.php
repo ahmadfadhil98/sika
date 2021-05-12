@@ -104,7 +104,6 @@ class Report extends Controller
             $periodes = Periode::select('id', DB::raw("CONCAT(if(period=1,concat(year-1,'/',year),concat(year,'/',year+1)),'-',if(period=1,'Semester 2','Semester 1')) AS semester"))->orderBy('id','desc')->pluck('semester','id');
 
             $dkelas = KelasPeriode::where('kelas_id',$month)->where('periode_id',$period)->get();
-            $periode = Periode::find($period);
             $dkelasId = $jenism;
 
             if($periode->period==1){
@@ -223,7 +222,6 @@ class Report extends Controller
         $periodes = Periode::select('id', DB::raw("CONCAT(if(period=1,concat(year-1,'/',year),concat(year,'/',year+1)),'-',if(period=1,'Semester 2','Semester 1')) AS semester"))->orderBy('id','desc')->pluck('semester','id');
 
         $dkelas = KelasPeriode::where('kelas_id',$month)->where('periode_id',$period)->get();
-        $periode = Periode::find($period);
         $dkelasId = $jenism;
 
         if($periode->period==1){
@@ -252,6 +250,7 @@ class Report extends Controller
             'murids' => $murids,
             'kelas' => $kelas,
             'periodes' => $periodes,
+            'periode' =>$periode,
             'period' => $period,
             'murid' => $murid,
             'uas' => $uas,
