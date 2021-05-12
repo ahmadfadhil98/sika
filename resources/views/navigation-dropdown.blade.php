@@ -166,6 +166,9 @@
                             <x-jet-dropdown-link href="{{ route('report_keluar') }}">
                                 <h2 class="text-sm">Uang Keluar</h2>
                             </x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('tagihan') }}">
+                                <h2 class="text-sm">Tagihan</h2>
+                            </x-jet-dropdown-link>
                         </x-slot>
                     </x-jet-dropdown>
                 </div>

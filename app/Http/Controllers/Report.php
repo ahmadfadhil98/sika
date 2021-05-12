@@ -12,6 +12,7 @@ use App\Models\Murid;
 use App\Models\Pengeluaran;
 use App\Models\Periode;
 use App\Models\UangAsrama;
+use App\Models\UasPeriode;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +25,7 @@ class Report extends Controller
     public function report($period,$month,$jenism){
             $periode = Periode::find($period);
             $months = config('central.month');
+
         if($jenism==1){
 
             $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->get();
@@ -97,6 +99,48 @@ class Report extends Controller
                 'periode' => $periode
             ]);
             return $pdf->download('Laporan Pembayaran Uang Asrama '.$months[$month].' '.$periode->year.'.pdf');
+
+        }else{
+            $periodes = Periode::select('id', DB::raw("CONCAT(if(period=1,concat(year-1,'/',year),concat(year,'/',year+1)),'-',if(period=1,'Semester 2','Semester 1')) AS semester"))->orderBy('id','desc')->pluck('semester','id');
+
+            $dkelas = KelasPeriode::where('kelas_id',$month)->where('periode_id',$period)->get();
+            $periode = Periode::find($period);
+            $dkelasId = $jenism;
+
+            if($periode->period==1){
+                $months = [1,2,3,4,5,6];
+                $month = config('central.month1');
+            }else{
+                $months = [7,8,9,10,11,12];
+                $month = config('central.month2');
+            }
+
+            foreach ($dkelas as $dk){
+               $murids = DetailMurid::where('kelas_id',$dk->id)->get();
+            }
+
+            $kelas = Kelas::pluck('name','id');
+            $up = UasPeriode::where('periode_id',$period)->get();
+
+            foreach ($up as $su){
+                $suas = $su->jumlah;
+            }
+
+            $murid = Murid::pluck('name','id');
+            $uas = UangAsrama::get();
+
+            $pdf = PDF::loadview('report.tagihan',[
+                'murids' => $murids,
+                'kelas' => $kelas,
+                'periodes' => $periodes,
+                'period' => $period,
+                'murid' => $murid,
+                'uas' => $uas,
+                'suas' => $suas,
+                'months' => $months,
+                'month' => $month
+            ]);
+            return $pdf->download('Laporan Tagihan '.$months[$dkelasId].' '.$periodes[$period].'.pdf');
         }
 
     }
@@ -174,6 +218,46 @@ class Report extends Controller
             'months' => $months,
             'month' => $month,
             'periode' => $periode
+        ]);
+    }else{
+        $periodes = Periode::select('id', DB::raw("CONCAT(if(period=1,concat(year-1,'/',year),concat(year,'/',year+1)),'-',if(period=1,'Semester 2','Semester 1')) AS semester"))->orderBy('id','desc')->pluck('semester','id');
+
+        $dkelas = KelasPeriode::where('kelas_id',$month)->where('periode_id',$period)->get();
+        $periode = Periode::find($period);
+        $dkelasId = $jenism;
+
+        if($periode->period==1){
+            $months = [1,2,3,4,5,6];
+            $month = config('central.month1');
+        }else{
+            $months = [7,8,9,10,11,12];
+            $month = config('central.month2');
+        }
+
+        foreach ($dkelas as $dk){
+           $murids = DetailMurid::where('kelas_id',$dk->id)->get();
+        }
+
+        $kelas = Kelas::pluck('name','id');
+        $up = UasPeriode::where('periode_id',$period)->get();
+
+        foreach ($up as $su){
+            $suas = $su->jumlah;
+        }
+
+        $murid = Murid::pluck('name','id');
+        $uas = UangAsrama::get();
+
+        return view('report.tagihan',[
+            'murids' => $murids,
+            'kelas' => $kelas,
+            'periodes' => $periodes,
+            'period' => $period,
+            'murid' => $murid,
+            'uas' => $uas,
+            'suas' => $suas,
+            'months' => $months,
+            'month' => $month
         ]);
     }
 
