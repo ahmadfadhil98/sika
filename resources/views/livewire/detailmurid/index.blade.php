@@ -73,7 +73,7 @@
                                             @endforeach
                                         @endforeach
                                     </td>
-                                @else
+                                @elseif (count($uas->where('keterangan','BELUM LUNAS')->where('month',$m))!=0)
                                     <td class="text-sm text-center">
                                         <button disabled="disabled" class="text-sm bg-red-700 text-white py-2 px-6">BELUM LUNAS</button>
                                     </td>
@@ -85,6 +85,15 @@
                                             @foreach ($jmlh as $jml)
                                                 Rp {{$up->jumlah-$jml->jumlah}},-
                                             @endforeach
+                                        @endforeach
+                                    </td>
+                                @else
+                                    <td class="text-sm text-center">
+                                        <button disabled="disabled" class="text-sm bg-red-700 text-white py-2 px-6">BELUM LUNAS</button>
+                                    </td>
+                                    <td class="text-sm px-3 text-sm">
+                                        @foreach ($uasperiode as $up)
+                                            Rp {{$up->jumlah}},-
                                         @endforeach
                                     </td>
                                 @endif

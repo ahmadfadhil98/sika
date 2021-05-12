@@ -15,10 +15,13 @@ class CreateNeracasTable extends Migration
     {
         Schema::create('neracas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('periode_id');
             $table->integer('month');
             $table->integer('uang_masuk');
             $table->integer('pengeluaran');
             $table->timestamps();
+
+            $table->foreign('periode_id')->references('id')->on('periodes')->onDelete('cascade');
         });
     }
 

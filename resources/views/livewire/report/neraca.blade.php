@@ -45,10 +45,10 @@
                         </div>
                     @endif
 
+                    @if ($tgl!=[])
                     <table class="table-fixed w-full text-center">
                         <thead class="border border-blue-900 bg-blue-900">
                             <tr>
-                                <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Tanggal</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Debit</th>
                                 <th class="text-base font-normal px-4 py-2 text-white w-auto">Kredit</th>
@@ -60,32 +60,57 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($tgl as  $key=>$t)
-                            <tr class="border border-gray-100">
-                                <td class="text-sm px-2 py-3">{{ $tgl->firstitem() + $key }}.</td>
+                                <tr class="border border-gray-100">
+                                    <td class="text-sm py-3">{{$month-1}}-2021</td>
+                                    <td class="text-sm">
+                                            Rp{{number_format($debitm)}},-
+                                    </td>
+                                    <td class="text-sm">
+                                    </td>
+                                    <td class="text-sm">
+                                    </td>
+                                </tr>
+                                @foreach($tgl as  $key=>$t)
+                                <tr class="border border-gray-100">
 
-                                <td class="text-sm">{{ date('d-m-Y', strtotime($t->tgl)) }}</td>
-                                <td class="text-sm">
-                                    @if($t->debit!=null)
-                                        Rp{{number_format($t->debit)}},-
-                                    @endif
-                                </td>
-                                <td class="text-sm">
-                                    @if($t->kredit!=null)
-                                        Rp{{number_format($t->kredit)}},-
-                                    @endif
-                                </td>
-                                <td class="text-sm">
+                                    <td class="text-sm py-3">{{ date('d-m-Y', strtotime($t->tgl)) }}</td>
+                                    <td class="text-sm">
+                                        @if($t->debit!=null)
+                                            Rp{{number_format($t->debit)}},-
+                                        @endif
+                                    </td>
+                                    <td class="text-sm">
+                                        @if($t->kredit!=null)
+                                            Rp{{number_format($t->kredit)}},-
+                                        @endif
+                                    </td>
+                                    <td class="text-sm">
 
+                                    </td>
+                                </tr>
+                                @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    Jumlah
+                                </td>
+                                <td>
+                                    Rp{{number_format($debit+$debitm)}},-
+                                </td>
+                                <td>
+                                    Rp{{number_format($kredit)}},-
+                                </td>
+                                <td>
+                                    Rp{{number_format($debit+$debitm-$kredit)}},-
                                 </td>
                             </tr>
-                            @endforeach
-                        </tbody>
+                        </tfoot>
                     </table>
                     <div class="mt-4">
                           {{$tgl->links()}}
                     </div>
-
+                    @endif
                 </div>
 
             </div>

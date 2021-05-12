@@ -9,5 +9,9 @@ class Neraca extends Model
 {
     use HasFactory;
     protected $table = "neracas";
-    protected $fillable = ['month','uang_masuk','pengeluaran'];
+    protected $fillable = ['periode_id','month','uang_masuk','pengeluaran'];
+
+    public function periode(){
+        return $this->belongsTo(Periode::class);
+    }
 }

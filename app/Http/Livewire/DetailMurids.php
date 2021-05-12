@@ -20,8 +20,6 @@ use Intervention\Image\ImageManagerStatic;
 class DetailMurids extends Component
 {
     use WithFileUploads;
-    // public $dmuridId,$di,$mon,$photo;
-    // public $murid_id,$tgl,$bulan,$jumlah,$keterangan;
     public $keterangan1,$bulan,$jumlahuas;
     public $no,$jumlahang,$tgl,$uas_id,$keterangan2;
     public $dmuridId,$di,$jumlah,$uasId,$ketuas;
@@ -99,6 +97,18 @@ class DetailMurids extends Component
 
     public function create(){
         $this->murid_id = $this->dmuridId;
+
+        $this->showModal();
+    }
+
+    public function edit($id){
+        $angsuran = Angsuran::find($id);
+        $ua = UangAsrama::find($angsuran->uas_id);
+        $this->tgl = $angsuran->tgl;
+        $this->jumlah = $angsuran->jumlah;
+        $this->bulan = $ua->month;
+        $this->keterangan1 = $ua->keterangan;
+        $this->keterangan2 = $angsuran->keterangan;
 
         $this->showModal();
     }

@@ -9,7 +9,7 @@
 
 
       <div class="inline-block align-bottom bg-white text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-        <form>
+
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
 
             <div class="font-bold text-base text-center">
@@ -24,9 +24,20 @@
             @if ($angsur!=[])
                 @foreach ($angsur as $a)
                     <div class="border mb-5 py-2">
-                        <table>
+                        <table class="w-full">
                             <tr>
-                                <td class="px-3 font-bold">{{date('d-m-Y', strtotime($a->tgl))}}</td>
+                                <td>
+                                    <div class="flex mb-4">
+                                        <div class="px-3 font-bold w-full md:w-1/2 mt-1.5">
+                                            {{date('d-m-Y', strtotime($a->tgl))}}
+                                        </div>
+                                        <div class="px-3 w-full md:w-1/2 text-right">
+                                            <button wire:click="edit({{ $a->id }})" class="text-sm bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
+                                                Edit
+                                                </button>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         </table>
                                 <div class="border-t mt-2"></div>
@@ -75,7 +86,7 @@
             </button>
           </span>
         </div>
-       </form>
+
       </div>
 
     </div>
