@@ -25,6 +25,19 @@
             text-align: center;
             text-transform: uppercase;
         }
+
+        .center{
+            text-align: center;
+        }
+
+        .jarakhead{
+            padding: 7px;
+        }
+
+        .jarakbody{
+            padding: 3px;
+        }
+
         </style>
     <title></title>
   </head>
@@ -35,37 +48,37 @@
     <table class="item">
         <thead class="border">
             <tr >
-                <th class="border">Tanggal</th>
-                <th class="border">Debit</th>
-                <th class="border">Kredit</th>
-                <th class="border">Saldo di Akhir Bulan {{$months[$month]}}</th>
+                <th class="border jarakhead">Tanggal</th>
+                <th class="border jarakhead">Debit</th>
+                <th class="border jarakhead">Kredit</th>
+                <th class="border jarakhead">Saldo di Akhir Bulan {{$months[$month]}}</th>
             </tr>
         </thead>
         <tbody class="border">
             @foreach($tgl as  $key=>$t)
             <tr>
-                <td class="border">{{ $t->tgl }}</td>
-                <td class="border">
+                <td class="border center jarakbody">{{ $t->tgl }}</td>
+                <td class="border center jarakbody">
                     @if($t->debit!=null)
                         {{number_format($t->debit)}}
                     @endif
                 </td>
-                <td class="border">
+                <td class="border center jarakbody">
                     @if($t->kredit!=null)
                         {{number_format($t->kredit)}}
                     @endif
                 </td>
-                <td class="border">
+                <td class="border center jarakbody">
                 </td>
             </tr>
             @endforeach
         </tbody>
         <tfoot class="border">
             <tr>
-                <td class="border">Jumlah</td>
-                <td class="border">{{number_format($debit)}}</td>
-                <td class="border">{{number_format($kredit)}}</td>
-                <td class="border">{{number_format($debit-$kredit)}}</td>
+                <td class="border center jarakbody">Jumlah</td>
+                <td class="border center jarakbody">{{number_format($debit)}}</td>
+                <td class="border center jarakbody">{{number_format($kredit)}}</td>
+                <td class="border center jarakbody">{{number_format($debit-$kredit)}}</td>
             </tr>
         </tfoot>
     </table>

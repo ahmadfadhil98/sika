@@ -92,16 +92,16 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td>
+                                <td class="text-sm font-bold py-3">
                                     Jumlah
                                 </td>
-                                <td>
+                                <td class="text-sm font-bold">
                                     Rp{{number_format($debit+$debitm)}},-
                                 </td>
-                                <td>
+                                <td class="text-sm font-bold">
                                     Rp{{number_format($kredit)}},-
                                 </td>
-                                <td>
+                                <td class="text-sm font-bold">
                                     Rp{{number_format($debit+$debitm-$kredit)}},-
                                 </td>
                             </tr>
