@@ -48,8 +48,8 @@
     <div class="min-h-screen flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8">
           <div>
-            <img class="mx-auto h-auto w-auto" src="https://sman2harau.sch.id/wp-content/uploads/2021/02/Logo-SMA-Negeri-2-Harau.png" alt="Workflow">
-            <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">
+            <img class="object-scale-down h-36 w-full" src="https://sman2harau.sch.id/wp-content/uploads/2021/02/Logo-SMA-Negeri-2-Harau.png" alt="Workflow">
+            <h2 class="mt-6 text-center text-2xl font-bold text-gray-900">
               Sistem Informasi Keuangan
             </h2>
             <p class="text-center text-base text-gray-600">
@@ -69,11 +69,11 @@
             <div class="shadow-sm -space-y-px">
               <div>
                 <label for="username" class="sr-only">Nama Pengguna</label>
-                <input id="username" name="username" type="text" :value="old('username')" required autofocus class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-blue-900 focus:border-blue-900 focus:z-10 sm:text-sm" placeholder="Nama pengguna">
+                <input id="username" name="username" type="text" :value="old('username')" required autofocus class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-400 text-gray-900 focus:outline-none text-sm" placeholder="Nama pengguna">
               </div>
               <div>
                 <label for="password" class="sr-only">Kata Sandi</label>
-                <input id="password" type="password" name="password" required autocomplete="current-password" class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-blue-900 focus:border-blue-900 focus:z-10 sm:text-sm" placeholder="Kata sandi">
+                <input id="password" type="password" name="password" required autocomplete="current-password" class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-400 text-gray-900 focus:outline-none text-sm" placeholder="Kata sandi">
               </div>
             </div>
 
