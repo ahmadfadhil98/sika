@@ -22,7 +22,7 @@ class DetailMurids extends Component
     use WithFileUploads;
     public $keterangan1,$bulan,$jumlahuas;
     public $no,$jumlahang,$tgl,$uas_id,$keterangan2;
-    public $dmuridId,$di,$jumlah,$uasId,$ketuas;
+    public $dmuridId,$di,$jumlah,$uasId,$ketuas,$dinfoId;
     public $isOpen = 0;
     public $isInfo = 0;
     public $angsur;
@@ -104,12 +104,13 @@ class DetailMurids extends Component
     public function edit($id){
         $angsuran = Angsuran::find($id);
         $ua = UangAsrama::find($angsuran->uas_id);
+        $this->dinfoId = $angsuran->id;
         $this->tgl = $angsuran->tgl;
         $this->jumlah = $angsuran->jumlah;
         $this->bulan = $ua->month;
         $this->keterangan1 = $ua->keterangan;
         $this->keterangan2 = $angsuran->keterangan;
-
+        $this->hideInfo();
         $this->showModal();
     }
 
@@ -126,6 +127,15 @@ class DetailMurids extends Component
 
     public function store()
     {
+        $this->validate(
+            [
+                'jumlah' => 'required',
+                'tgl' => 'required',
+                'bulan' => 'required',
+                'keterangan1' => 'required',
+            ]
+        );
+
         $dmurid = DetailMurid::find($this->dmuridId);
         $uas = UangAsrama::where('murid_id',$this->dmuridId)->where('month',$this->bulan)->get();
 
@@ -149,26 +159,34 @@ class DetailMurids extends Component
                 $uas_id = $u->id;
                 $angsurans = Angsuran::where('uas_id',$uas_id)->get();
                 $no = count($angsurans);
+
+                if($this->dinfoId){
+                    $angsuran =  Angsuran::where('id',$this->dinfoId)->update([
+                        'uas_id' => $uas_id,
+                        'tgl' => $this->tgl,
+                        'jumlah' => $this->jumlah,
+                        'keterangan' => $this->keterangan2,
+                    ]);
+                }else{
+                    $angsuran = Angsuran::create([
+                        'uas_id' => $uas_id,
+                        'tgl' => $this->tgl,
+                        'jumlah' => $this->jumlah,
+                        'keterangan' => $this->keterangan2,
+                        'no' => $no+1
+                    ]);
+                }
+
                 $angsuran = Angsuran::select(DB::raw('SUM(jumlah) as debit'))->where('uas_id',$uas_id)->get();
                 $debit = $angsuran[0]->debit;
 
                 $dmurids = UangAsrama::where('id',$uas_id)->update([
                     'keterangan' => $this->keterangan1,
-                    'jumlah' => $debit+$this->jumlah,
-                ]);
-
-                $angsuran = Angsuran::create([
-                    'uas_id' => $uas_id,
-                    'tgl' => $this->tgl,
-                    'jumlah' => $this->jumlah,
-                    'keterangan' => $this->keterangan2,
-                    'no' => $no+1
+                    'jumlah' => $debit,
                 ]);
 
             }
         }
-
-        $this->hideModal();
 
         session()->flash('info', 'Uang Asrama Oke' );
 
@@ -177,7 +195,10 @@ class DetailMurids extends Component
         $this->keterangan1 = '';
         $this->keterangan2 = '';
         $this->jumlah = '';
+        $this->dinfoId = '';
 
+        $this->hideModal();
+        $this->showInfo();
     }
 
     public function storeImage()

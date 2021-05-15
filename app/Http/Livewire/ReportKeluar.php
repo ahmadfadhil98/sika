@@ -24,7 +24,7 @@ class ReportKeluar extends Component
         if($this->month){
             $tgl = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->orderByDesc('tgl')->get();
         }else{
-            $tgl = Post::paginate(7);
+            $tgl = [];
         }
         $barang = Barang::pluck('name','id');
         $satuan = Barang::pluck('satuan','id');

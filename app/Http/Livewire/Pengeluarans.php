@@ -22,7 +22,7 @@ class Pengeluarans extends Component
         $searchParam = '%'.$this->search.'%';
         $stuan = Barang::pluck('satuan','id');
         $barangs = Barang::orderBy('name','asc')->pluck('name','id');
-        $spends = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.name','like',$searchParam)->orWhere('pengeluarans.tgl','like',$searchParam)->get();
+        $spends = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.name','like',$searchParam)->orWhere('tgl','like',$searchParam)->orderByDesc('tgl')->get();
         return view('livewire.pengeluaran.index',[
             'spends' => $spends,
             'barangs' => $barangs,

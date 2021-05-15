@@ -104,6 +104,23 @@
                             @endphp
                             @endforeach
                         </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan=2 class="text-sm font-bold py-3">
+                                    Jumlah
+                                </td>
+                                {{-- <td class="text-sm font-bold">
+                                    Rp{{number_format($debit+$debitm)}},-
+                                </td>
+                                <td class="text-sm font-bold">
+                                    Rp{{number_format($kredit)}},-
+                                </td>
+                                <td class="text-sm font-bold">
+                                    Rp{{number_format($debit+$debitm-$kredit)}},-
+                                </td> --}}
+                            </tr>
+                        </tfoot>
                     </table>
                     <div class="mt-4">
                           {{-- {{$tgl->links()}} --}}

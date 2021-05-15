@@ -28,23 +28,7 @@
                         @endif
                     </div>
 
-                    @if(session()->has('info'))
-                        <div class="bg-green-500 mb-4 py-2 px-6">
-                            <div>
-                                <h1 class="text-white text-sm">{{ session('info') }}</h1>
-                            </div>
-                        </div>
-
-                    @endif
-
-                      @if(session()->has('delete'))
-                        <div class="bg-red-700 mb-4 py-2 px-6">
-                            <div>
-                                <h1 class="text-white text-sm">{{ session('delete') }}</h1>
-                            </div>
-                        </div>
-                    @endif
-
+                    @if($tgl!=[])
                     <table class="table-fixed w-full text-center" id="myTable">
                         <thead class="border border-blue-900 bg-blue-900">
                             <tr>
@@ -77,11 +61,22 @@
                             @endphp
                             @endforeach
                         </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td colspan=3 class="text-sm font-bold py-3">
+                                    Jumlah
+                                </td>
+                                <td class="text-sm font-bold">
+                                    Rp{{number_format($debit)}},-
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                     <div class="mt-4">
                           {{-- {{$tgl->links()}} --}}
                     </div>
-
+                    @endif
                 </div>
 
             </div>
