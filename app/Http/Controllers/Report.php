@@ -69,7 +69,7 @@ class Report extends Controller
                 'months' => $months,
                 'month' => $month,
                 'periode' => $periode
-            ]);
+            ])->setPaper('a4', 'landscape');
             return $pdf->download('Laporan Pengeluaran Uang Asrama '.$months[$month].' '.$periode->year.'.pdf');
 
         }elseif($jenism==3){
