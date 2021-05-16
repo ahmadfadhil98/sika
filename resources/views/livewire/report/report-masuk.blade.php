@@ -64,12 +64,12 @@
 
                         <tfoot>
                             <tr>
-                                <td colspan=3 class="text-sm font-bold py-3">
+                                <th colspan=3 class="text-sm font-bold py-3">
                                     Jumlah
-                                </td>
-                                <td class="text-sm font-bold">
+                                </th>
+                                <th class="text-sm font-bold">
                                     Rp{{number_format($debit)}},-
-                                </td>
+                                </th>
                             </tr>
                         </tfoot>
                     </table>

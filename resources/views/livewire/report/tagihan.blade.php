@@ -41,12 +41,12 @@
                                 @foreach($murids as  $key=>$mur)
                                 <tr class="border border-gray-100">
 
-                                    <td class="text-sm py-3">{{ $murid[$mur->murid_id] }}</td>
+                                    <th class="text-sm py-3">{{ $murid[$mur->murid_id] }}</th>
                                             @foreach ($months as $m)
                                                 @php
                                                     $ua = $uas->where('murid_id',$mur->id)->where('month',$m);
                                                 @endphp
-                                                <td class="text-sm">
+                                                <th class="text-sm">
                                                     @if ($ua=='[]')
                                                         Rp{{number_format($suas)}},-
                                                     @else
@@ -54,7 +54,7 @@
                                                                 Rp{{number_format($suas-$u->jumlah)}},-
                                                         @endforeach
                                                     @endif
-                                                </td>
+                                                </th>
                                             @endforeach
                                 </tr>
                                 @endforeach

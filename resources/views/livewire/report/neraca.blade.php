@@ -61,7 +61,7 @@
                         </thead>
                         <tbody>
                                 <tr class="border border-gray-100">
-                                    <td class="text-sm py-3">{{$month-1}}-2021</td>
+                                    <td class="text-sm py-3">{{$month-1}}-{{$this->year}}</td>
                                     <td class="text-sm">
                                             Rp{{number_format($debitm)}},-
                                     </td>
@@ -75,15 +75,24 @@
 
                                     <td class="text-sm py-3">{{ date('d-m-Y', strtotime($t->tgl)) }}</td>
                                     <td class="text-sm">
-                                        @if($t->debit!=null)
-                                            Rp{{number_format($t->debit)}},-
-                                        @endif
+                                        @foreach ($debitd as $d)
+                                            @if($t->tgl==$d->tgl)
+                                                Rp{{number_format($d->debit)}},-
+                                            @endif
+                                        @endforeach
                                     </td>
                                     <td class="text-sm">
+                                        @foreach ($kreditd as $k)
+                                            @if($t->tgl==$k->tgl)
+                                                Rp{{number_format($k->kredit)}},-
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    {{-- <td class="text-sm">
                                         @if($t->kredit!=null)
                                             Rp{{number_format($t->kredit)}},-
                                         @endif
-                                    </td>
+                                    </td> --}}
                                     <td class="text-sm">
 
                                     </td>

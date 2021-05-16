@@ -26,10 +26,15 @@ class Neraca extends Component
 
         if($this->month){
 
-            $tgl = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->get();
+            $uni = Angsuran::whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl');
+            $tgl = Pengeluaran::whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl')->union($uni)->distinct()->orderBy('tgl')->get();
+            // $tgl = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->get();
         }else{
             $tgl = [];
         }
+        $debitd = Angsuran::select('tgl',DB::raw('SUM(jumlah) as debit'))->groupBy('tgl')->get();
+        // dd($debitd);
+        $kreditd = Pengeluaran::select('tgl',DB::raw('SUM(harga) as kredit'))->groupBy('tgl')->get();
 
         $ner = ModelsNeraca::where('periode_Id',$this->periodes)->where('month',$this->month-1)->get();
         // dd($ner);
@@ -50,6 +55,8 @@ class Neraca extends Component
             'tgl' => $tgl,
             'periode' => $periode,
             'debit' => $debit,
+            'debitd' => $debitd,
+            'kreditd' => $kreditd,
             'debitm' => $this->debitm,
             'kredit' => $kredit,
             'months' => $this->months
