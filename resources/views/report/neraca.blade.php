@@ -75,10 +75,10 @@
         </tbody>
         <tfoot class="border">
             <tr>
-                <td class="border center jarakbody">Jumlah</td>
-                <td class="border center jarakbody">{{number_format($debit)}}</td>
-                <td class="border center jarakbody">{{number_format($kredit)}}</td>
-                <td class="border center jarakbody">{{number_format($debit-$kredit)}}</td>
+                <th class="border center jarakbody">Jumlah</th>
+                <th class="border center jarakbody">{{number_format($debit)}}</th>
+                <th class="border center jarakbody">{{number_format($kredit)}}</th>
+                <th class="border center jarakbody">{{number_format($debit-$kredit)}}</th>
             </tr>
         </tfoot>
     </table>

@@ -20,7 +20,6 @@ class ReportMasuk extends Component
     public $period=0;
     public $month=0;
     public $year;
-    public $debit = 0;
 
     public function render()
     {
@@ -36,13 +35,13 @@ class ReportMasuk extends Component
         $angsuran = DB::table('angsurans')->select('tgl',DB::raw('COUNT(id) as span'))->groupBy('tgl')->get();
         if($this->month){
             $tgl = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl','uas_id','jumlah')->orderByDesc('tgl')->get();
-
-            $debt = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select(DB::raw('SUM(jumlah) as debit'))->get();
-            foreach ($debt as $d){
-                $this->debit = $d->debit;
-            }
         }else{
             $tgl = [];
+        }
+
+        $debt = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select(DB::raw('SUM(jumlah) as debit'))->get();
+        foreach ($debt as $d){
+            $debit = $d->debit;
         }
 
         return view('livewire.report.report-masuk',[
@@ -55,7 +54,7 @@ class ReportMasuk extends Component
             'dmurid' => $dmurid,
             'dmuridkelas' => $dmuridkelas,
             'dkelas' => $dkelas,
-            'debit' => $this->debit,
+            'debit' => $debit,
             'angsuran' => $angsuran,
             'months' => $this->months
         ]);

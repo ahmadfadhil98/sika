@@ -198,7 +198,6 @@ class DetailMurids extends Component
         $this->dinfoId = '';
 
         $this->hideModal();
-        $this->showInfo();
     }
 
     public function storeImage()

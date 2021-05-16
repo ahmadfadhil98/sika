@@ -16,8 +16,8 @@
             </div>
               <div>
                     <div class="mb-2">
-                        <input wire:model="dmuridId" type="text" class="border w-full py-2 px-3 text-blue-900">
-                        <input wire:model="dinfoId" type="text" class="border w-full py-2 px-3 text-blue-900">
+                        <input wire:model="dmuridId" type="hidden" class="border w-full py-2 px-3 text-blue-900">
+                        <input wire:model="dinfoId" type="hidden" class="border w-full py-2 px-3 text-blue-900">
                     </div>
                     <div class="mb-2">
                         <label for="bulan" class="block py-1">Bulan</label>

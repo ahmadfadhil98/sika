@@ -23,9 +23,14 @@ class ReportKeluar extends Component
 
         if($this->month){
             $tgl = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->orderByDesc('tgl')->get();
+
         }else{
             $tgl = [];
         }
+
+        $kredit1 = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.jenis',2)->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select(DB::raw('SUM(harga) as kredit'))->get();
+        $kredit2 = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.jenis','!=',2)->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('barang_id',DB::raw('SUM(harga) as kredit'))->groupBy('barang_id')->get();
+
         $barang = Barang::pluck('name','id');
         $satuan = Barang::pluck('satuan','id');
         $peng =  Pengeluaran::pluck('barang_id','id');
@@ -34,6 +39,8 @@ class ReportKeluar extends Component
         return view('livewire.report.report-keluar',[
             'periode' => $periode,
             'tgl' => $tgl,
+            'kredit1' => $kredit1,
+            'kredit2' => $kredit2,
             'barang' => $barang,
             'barangs' => $barangs,
             'satuan' => $satuan,

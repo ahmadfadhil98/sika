@@ -110,15 +110,20 @@
                                 <td colspan=2 class="text-sm font-bold py-3">
                                     Jumlah
                                 </td>
-                                {{-- <td class="text-sm font-bold">
-                                    Rp{{number_format($debit+$debitm)}},-
-                                </td>
-                                <td class="text-sm font-bold">
-                                    Rp{{number_format($kredit)}},-
-                                </td>
-                                <td class="text-sm font-bold">
-                                    Rp{{number_format($debit+$debitm-$kredit)}},-
-                                </td> --}}
+                                @foreach ($kredit1 as $k1)
+                                    <th class="text-xs font-normal px-4 py-2 w-auto">
+                                        Rp{{number_format($k1->kredit)}},-
+                                    </th>
+                                @endforeach
+                                @foreach ($barangs as $b)
+                                    <th class="text-xs font-normal px-4 py-2 w-auto">
+                                        @foreach ($kredit2 as $k2)
+                                            @if ( $k2->barang_id == $b->id )
+                                                Rp{{number_format($k2->kredit)}},-
+                                            @endif
+                                        @endforeach
+                                    </th>
+                                @endforeach
                             </tr>
                         </tfoot>
                     </table>
