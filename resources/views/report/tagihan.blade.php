@@ -43,14 +43,14 @@
   </head>
   <body>
     <div class="head">
-        {{-- <b>NERACA UANG MAKAN {{$months[$month]}} {{$periode->year}}</b> --}}
+        TAGIHAN UANG MAKAN KELAS {{$kelas[$dkelasp[$dkelasId]]}} PADA {{$periodes[$period]}}
     </div>
     <table class="item">
         <thead class="border">
             <tr class="border center">
                 <th>Nama Peserta Didik</th>
-                @foreach ($months as $m)
-                    <th>{{$month[$m]}}</th>
+                @foreach ($month as $m)
+                    <th>{{$months[$m]}}</th>
                 @endforeach
             </tr>
         </thead>
@@ -58,7 +58,7 @@
             @foreach($murids as  $key=>$mur)
                 <tr class="border center">
                     <td >{{ $murid[$mur->murid_id] }}</td>
-                    @foreach ($months as $m)
+                    @foreach ($month as $m)
                         @php
                             $ua = $uas->where('murid_id',$mur->id)->where('month',$m);
                         @endphp
@@ -98,7 +98,7 @@
                 NIP 19611110 198512 2 002 <br>
                 </td>
                 <td>
-                {{-- Tarantang, &emsp; {{$months[$month]}} {{$periode->year}} <br> --}}
+                Tarantang, &emsp; {{$months[$bulan]}} {{$periode->year}} <br>
                 Bendahara Uang Asrama <br>
                 <br>
                 <br>

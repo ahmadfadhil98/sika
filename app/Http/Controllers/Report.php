@@ -140,12 +140,12 @@ class Report extends Controller
             $dkelasId = $jenism;
 
             if($periode->period==1){
-                $months = [1,2,3,4,5,6];
-                $month = config('central.month1');
+                $month = [1,2,3,4,5,6];
             }else{
-                $months = [7,8,9,10,11,12];
-                $month = config('central.month2');
+                $month = [7,8,9,10,11,12];
             }
+
+            $bulan = date('n');
 
             foreach ($dkelas as $dk){
                $murids = DetailMurid::where('kelas_id',$dk->id)->get();
@@ -164,9 +164,13 @@ class Report extends Controller
 
             $pdf = PDF::loadview('report.tagihan',[
                 'murids' => $murids,
+                'dkelasp' => $dkelasp,
+                'dkelasId' => $dkelasId,
                 'kelas' => $kelas,
+                'bulan' => $bulan,
                 'periodes' => $periodes,
                 'period' => $period,
+                'periode' => $periode,
                 'murid' => $murid,
                 'uas' => $uas,
                 'suas' => $suas,
@@ -288,14 +292,15 @@ class Report extends Controller
 
         $dkelas = KelasPeriode::where('kelas_id',$month)->where('periode_id',$period)->get();
         $dkelasId = $jenism;
+        $dkelasp = KelasPeriode::pluck('kelas_id','id');
 
         if($periode->period==1){
-            $months = [1,2,3,4,5,6];
-            $month = config('central.month1');
+            $month = [1,2,3,4,5,6];
         }else{
-            $months = [7,8,9,10,11,12];
-            $month = config('central.month2');
+            $month = [7,8,9,10,11,12];
         }
+
+        $bulan = date('n');
 
         foreach ($dkelas as $dk){
            $murids = DetailMurid::where('kelas_id',$dk->id)->get();
@@ -314,12 +319,15 @@ class Report extends Controller
         return view('report.tagihan',[
             'murids' => $murids,
             'kelas' => $kelas,
+            'dkelasp' => $dkelasp,
+            'dkelasId' => $dkelasId,
             'periodes' => $periodes,
             'periode' =>$periode,
             'period' => $period,
             'murid' => $murid,
             'uas' => $uas,
             'suas' => $suas,
+            'bulan' => $bulan,
             'months' => $months,
             'month' => $month
         ]);
