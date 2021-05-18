@@ -18,7 +18,7 @@
         }
 
         .ttd{
-            width: 70%;
+            width: 80%;
         }
 
         .head{
@@ -47,34 +47,33 @@
     </div>
     <table class="item">
         <thead class="border">
-            <tr>
-                <th class="text-base font-normal px-4 py-2 text-white w-auto">Nama Peserta Didik</th>
+            <tr class="border center">
+                <th>Nama Peserta Didik</th>
                 @foreach ($months as $m)
-                    <th class="text-base font-normal px-4 py-2 text-white w-auto">{{$month[$m]}}</th>
+                    <th>{{$month[$m]}}</th>
                 @endforeach
             </tr>
         </thead>
         <tbody class="border">
-                            @foreach($murids as  $key=>$mur)
-                                <tr class="border border-gray-100">
-
-                                    <td class="text-sm py-3">{{ $murid[$mur->murid_id] }}</td>
-                                            @foreach ($months as $m)
-                                                @php
-                                                    $ua = $uas->where('murid_id',$mur->id)->where('month',$m);
-                                                @endphp
-                                                <td class="text-sm">
-                                                    @if ($ua=='[]')
-                                                        Rp{{number_format($suas)}},-
-                                                    @else
-                                                        @foreach ($ua as $u)
-                                                                Rp{{number_format($suas-$u->jumlah)}},-
-                                                        @endforeach
-                                                    @endif
-                                                </td>
-                                            @endforeach
-                                </tr>
-                            @endforeach
+            @foreach($murids as  $key=>$mur)
+                <tr class="border center">
+                    <td >{{ $murid[$mur->murid_id] }}</td>
+                    @foreach ($months as $m)
+                        @php
+                            $ua = $uas->where('murid_id',$mur->id)->where('month',$m);
+                        @endphp
+                        <td>
+                            @if ($ua=='[]')
+                                Rp{{number_format($suas)}},-
+                            @else
+                                @foreach ($ua as $u)
+                                    Rp{{number_format($suas-$u->jumlah)}},-
+                                @endforeach
+                            @endif
+                        </td>
+                    @endforeach
+                </tr>
+            @endforeach
         </tbody>
         {{-- <tfoot class="border">
             <tr>

@@ -151,6 +151,7 @@ class Report extends Controller
                $murids = DetailMurid::where('kelas_id',$dk->id)->get();
             }
 
+            $dkelasp = KelasPeriode::pluck('kelas_id','id');
             $kelas = Kelas::pluck('name','id');
             $up = UasPeriode::where('periode_id',$period)->get();
 
@@ -171,8 +172,8 @@ class Report extends Controller
                 'suas' => $suas,
                 'months' => $months,
                 'month' => $month
-            ]);
-            return $pdf->download('Laporan Tagihan '.$months[$dkelasId].' '.$periodes[$period].'.pdf');
+            ])->setPaper('a4', 'landscape');
+            return $pdf->download('Laporan Tagihan '.$kelas[$dkelasp[$dkelasId]] .' '.$periodes[$period].'.pdf');
         }
 
     }
