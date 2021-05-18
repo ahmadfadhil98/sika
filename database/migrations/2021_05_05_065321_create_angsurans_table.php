@@ -19,10 +19,10 @@ class CreateAngsuransTable extends Migration
             $table->integer('no');
             $table->integer('jumlah');
             $table->date('tgl');
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
 
-            $table->foreign('uas_id')->references('id')->on('uang_asramas')->onDelete('cascade');
+            $table->foreign('uas_id')->references('id')->on('uang_asramas')->onUpdate('cascade');
 
             $table->unique(['uas_id','no']);
 

@@ -21,9 +21,9 @@ class CreateDetailMuridsTable extends Migration
             $table->date('tgl_sk')->nullable();
             $table->timestamps();
 
-            $table->foreign('murid_id')->references('id')->on('murids')->onDelete('cascade');
-            $table->foreign('kelas_id')->references('id')->on('kelas_periodes')->onDelete('cascade');
-            $table->foreign('asrama_id')->references('id')->on('asrama_periodes')->onDelete('cascade');
+            $table->foreign('murid_id')->references('id')->on('murids')->onUpdate('cascade');
+            $table->foreign('kelas_id')->references('id')->on('kelas_periodes')->onUpdate('cascade');
+            $table->foreign('asrama_id')->references('id')->on('asrama_periodes')->onUpdate('cascade');
 
             $table->unique(['murid_id','kelas_id']);
             $table->unique(['murid_id','asrama_id']);

@@ -9,6 +9,7 @@ use App\Models\DetailMurid;
 use App\Models\Kelas;
 use App\Models\KelasPeriode;
 use App\Models\Murid;
+use App\Models\Neraca;
 use App\Models\Pengeluaran;
 use App\Models\Periode;
 use App\Models\UangAsrama;
@@ -28,7 +29,18 @@ class Report extends Controller
 
         if($jenism==1){
 
-            $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->get();
+            $uni = Angsuran::whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl');
+            $this->tgl = Pengeluaran::whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl')->union($uni)->distinct()->orderBy('tgl')->get();
+
+            $debitd = Angsuran::select('tgl',DB::raw('SUM(jumlah) as debit'))->groupBy('tgl')->get();
+            // dd($debitd);
+            $kreditd = Pengeluaran::select('tgl',DB::raw('SUM(harga) as kredit'))->groupBy('tgl')->get();
+
+            $ner = Neraca::where('periode_Id',$period)->where('month',$month-1)->get();
+            // dd($ner);
+            foreach ($ner as $n){
+                $debitm = $n->uang_masuk - $n->pengeluaran;
+            }
 
             $debt = DB::table('angsurans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select(DB::raw('SUM(jumlah) as debit'))->get();
             foreach ($debt as $d){
@@ -40,35 +52,50 @@ class Report extends Controller
             }
 
             $pdf = PDF::loadview('report.neraca',[
-                'tgl'=>$this->tgl,
-                'month' => $month,
+                'tgl' => $this->tgl,
+                'periode' => $periode,
                 'debit' => $debit,
+                'month' => $month,
+                'debitd' => $debitd,
+                'kreditd' => $kreditd,
+                'debitm' => $debitm,
                 'kredit' => $kredit,
-                'months' => $months,
-                'periode' => $periode
+                'months' => $months
             ]);
             return $pdf->download('Neraca Uang Makan '.$months[$month].' '.$periode->year.'.pdf');
 
         }elseif($jenism==2){
 
             $pengeluaran = DB::table('pengeluarans')->select('tgl',DB::raw('COUNT(id) as span'))->groupBy('tgl')->get();
+
+            $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->orderBy('tgl')->get();
+
+            $kredit1 = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.jenis',2)->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select(DB::raw('SUM(harga) as kredit'))->get();
+            $kredit2 = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.jenis','!=',2)->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('barang_id',DB::raw('SUM(harga) as kredit'))->groupBy('barang_id')->get();
+            $kre = Pengeluaran::whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select(DB::raw('SUM(harga) as kredit'))->get();
+            foreach($kre as $k){
+                $kredit = $k->kredit;
+            }
             $barang = Barang::pluck('name','id');
             $satuan = Barang::pluck('satuan','id');
             $peng =  Pengeluaran::pluck('barang_id','id');
             $jenis = Barang::pluck('jenis','id');
             $barangs = Barang::where('jenis','!=',2)->get();
-            $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->get();
+
             $pdf = PDF::loadview('report.report_keluar',[
+                'periode' => $periode,
                 'tgl' => $this->tgl,
+                'month' => $month,
+                'kredit1' => $kredit1,
+                'kredit2' => $kredit2,
+                'kredit' => $kredit,
                 'barang' => $barang,
                 'barangs' => $barangs,
                 'satuan' => $satuan,
                 'peng' => $peng,
                 'jenis' => $jenis,
                 'pengeluaran' => $pengeluaran,
-                'months' => $months,
-                'month' => $month,
-                'periode' => $periode
+                'months' => $months
             ])->setPaper('a4', 'landscape');
             return $pdf->download('Laporan Pengeluaran Uang Asrama '.$months[$month].' '.$periode->year.'.pdf');
 
@@ -84,10 +111,16 @@ class Report extends Controller
 
             $angsuran = DB::table('angsurans')->select('tgl',DB::raw('COUNT(id) as span'))->groupBy('tgl')->get();
             $this->tgl = DB::table('angsurans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl','uas_id','jumlah')->orderBy('tgl')->get();
+            $debt = DB::table('angsurans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select(DB::raw('SUM(jumlah) as debit'))->get();
+            foreach ($debt as $d){
+                $debit = $d->debit;
+            }
+
             $pdf = PDF::loadview('report.report_masuk',[
                 'tgl' => $this->tgl,
                 'murid' => $murid,
                 'kelas' => $kelas,
+                'debit' => $debit,
                 'uas_id' => $uas_id,
                 'uas_dmurid' => $uas_dmurid,
                 'dmurid' => $dmurid,
@@ -150,7 +183,18 @@ class Report extends Controller
 
     if($jenism==1){
 
-        $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->get();
+        $uni = Angsuran::whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl');
+        $this->tgl = Pengeluaran::whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl')->union($uni)->distinct()->orderBy('tgl')->get();
+
+        $debitd = Angsuran::select('tgl',DB::raw('SUM(jumlah) as debit'))->groupBy('tgl')->get();
+        // dd($debitd);
+        $kreditd = Pengeluaran::select('tgl',DB::raw('SUM(harga) as kredit'))->groupBy('tgl')->get();
+
+        $ner = Neraca::where('periode_Id',$period)->where('month',$month-1)->get();
+        // dd($ner);
+        foreach ($ner as $n){
+            $debitm = $n->uang_masuk - $n->pengeluaran;
+        }
 
         $debt = DB::table('angsurans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select(DB::raw('SUM(jumlah) as debit'))->get();
         foreach ($debt as $d){
@@ -162,34 +206,49 @@ class Report extends Controller
         }
 
         return view('report.neraca',[
-            'tgl'=>$this->tgl,
-            'month' => $month,
+            'tgl' => $this->tgl,
+            'periode' => $periode,
             'debit' => $debit,
+            'month' => $month,
+            'debitd' => $debitd,
+            'kreditd' => $kreditd,
+            'debitm' => $debitm,
             'kredit' => $kredit,
-            'months' => $months,
-            'periode' => $periode
+            'months' => $months
         ]);
 
     }elseif($jenism==2){
 
         $pengeluaran = DB::table('pengeluarans')->select('tgl',DB::raw('COUNT(id) as span'))->groupBy('tgl')->get();
+
+        $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->orderBy('tgl')->get();
+
+        $kredit1 = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.jenis',2)->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select(DB::raw('SUM(harga) as kredit'))->get();
+        $kredit2 = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.jenis','!=',2)->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('barang_id',DB::raw('SUM(harga) as kredit'))->groupBy('barang_id')->get();
+        $kre = Pengeluaran::whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select(DB::raw('SUM(harga) as kredit'))->get();
+        foreach($kre as $k){
+            $kredit = $k->kredit;
+        }
         $barang = Barang::pluck('name','id');
         $satuan = Barang::pluck('satuan','id');
         $peng =  Pengeluaran::pluck('barang_id','id');
         $jenis = Barang::pluck('jenis','id');
         $barangs = Barang::where('jenis','!=',2)->get();
-        $this->tgl = DB::table('pengeluarans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->orderBy('tgl')->get();
+
         return view('report.report_keluar',[
+            'periode' => $periode,
             'tgl' => $this->tgl,
+            'month' => $month,
+            'kredit1' => $kredit1,
+            'kredit2' => $kredit2,
+            'kredit' => $kredit,
             'barang' => $barang,
             'barangs' => $barangs,
             'satuan' => $satuan,
             'peng' => $peng,
             'jenis' => $jenis,
             'pengeluaran' => $pengeluaran,
-            'months' => $months,
-            'month' => $month,
-            'periode' => $periode
+            'months' => $months
         ]);
 
     }elseif($jenism==3){
@@ -204,11 +263,16 @@ class Report extends Controller
 
         $angsuran = DB::table('angsurans')->select('tgl',DB::raw('COUNT(id) as span'))->groupBy('tgl')->get();
         $this->tgl = DB::table('angsurans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select('tgl','uas_id','jumlah')->orderBy('tgl')->get();
+        $debt = DB::table('angsurans')->whereYear('tgl',$periode->year)->whereMonth('tgl',$month)->select(DB::raw('SUM(jumlah) as debit'))->get();
+            foreach ($debt as $d){
+                $debit = $d->debit;
+            }
         return view('report.report_masuk',[
             'tgl' => $this->tgl,
             'murid' => $murid,
             'kelas' => $kelas,
             'uas_id' => $uas_id,
+            'debit' => $debit,
             'uas_dmurid' => $uas_dmurid,
             'dmurid' => $dmurid,
             'dmuridkelas' => $dmuridkelas,

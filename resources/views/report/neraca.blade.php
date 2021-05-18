@@ -55,30 +55,51 @@
             </tr>
         </thead>
         <tbody class="border">
-            @foreach($tgl as  $key=>$t)
             <tr>
-                <td class="border center jarakbody">{{ $t->tgl }}</td>
+                <td class="border center jarakbody">{{$month-1}}-{{$periode->year}}</td>
                 <td class="border center jarakbody">
-                    @if($t->debit!=null)
-                        {{number_format($t->debit)}}
-                    @endif
-                </td>
-                <td class="border center jarakbody">
-                    @if($t->kredit!=null)
-                        {{number_format($t->kredit)}}
-                    @endif
+                        Rp{{number_format($debitm)}},-
                 </td>
                 <td class="border center jarakbody">
                 </td>
+                <td class="border center jarakbody">
+                </td>
+            </tr>
+            @foreach($tgl as  $key=>$t)
+                <tr>
+                    <td class="border center jarakbody">{{ date('d-m-Y', strtotime($t->tgl)) }}</td>
+                    <td class="border center jarakbody">
+                        @foreach ($debitd as $d)
+                            @if($t->tgl==$d->tgl)
+                                Rp{{number_format($d->debit)}},-
+                            @endif
+                        @endforeach
+                    </td>
+                    <td class="border center jarakbody">
+                        @foreach ($kreditd as $k)
+                            @if($t->tgl==$k->tgl)
+                                Rp{{number_format($k->kredit)}},-
+                            @endif
+                        @endforeach
+                    </td>
+                    <td class="border center jarakbody"></td>
             </tr>
             @endforeach
         </tbody>
         <tfoot class="border">
             <tr>
-                <th class="border center jarakbody">Jumlah</th>
-                <th class="border center jarakbody">{{number_format($debit)}}</th>
-                <th class="border center jarakbody">{{number_format($kredit)}}</th>
-                <th class="border center jarakbody">{{number_format($debit-$kredit)}}</th>
+                <th class="border center jarakbody">
+                    Jumlah
+                </th>
+                <th class="border center jarakbody">
+                    Rp{{number_format($debit+$debitm)}},-
+                </th>
+                <th class="border center jarakbody">
+                    Rp{{number_format($kredit)}},-
+                </th>
+                <th class="border center jarakbody">
+                    Rp{{number_format($debit+$debitm-$kredit)}},-
+                </th>
             </tr>
         </tfoot>
     </table>

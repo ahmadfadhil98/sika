@@ -111,12 +111,14 @@
                                     Jumlah
                                 </td>
                                 @foreach ($kredit1 as $k1)
-                                    <th class="text-xs font-normal px-4 py-2 w-auto">
-                                        Rp{{number_format($k1->kredit)}},-
+                                    <th class="text-xs px-4 py-2 w-auto">
+                                        @if ($k1->kredit)
+                                            Rp{{number_format($k1->kredit)}},-
+                                        @endif
                                     </th>
                                 @endforeach
                                 @foreach ($barangs as $b)
-                                    <th class="text-xs font-normal px-4 py-2 w-auto">
+                                    <th class="text-xs px-4 py-2 w-auto">
                                         @foreach ($kredit2 as $k2)
                                             @if ( $k2->barang_id == $b->id )
                                                 Rp{{number_format($k2->kredit)}},-
@@ -124,6 +126,9 @@
                                         @endforeach
                                     </th>
                                 @endforeach
+                                <th class="text-xs px-4 py-2 w-auto">
+                                    Rp{{number_format($kredit)}},-
+                                </th>
                             </tr>
                         </tfoot>
                     </table>

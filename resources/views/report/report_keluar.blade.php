@@ -84,23 +84,51 @@
                 <td class="border center jarakbody"> {{ $barang[$t->barang_id]}} {{$t->jumlah}} {{ $satuan[$t->barang_id]}} </td>
                 <td class="border center jarakbody">
                     @if ( $jenis[$peng[$t->id]] == 2 )
-                        {{number_format($t->harga)}}
+                        Rp{{number_format($t->harga)}},-
                     @endif
                 </td>
                 @foreach ($barangs as $b)
                     <td class="border center jarakbody">
                         @if ( $barang[$peng[$t->id]] == $b->name )
-                            {{number_format($t->harga)}}
+                            Rp{{number_format($t->harga)}},-
                         @endif
                     </td>
                 @endforeach
-                <td class="border center jarakbody">{{number_format($t->harga)}}</td>
+                <td class="border center jarakbody">
+                    Rp{{number_format($t->harga)}},-
+                </td>
             </tr>
             @php
                 $date = $t->tgl;
             @endphp
             @endforeach
         </tbody>
+        <tfoot>
+            <tr>
+                <th colspan=2 class="border center jarakbody">
+                    Jumlah
+                </th>
+                @foreach ($kredit1 as $k1)
+                    <th class="border center jarakbody">
+                        @if ($k1->kredit)
+                            Rp{{number_format($k1->kredit)}},-
+                        @endif
+                    </th>
+                @endforeach
+                @foreach ($barangs as $b)
+                    <th class="border center jarakbody">
+                        @foreach ($kredit2 as $k2)
+                            @if ( $k2->barang_id == $b->id )
+                                Rp{{number_format($k2->kredit)}},-
+                            @endif
+                        @endforeach
+                    </th>
+                @endforeach
+                <th class="border center jarakbody">
+                    Rp{{number_format($kredit)}},-
+                </th>
+            </tr>
+        </tfoot>
     </table>
 
     <table>

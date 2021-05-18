@@ -17,12 +17,12 @@ class CreatePengeluaransTable extends Migration
             $table->id();
             $table->unsignedBigInteger('barang_id');
             $table->date('tgl');
-            $table->integer('jumlah');
+            $table->integer('jumlah')->default(1);
             $table->integer('harga');
             $table->text('keterangan')->nullable();
             $table->timestamps();
 
-            $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('cascade');
+            $table->foreign('barang_id')->references('id')->on('barangs')->onUpdate('cascade');
         });
     }
 

@@ -21,7 +21,7 @@ class CreateNeracasTable extends Migration
             $table->integer('pengeluaran');
             $table->timestamps();
 
-            $table->foreign('periode_id')->references('id')->on('periodes')->onDelete('cascade');
+            $table->foreign('periode_id')->references('id')->on('periodes')->onUpdate('cascade');
         });
     }
 

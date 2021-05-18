@@ -17,7 +17,7 @@ class CreateBarangsTable extends Migration
             $table->id();
             $table->text('name');
             $table->string('satuan')->nullable();
-            $table->integer('jenis')->default(1);
+            $table->integer('jenis')->default(0);
             $table->timestamps();
         });
     }

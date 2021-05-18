@@ -27,11 +27,12 @@ class Neraca extends Component
         if($this->month){
 
             $uni = Angsuran::whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl');
-            $tgl = Pengeluaran::whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl')->union($uni)->distinct()->orderBy('tgl')->get();
+            $tgl = Pengeluaran::whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl')->union($uni)->distinct()->orderByDesc('tgl')->get();
             // $tgl = DB::table('pengeluarans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('tgl',DB::raw('SUM(harga) as kredit'),DB::raw("(select SUM(jumlah) from angsurans where angsurans.tgl=pengeluarans.tgl) as debit"))->groupBy('tgl')->get();
         }else{
             $tgl = [];
         }
+
         $debitd = Angsuran::select('tgl',DB::raw('SUM(jumlah) as debit'))->groupBy('tgl')->get();
         // dd($debitd);
         $kreditd = Pengeluaran::select('tgl',DB::raw('SUM(harga) as kredit'))->groupBy('tgl')->get();

@@ -88,11 +88,6 @@
                                             @endif
                                         @endforeach
                                     </td>
-                                    {{-- <td class="text-sm">
-                                        @if($t->kredit!=null)
-                                            Rp{{number_format($t->kredit)}},-
-                                        @endif
-                                    </td> --}}
                                     <td class="text-sm">
 
                                     </td>

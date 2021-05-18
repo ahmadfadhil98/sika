@@ -20,9 +20,9 @@ class CreateAsramaPeriodesTable extends Migration
             $table->unsignedBigInteger('binsis_id');
             $table->timestamps();
 
-            $table->foreign('asrama_id')->references('id')->on('asramas')->onDelete('cascade');
-            $table->foreign('periode_id')->references('id')->on('periodes')->onDelete('cascade');
-            $table->foreign('binsis_id')->references('id')->on('guru_tendiks')->onDelete('cascade');
+            $table->foreign('asrama_id')->references('id')->on('asramas')->onUpdate('cascade');
+            $table->foreign('periode_id')->references('id')->on('periodes')->onUpdate('cascade');
+            $table->foreign('binsis_id')->references('id')->on('guru_tendiks')->onUpdate('cascade');
 
             $table->unique(['asrama_id','periode_id']);
         });

@@ -20,9 +20,9 @@ class CreateKelasPeriodesTable extends Migration
             $table->unsignedBigInteger('walas_id');
             $table->timestamps();
 
-            $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('cascade');
-            $table->foreign('periode_id')->references('id')->on('periodes')->onDelete('cascade');
-            $table->foreign('walas_id')->references('id')->on('guru_tendiks')->onDelete('cascade');
+            $table->foreign('kelas_id')->references('id')->on('kelas')->onUpdate('cascade');
+            $table->foreign('periode_id')->references('id')->on('periodes')->onUpdate('cascade');
+            $table->foreign('walas_id')->references('id')->on('guru_tendiks')->onUpdate('cascade');
 
             $table->unique(['kelas_id','periode_id']);
         });

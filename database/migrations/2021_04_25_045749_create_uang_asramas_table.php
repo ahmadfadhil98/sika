@@ -23,7 +23,7 @@ class CreateUangAsramasTable extends Migration
             // $table->date('tgl');
             $table->timestamps();
 
-            $table->foreign('murid_id')->references('id')->on('detail_murids')->onDelete('cascade');
+            $table->foreign('murid_id')->references('id')->on('detail_murids')->onUpdate('cascade');
 
         });
     }

@@ -15,6 +15,7 @@ class ReportKeluar extends Component
     public $period=0;
     public $month=0;
     public $year;
+    public $kredit = 0;
 
     public function render()
     {
@@ -31,6 +32,10 @@ class ReportKeluar extends Component
         $kredit1 = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.jenis',2)->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select(DB::raw('SUM(harga) as kredit'))->get();
         $kredit2 = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.jenis','!=',2)->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select('barang_id',DB::raw('SUM(harga) as kredit'))->groupBy('barang_id')->get();
 
+        $kre = Pengeluaran::whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select(DB::raw('SUM(harga) as kredit'))->get();
+        foreach($kre as $k){
+            $this->kredit = $k->kredit;
+        }
         $barang = Barang::pluck('name','id');
         $satuan = Barang::pluck('satuan','id');
         $peng =  Pengeluaran::pluck('barang_id','id');
@@ -39,6 +44,7 @@ class ReportKeluar extends Component
         return view('livewire.report.report-keluar',[
             'periode' => $periode,
             'tgl' => $tgl,
+            'kredit' => $this->kredit,
             'kredit1' => $kredit1,
             'kredit2' => $kredit2,
             'barang' => $barang,
