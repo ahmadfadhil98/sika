@@ -16,7 +16,7 @@ class CreateUangAsramasTable extends Migration
         Schema::create('uang_asramas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('murid_id');
-            $table->text('keterangan')->nullable();
+            $table->string('keterangan',125)->nullable();
             $table->integer('month');
             // $table->text('bukti');
             $table->integer('jumlah');

@@ -19,7 +19,7 @@ class CreatePengeluaransTable extends Migration
             $table->date('tgl');
             $table->integer('jumlah')->default(1);
             $table->integer('harga');
-            $table->text('keterangan')->nullable();
+            $table->string('keterangan',125)->nullable();
             $table->timestamps();
 
             $table->foreign('barang_id')->references('id')->on('barangs')->onUpdate('cascade');
