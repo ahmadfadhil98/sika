@@ -15,7 +15,7 @@ class CreateGuruTendiksTable extends Migration
     {
         Schema::create('guru_tendiks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name',125);
             $table->integer('genre');
             $table->timestamps();
         });

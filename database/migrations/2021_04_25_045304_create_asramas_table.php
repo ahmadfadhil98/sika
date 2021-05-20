@@ -15,7 +15,7 @@ class CreateAsramasTable extends Migration
     {
         Schema::create('asramas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name',125);
             $table->integer('genre');
             $table->timestamps();
         });
