@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     @endif
-
+                    @if($uas!=[])
                     <table class="table-fixed w-full text-center">
                         <thead class="border border-blue-900 bg-blue-900">
                             <tr>
@@ -76,7 +76,7 @@
                     <div class="mt-4">
 
                     </div>
-
+                    @endif
                 </div>
 
             </div>

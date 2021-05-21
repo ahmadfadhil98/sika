@@ -6,8 +6,8 @@ use App\Models\DetailMurid;
 use App\Models\GuruTendik;
 use App\Models\Periode;
 use App\Models\UangAsrama;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-use DB;
 
 class UangAsramas extends Component
 {
