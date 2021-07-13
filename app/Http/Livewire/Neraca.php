@@ -37,11 +37,19 @@ class Neraca extends Component
         // dd($debitd);
         $kreditd = Pengeluaran::select('tgl',DB::raw('SUM(harga) as kredit'))->groupBy('tgl')->get();
 
-        $ner = ModelsNeraca::where('periode_Id',$this->periodes)->where('month',$this->month-1)->get();
+        if($this->month==7){
+            $ner = ModelsNeraca::where('periode_Id',$this->periodes-1)->where('month',6)->get();
+        }elseif($this->month==1){
+            $ner = ModelsNeraca::where('periode_Id',$this->periodes-1)->where('month',12)->get();
+        }else{
+            $ner = ModelsNeraca::where('periode_Id',$this->periodes)->where('month',$this->month-1)->get();
+        }
+
         // dd($ner);
         foreach ($ner as $n){
             $this->debitm = $n->uang_masuk - $n->pengeluaran;
         }
+        // dd($this->debitm);
 
         $debt = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select(DB::raw('SUM(jumlah) as debit'))->get();
         foreach ($debt as $d){
