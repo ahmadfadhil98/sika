@@ -49,7 +49,7 @@ class Neraca extends Component
         foreach ($ner as $n){
             $this->debitm = $n->uang_masuk - $n->pengeluaran;
         }
-        // dd($this->debitm);
+        $checksubmit = ModelsNeraca::where('periode_Id',$this->periodes)->where('month',$this->month)->first();
 
         $debt = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select(DB::raw('SUM(jumlah) as debit'))->get();
         foreach ($debt as $d){
@@ -59,6 +59,7 @@ class Neraca extends Component
         foreach ($kre as $k){
             $kredit = $k->kredit;
         }
+        // dd($checksubmit);
 
         return view('livewire.report.neraca',[
             'tgl' => $tgl,
@@ -66,6 +67,7 @@ class Neraca extends Component
             'debit' => $debit,
             'debitd' => $debitd,
             'kreditd' => $kreditd,
+            'checksubmit' => $checksubmit,
             'debitm' => $this->debitm,
             'kredit' => $kredit,
             'months' => $this->months

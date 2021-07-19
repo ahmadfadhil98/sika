@@ -19,11 +19,18 @@
                         </div>
 
                         @if ($this->period!=0&&$this->month!=0)
+                        <div class="flex w-full">
+                            <div class="w-full text-left">
+                                <button wire:click="reportNeraca()" class="focus:outline-none text-base bg-blue-700 hover:bg-blue-900 text-white py-2 px-6">
+                                    Masukkan ke Neraca
+                                </button>
+                            </div>
                             <div class="w-full text-right">
                                 <button onclick="location.href='{{ route('report',[$this->period,$this->month,2]) }}'" class="bg-green-500 hover:bg-green-800 text-white py-2 px-6 focus:outline-none">
                                     Download Laporan
                                 </button>
                             </div>
+                        </div>
                         @endif
                     </div>
 

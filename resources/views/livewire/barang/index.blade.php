@@ -27,7 +27,6 @@
                                 <h1 class="text-white text-sm">{{ session('info') }}</h1>
                             </div>
                         </div>
-
                     @endif
 
                       @if(session()->has('delete'))

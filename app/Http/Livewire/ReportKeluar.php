@@ -66,4 +66,21 @@ class ReportKeluar extends Component
             $this->months = config('central.month2');
         }
     }
+
+    public function reportNeraca(){
+        $cek = Neraca::where('periode_id',$this->period)->where('month',$this->month)->first();
+        if($cek){
+            $cek->update([
+                'pengeluaran' => $this->kredit
+            ]);
+            session()->flash('info','Uang pengeluaran telah dimasukkan ke Neraca di bulan '.$this->months[$this->month]);
+        }else{
+            Neraca::create([
+                'periode_id' => $this->period,
+                'month' => $this->month,
+                'pengeluaran' => $this->kredit
+            ]);
+            session()->flash('info','Uang pengeluaran telah dimasukkan ke Neraca di bulan '.$this->months[$this->month]);
+        }
+    }
 }

@@ -16,7 +16,6 @@
                     </div>
                     </div>
 
-
                     @if($isOpen)
                          @include('livewire.periode.form')
                     @endif

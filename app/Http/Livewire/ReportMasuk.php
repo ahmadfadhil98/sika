@@ -7,6 +7,7 @@ use App\Models\DetailMurid;
 use App\Models\Kelas;
 use App\Models\KelasPeriode;
 use App\Models\Murid;
+use App\Models\Neraca;
 use App\Models\Periode;
 use App\Models\Post;
 use App\Models\UangAsrama;
@@ -20,6 +21,7 @@ class ReportMasuk extends Component
     public $period=0;
     public $month=0;
     public $year;
+    public $debit=0;
 
     public function render()
     {
@@ -40,8 +42,10 @@ class ReportMasuk extends Component
         }
 
         $debt = DB::table('angsurans')->whereYear('tgl',$this->year)->whereMonth('tgl',$this->month)->select(DB::raw('SUM(jumlah) as debit'))->get();
+
         foreach ($debt as $d){
-            $debit = $d->debit;
+            // dd($d->debit);
+            $this->debit = $d->debit;
         }
 
         return view('livewire.report.report-masuk',[
@@ -54,7 +58,7 @@ class ReportMasuk extends Component
             'dmurid' => $dmurid,
             'dmuridkelas' => $dmuridkelas,
             'dkelas' => $dkelas,
-            'debit' => $debit,
+            'debit' => $this->debit,
             'angsuran' => $angsuran,
             'months' => $this->months
         ]);
@@ -67,6 +71,33 @@ class ReportMasuk extends Component
             $this->months = config('central.month1');
         }elseif($periode->period==2){
             $this->months = config('central.month2');
+        }
+    }
+
+    public function reportNeraca(){
+        if($this->month==7){
+            $ner = Neraca::where('periode_Id',$this->period-1)->where('month',6)->first();
+        }elseif($this->month==1){
+            $ner = Neraca::where('periode_Id',$this->period-1)->where('month',12)->first();
+        }else{
+            $ner = Neraca::where('periode_Id',$this->period)->where('month',$this->month-1)->first();
+        }
+
+        $cek = Neraca::where('periode_id',$this->period)->where('month',$this->month)->first();
+        $debt = $ner->uang_masuk-$ner->pengeluaran;
+        // dd($debt);
+        if($cek){
+            $cek->update([
+                'uang_masuk' => $debt+$this->debit
+            ]);
+            session()->flash('info','Uang Masuk telah dimasukkan ke Neraca di bulan '.$this->months[$this->month]);
+        }else{
+            Neraca::create([
+                'periode_id' => $this->period,
+                'month' => $this->month,
+                'uang_masuk' => $this->debit
+            ]);
+            session()->flash('info','Uang Masuk telah dimasukkan ke Neraca di bulan '.$this->months[$this->month]);
         }
     }
 }

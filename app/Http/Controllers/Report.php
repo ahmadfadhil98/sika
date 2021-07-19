@@ -36,7 +36,14 @@ class Report extends Controller
             // dd($debitd);
             $kreditd = Pengeluaran::select('tgl',DB::raw('SUM(harga) as kredit'))->groupBy('tgl')->get();
 
-            $ner = Neraca::where('periode_Id',$period)->where('month',$month-1)->get();
+            if($month==7){
+                $ner = Neraca::where('periode_Id',$period-1)->where('month',6)->get();
+            }elseif($month==1){
+                $ner = Neraca::where('periode_Id',$period-1)->where('month',12)->get();
+            }else{
+                $ner = Neraca::where('periode_Id',$period)->where('month',$month-1)->get();
+            }
+            // $ner = Neraca::where('periode_id','=',$period)->where('month','=',$month-1)->get();
             // dd($ner);
             foreach ($ner as $n){
                 $debitm = $n->uang_masuk - $n->pengeluaran;

@@ -18,7 +18,8 @@
                             ['class' => 'border border-gray-100 hover:bg-gray-100 text-gray-700 py-2 px-6 mt-4 focus:outline-none','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
                         </div>
 
-                        @if ($this->period!=0&&$this->month!=0)
+                        @if ($this->period!=0&&$this->month!=0&&$checksubmit)
+
                             <div class="w-full text-right">
                                <button onclick="location.href='{{ route('report',[$this->period,$this->month,1]) }}'" class="bg-green-500 hover:bg-green-800 text-white py-2 px-6 focus:outline-none">
                                   Download Laporan
