@@ -40,9 +40,9 @@ use App\Http\Livewire\UasPeriodes;
 //     return view('login');
 // });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', Dashboard::class)->name('dashboard');

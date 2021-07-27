@@ -22,7 +22,7 @@ class Pengeluarans extends Component
         $searchParam = '%'.$this->search.'%';
         $stuan = Barang::pluck('satuan','id');
         $barangs = Barang::orderBy('name','asc')->pluck('name','id');
-        $spends = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->where('barangs.name','like',$searchParam)->orWhere('tgl','like',$searchParam)->orderByDesc('tgl')->get();
+        $spends = DB::table('pengeluarans')->join('barangs','barangs.id','pengeluarans.barang_id')->select('pengeluarans.id','barangs.name','pengeluarans.barang_id','pengeluarans.jumlah','pengeluarans.tgl','barangs.satuan','pengeluarans.harga')->where('barangs.name','like',$searchParam)->orWhere('tgl','like',$searchParam)->orderByDesc('tgl')->get();
         return view('livewire.pengeluaran.index',[
             'spends' => $spends,
             'barangs' => $barangs,
@@ -80,10 +80,11 @@ class Pengeluarans extends Component
     public function edit($id){
         $spend = Pengeluaran::findOrFail($id);
         $this->spendId = $id;
+        $this->tgl = $spend->tgl;
         $this->barang_id = $spend->barang_id;
         $this->harga = $spend->harga;
         $this->jumlah = $spend->jumlah;
-        // $this->photo = $spend->bukti;
+        $this->keterangan = $spend->keterangan;
 
         $this->showModal();
     }
