@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center text-lg font-extrabold px-1 mt-1 text-blue-900">
-                    SMANDARA.
+                    <img width="65" class="object-scale-down" src="https://sman2harau.sch.id/wp-content/uploads/2021/02/Logo-SMA-Negeri-2-Harau.png" alt="Workflow">
                 </div>
 
                 <!-- Navigation Links -->

@@ -82,5 +82,6 @@ class ReportKeluar extends Component
             ]);
             session()->flash('info','Uang pengeluaran telah dimasukkan ke Neraca di bulan '.$this->months[$this->month]);
         }
+
     }
 }
