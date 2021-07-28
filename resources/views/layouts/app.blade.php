@@ -23,7 +23,7 @@
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script> --}}
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-blue-900">
+        <div style="background-color: #F8F8FB;" class="min-h-screen">
             @livewire('navigation-dropdown')
             {{-- Heading di murid --}}
 

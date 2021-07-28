@@ -12,11 +12,9 @@
                                 SMAN 2 Harau (Boarding School)
                             </div>
                             <div class="w-full mt-2.5">
-                                <input wire:model="search" type="text" class="w-4/12 py-2 hover:bg-gray-100 text-sm text-center focus:outline-none border border-gray-200" placeholder="Ketik nama untuk mencari...">
+
                             </div>
                         </div>
-
-
                     </div>
 
                     <table class="table-fixed w-full text-center">
