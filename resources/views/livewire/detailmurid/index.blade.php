@@ -18,7 +18,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                       </svg>
-                    <button class="focus:outline-none text-xs font-semibold underline">
+                    <button class="focus:outline-none hover:text-indigo-500 text-xs font-semibold underline">
                         Pembayaran Peserta Didik Lain ?
                     </button>
                 </div>
@@ -92,7 +92,9 @@
                                         Tagihan
                                     </div>
                                 </th>
-                                <th class="text-sm font-normal rounded-tr-full px-16 py-2.5 text-white w-80"></th>
+                                <th class="text-sm font-normal rounded-tr-full px-12 py-2.5 text-white w-96">
+                                    Detail Pembayaran Uang Asrama
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -123,7 +125,7 @@
                                     </td>
                                 @elseif (count($uas->where('keterangan','BELUM LUNAS')->where('month',$m))!=0)
                                     <td class="text-sm px-24">
-                                        <div disabled="disabled" class="flex bg-red-500 justify-center">
+                                        <div disabled="disabled" class="flex py-0.5 border border-red-500 bg-red-500 justify-center">
                                             <div class="text-sm text-white">
                                                 Belum Lunas
                                             </div>
@@ -144,7 +146,7 @@
                                     </td>
                                 @else
                                     <td class="text-sm px-16">
-                                        <div disabled="disabled" class="flex border border-red-500 justify-center">
+                                        <div disabled="disabled" class="flex border bg-white py-0.5 border-red-500 justify-center">
                                             <div class="text-sm text-red-500 font-thin">
                                                 Belum ada pembayaran
                                             </div>
@@ -156,13 +158,14 @@
                                         @endforeach
                                     </td>
                                 @endif
-                                <td class="text-sm px-15">
+                                <td class="text-sm px-28">
                                     <button wire:click="show({{$m}})" class="transform hover:scale-95 duration-300 justify-center bg-yellow-300 rounded-full hover:bg-yellow-400 focus:outline-none py-1.5 w-full flex">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="13" class="pt-1 mr-1.5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                           </svg>
                                           <div class="text-sm text-gray-600">
-                                              Detail Pembayaran
+                                              Lihat Detail
                                           </div>
 
                                     </button>
