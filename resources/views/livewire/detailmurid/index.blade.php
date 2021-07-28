@@ -1,24 +1,60 @@
 <div>
-    <div class="max-w-full mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-full mx-auto sm:px-6 lg:px-10">
 
-                <div class="mt-9 bg-white dark:bg-gray-800 overflow-hidden shadow px-4 py-4">
+        <div class="w-full mt-3 px-10 flex">
+            <div class="w-1/2 flex">
+                <button class="hover:underline text-gray-500 text-xs focus:outline-none mr-1.5">
+                    Home
+                </button>
+                <div class="text-gray-300 mr-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+                </div>
+                <button class="hover:underline text-indigo-500 font-semibold text-xs">
+                    Info Pembayaran
+                </button>
+            </div>
+            <div class="w-1/2 grid justify-end">
+                <div class="flex text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                      </svg>
+                    <button class="focus:outline-none text-xs font-semibold underline">
+                        Pembayaran Peserta Didik Lain ?
+                    </button>
+                </div>
+            </div>
+        </div>
 
-                    <div class="flex mb-4">
-                        <div class="w-full md:w-1/2 mt-1.5">
-                            <button wire:click="create()" class="text-base bg-blue-700 hover:bg-blue-900 text-white py-2 px-6 focus:outline-none focus:ring-blue-900 focus:border-blue-900 focus:z-10">
-                                Bayar Uang Asrama {{$periode[$periodes->id]}}
-                            </button>
+        <div class="shadow-xl rounded-t-lg px-10 pt-4 pb-8 ">
+            <div class="flex">
+                <div class="w-full md:w-1/2">
+                    <div class="text-xl pt-2 font-extrabold text-blue-900">
+                        Info Pembayaran Uang Asrama
+                    </div>
+                    <div class="flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" class="text-indigo-500 mr-1.5 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div class="text-indigo-500 font-semibold text-base mr-1.5">
+                            {{ $murid[$dmurid->murid_id]}}
                         </div>
-
-                        <div class="w-full md:w-1/2 text-right">
-                            <div class="text-lg font-bold px-1">
-                                Info Pembayaran
-                            </div>
-                            <div class="text-base px-1">
-                                Uang Asrama - {{ $murid[$dmurid->murid_id]}}
-                            </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" class="text-gray-500 mr-1.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                          </svg>
+                        <div class="text-gray-600 text-sm pt-0.5">
+                            {{$periode[$periodes->id]}}
                         </div>
                     </div>
+                </div>
+
+                <div class="w-full mt-4 text-right md:w-1/2">
+                    <button wire:click="create()" class="transform hover:scale-95 duration-300 text-sm bg-indigo-500 hover:bg-indigo-600 rounded-full text-white py-1.5 px-6 focus:outline-none shadow-lg">
+                        Bayar Uang Asrama
+                    </button>
+                </div>
+
+            </div>
+
+                <div>
                     @if($isInfo)
                         @include('livewire.detailmurid.info')
                     @endif
@@ -44,24 +80,36 @@
                         </div>
                     @endif
 
-                    <table class="table-fixed w-full text-center">
-                        <thead class="border border-blue-900 bg-blue-900">
+                    <table class="mt-6 table-fixed w-full text-center">
+                        <thead style="background-color: #262466;">
                             <tr>
-                                <th class="text-base font-normal px-4 py-2 text-white w-20">No</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Pembayaran Bulan</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto">Status Pembayaran</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-1/6">Tagihan</th>
-                                <th class="text-base font-normal px-4 py-2 text-white w-auto"></th>
+                                <th class="text-sm font-normal px-16 py-2.5 text-white w-20">No</th>
+                                <th class="text-sm font-normal px-4 py-2.5 text-white w-56">Pembayaran untuk Bulan</th>
+                                <th class="text-sm font-normal px-4 py-2.5 text-white w-80">Status Pembayaran Uang Asrama</th>
+                                <th class="flex text-sm font-normal px-12 py-2.5 text-white w-auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                                      <div class="ml-1.5">
+                                        Tagihan
+                                    </div>
+                                </th>
+                                <th class="text-sm font-normal rounded-tr-full px-16 py-2.5 text-white w-80"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($months as $key=>$m)
                             <tr class="border border-gray-100 hover:bg-gray-200">
-                                <td class="text-sm px-2 py-3">{{ $key+1 }}.</td>
+                                <td class="text-sm px-16 py-3">({{ $key+1 }})</td>
                                 <td> {{$month[$m]}} </td>
                                 @if (count($uas->where('keterangan','LUNAS')->where('month',$m))!=0)
-                                    <td class="text-sm text-center">
-                                        <button disabled="disabled" class="text-sm bg-green-500 text-white py-2 px-6">LUNAS</button>
+                                    <td class="text-sm pl-32">
+                                        <button disabled="disabled" class="flex">
+                                            <div class="text-sm text-green-500 font-bold italic">
+                                                Lunas
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" class="ml-1.5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                                              </svg>
+                                        </button>
                                     </td>
                                     <td class="text-sm px-3 text-sm">
                                         @php
@@ -74,8 +122,15 @@
                                         @endforeach
                                     </td>
                                 @elseif (count($uas->where('keterangan','BELUM LUNAS')->where('month',$m))!=0)
-                                    <td class="text-sm text-center">
-                                        <button disabled="disabled" class="text-sm bg-red-700 text-white py-2 px-6">BELUM LUNAS</button>
+                                    <td class="text-sm pl-28">
+                                        <button disabled="disabled" class="flex">
+                                            <div class="text-sm text-red-500 font-bold">
+                                                Belum Lunas
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" class="ml-1.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                              </svg>
+                                        </button>
                                     </td>
                                     <td class="text-sm px-3 text-sm">
                                         @php
@@ -88,8 +143,15 @@
                                         @endforeach
                                     </td>
                                 @else
-                                    <td class="text-sm text-center">
-                                        <button disabled="disabled" class="text-sm bg-red-700 text-white py-2 px-6">BELUM LUNAS</button>
+                                    <td class="text-sm pl-28">
+                                        <button disabled="disabled" class="flex">
+                                            <div class="text-sm text-red-500 font-bold">
+                                                Belum Lunas
+                                            </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" class="ml-1.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                              </svg>
+                                        </button>
                                     </td>
                                     <td class="text-sm px-3 text-sm">
                                         @foreach ($uasperiode as $up)
@@ -98,8 +160,14 @@
                                     </td>
                                 @endif
                                 <td class="text-sm px-15">
-                                    <button wire:click="show({{$m}})" class="text-sm text-black bg-yellow-300 hover:bg-yellow-400 bg-white focus:outline-none py-2 w-full">
-                                    Detail Pembayaran
+                                    <button wire:click="show({{$m}})" class="transform hover:scale-95 duration-300 justify-center bg-yellow-300 rounded-full hover:bg-yellow-400 focus:outline-none py-1.5 w-full flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" class="pt-1 mr-1.5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                          </svg>
+                                          <div class="text-sm text-gray-600">
+                                              Detail Pembayaran
+                                          </div>
+
                                     </button>
                                 </td>
                             </tr>
@@ -107,11 +175,42 @@
 
                         </tbody>
                     </table>
-                    <div class="mt-4">
-                    </div>
-
+                </div>
                 </div>
 
+                <div class="mt-3 w-full flex">
+                    <div class="w-1/3 shadow-xl rounded-t-lg py-5 mr-5">
+                        <div class="mt-5 px-10 text-gray-600 text-base font-bold">
+                            Identitas Peserta Didik:
+                        </div>
+                        <div class="flex mt-2 px-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-gray-500 mr-1.5 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div class="text-gray-600 text-xs">
+                                {{ $murid[$dmurid->murid_id]}} (12345)
+                            </div>
+                        </div>
+                        <div class="mt-1 px-15 text-gray-600 text-xs">
+                            XI MIPA 1 (Wali Kelas)
+                        </div>
+                    </div>
+                    <div class="w-2/3 shadow-xl rounded-t-lg py-5">
+                        <div class="mt-5 px-10 text-gray-600 text-base font-bold">
+                            Tentang Pembayaran Uang Asrama!
+                        </div>
+                        <div class="mt-2 px-10 text-gray-600 text-sm">
+                            Jumlah uang asrama yang dibayarkan sesuai standar pembayaran adalah <span class="font-semibold">Rp 800.000,-/bulan</span>.*
+                        </div>
+                        <div class="mt-1 px-10 text-gray-400 font-thin text-xs">
+                            *) Di waktu tertentu jumlah ini bisa berubah, seperti pada masa Pembelajaran Jarak Jauh (PJJ), yaitu <span class="font-semibold">Rp 400.000,-/bulan</span>.
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
+
+
 </div>
 
