@@ -86,9 +86,9 @@
                                 <th class="text-sm font-normal px-16 py-2.5 text-white w-20">No</th>
                                 <th class="text-sm font-normal px-4 py-2.5 text-white w-56">Pembayaran untuk Bulan</th>
                                 <th class="text-sm font-normal px-4 py-2.5 text-white w-80">Status Pembayaran Uang Asrama</th>
-                                <th class="flex text-sm font-normal px-10 py-2.5 text-white w-auto">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                                      <div class="ml-1.5">
+                                <th class="flex text-sm font-normal justify-center py-2.5 text-white w-auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign text-white"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                                    <div class="ml-1.5">
                                         Tagihan
                                     </div>
                                 </th>
