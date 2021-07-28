@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="w-full mt-4 text-right md:w-1/2">
-                    <button wire:click="create()" class="transform hover:scale-95 duration-300 text-sm bg-indigo-500 hover:bg-indigo-600 rounded-full text-white py-1.5 px-6 focus:outline-none shadow-lg">
+                    <button wire:click="create()" class="transform hover:scale-95 duration-300 text-sm bg-indigo-500 hover:bg-indigo-600 rounded-full text-white py-2 px-7 focus:outline-none shadow-lg">
                         Bayar Uang Asrama
                     </button>
                 </div>
