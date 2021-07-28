@@ -24,14 +24,9 @@
 
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
-                <p class="text-sm text-gray-700 leading-5">
-                    {!! __('Showing') !!}
-                    <span class="font-medium">{{ $paginator->firstItem() }}</span>
-                    {!! __('to') !!}
-                    <span class="font-medium">{{ $paginator->lastItem() }}</span>
-                    {!! __('of') !!}
-                    <span class="font-medium">{{ $paginator->total() }}</span>
-                    {!! __('results') !!}
+                <p class="text-xs text-gray-600 leading-5">
+                    <span>{!! __('Total data yang ditemukan:') !!}</span>
+                    <span class="font-semibold text-blue-500">{{ $paginator->total() }}</span>
                 </p>
             </div>
 

@@ -388,7 +388,7 @@
     </div>
 </nav>
 
-<div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 bg-gray-100 rounded-br-full shadow-lg">
+<div style="background:color #FFFFFA;" class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 rounded-br-full shadow-lg">
     <div class="w-full flex justify-between h-8 px-0.5">
         <div class="w-1/2 flex-shrink-0 flex items-center">
             <div class="text-gray-500 text-xs mr-2">

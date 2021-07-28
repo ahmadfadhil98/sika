@@ -22,23 +22,26 @@
         {{-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script> --}}
     </head>
-    <body class="font-sans antialiased">
-        <div style="background-color: #F8F8FB;" class="min-h-screen">
-            @livewire('navigation-dropdown')
-            {{-- Heading di murid --}}
 
-                {{ $slot }}
+    <div style="background-color: #FAFAFC;" class="pb-7">
+        <body class="font-sans antialiased">
+            <div class="min-h-screen">
+                @livewire('navigation-dropdown')
+                {{-- Heading di murid --}}
 
-        </div>
+                    {{ $slot }}
 
-        @stack('modals')
+            </div>
 
-        @livewireScripts
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script>
+            @stack('modals')
 
-    </body>
+            @livewireScripts
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            <script src="{{ asset('js/app.js') }}"></script>
+            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script>
+
+        </body>
+    </div>
 
     <div style="background-color: #F8F8FB;">
         <footer>

@@ -29,9 +29,9 @@
 
             <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                 <div>
-                    <p class="text-sm text-gray-700 leading-5">
-                        <span>{!! __('Total data:') !!}</span>
-                        <span class="font-semibold text-blue-700">{{ $paginator->total() }}</span>
+                    <p class="text-xs text-gray-600 leading-5">
+                        <span>{!! __('Total data yang ditemukan:') !!}</span>
+                        <span class="font-semibold text-indigo-500">{{ $paginator->total() }}</span>
                     </p>
                 </div>
 
