@@ -101,15 +101,15 @@
                                 <td class="text-sm px-16 py-3">({{ $key+1 }})</td>
                                 <td> {{$month[$m]}} </td>
                                 @if (count($uas->where('keterangan','LUNAS')->where('month',$m))!=0)
-                                    <td class="text-sm pl-32">
-                                        <button disabled="disabled" class="flex">
-                                            <div class="text-sm text-green-500 font-bold italic">
+                                    <td class="text-sm px-28">
+                                        <div disabled="disabled" class="flex justify-center">
+                                            <div class="text-sm text-green-500 font-semibold italic">
                                                 Lunas
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" class="ml-1.5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
                                               </svg>
-                                        </button>
+                                            </div>
                                     </td>
                                     <td class="text-sm px-3 text-sm">
                                         @php
@@ -122,15 +122,15 @@
                                         @endforeach
                                     </td>
                                 @elseif (count($uas->where('keterangan','BELUM LUNAS')->where('month',$m))!=0)
-                                    <td class="text-sm pl-28">
-                                        <button disabled="disabled" class="flex">
-                                            <div class="text-sm text-red-500 font-bold">
+                                    <td class="text-sm px-24">
+                                        <div disabled="disabled" class="flex bg-red-500 justify-center">
+                                            <div class="text-sm text-white">
                                                 Belum Lunas
                                             </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" class="ml-1.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" class="ml-1.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                               </svg>
-                                        </button>
+                                            </div>
                                     </td>
                                     <td class="text-sm px-3 text-sm">
                                         @php
@@ -143,15 +143,12 @@
                                         @endforeach
                                     </td>
                                 @else
-                                    <td class="text-sm pl-28">
-                                        <button disabled="disabled" class="flex">
-                                            <div class="text-sm text-red-500 font-bold">
-                                                Belum Lunas
+                                    <td class="text-sm px-16">
+                                        <div disabled="disabled" class="flex border border-red-500 justify-center">
+                                            <div class="text-sm text-red-500 font-thin">
+                                                Belum ada pembayaran
                                             </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" class="ml-1.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                              </svg>
-                                        </button>
+                                            </div>
                                     </td>
                                     <td class="text-sm px-3 text-sm">
                                         @foreach ($uasperiode as $up)
