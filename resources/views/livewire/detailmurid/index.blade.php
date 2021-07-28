@@ -152,7 +152,7 @@
                                             </div>
                                             </div>
                                     </td>
-                                    <td class="text-sm px-3 text-sm">
+                                    <td class="text-sm underline">
                                         @foreach ($uasperiode as $up)
                                             Rp {{$up->jumlah}},-
                                         @endforeach
