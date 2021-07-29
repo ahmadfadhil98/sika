@@ -22,6 +22,7 @@ class ReportMasuk extends Component
     public $month=0;
     public $year;
     public $debit=0;
+    public $isReport;
 
     public function render()
     {
@@ -72,6 +73,14 @@ class ReportMasuk extends Component
         }elseif($periode->period==2){
             $this->months = config('central.month2');
         }
+    }
+
+    public function showReport(){
+        $this->isReport = true;
+    }
+
+    public function hideReport(){
+        $this->isReport = false;
     }
 
     public function reportNeraca(){

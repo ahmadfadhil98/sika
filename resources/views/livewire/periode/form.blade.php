@@ -26,7 +26,8 @@
                   </div>
                   <div class="mb-2">
                       <label for="period" class="block py-1">Periode</label>
-                      <input wire:model="period" type="number" name="period" class="shadow appearance-none border w-full py-2 px-3 text-blue-900 text-sm" placeholder="Input periode">
+                      {{ Form::select('period',$semester,null,
+                        ['class' => 'border w-full py-2 px-3 text-blue-900 text-sm focus:outline-none','id' => 'period','wire:model'=>'period','placeholder'=>'- Pilih Semester -'])}}
                       @error('period') <h1 class="text-red-500">{{$message}}</h1>@enderror
                   </div>
               </div>

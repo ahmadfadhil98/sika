@@ -3,9 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Barang;
+use App\Models\Neraca;
 use App\Models\Pengeluaran;
 use App\Models\Periode;
-use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -16,6 +16,7 @@ class ReportKeluar extends Component
     public $month=0;
     public $year;
     public $kredit = 0;
+    public $isReport;
 
     public function render()
     {
@@ -65,6 +66,14 @@ class ReportKeluar extends Component
         }elseif($periode->period==2){
             $this->months = config('central.month2');
         }
+    }
+
+    public function showReport(){
+        $this->isReport = true;
+    }
+
+    public function hideReport(){
+        $this->isReport = false;
     }
 
     public function reportNeraca(){
