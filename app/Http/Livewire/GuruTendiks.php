@@ -32,6 +32,10 @@ class GuruTendiks extends Component
     }
 
     public function hideModal() {
+
+        $this->gurutendikId = '';
+        $this->name = '';
+        $this->genre = '';
         $this->isOpen = false;
     }
 
@@ -57,10 +61,6 @@ class GuruTendiks extends Component
         }
 
         $this->hideModal();
-
-        $this->gurutendikId = '';
-        $this->name = '';
-        $this->genre = '';
     }
 
     public function edit($id){

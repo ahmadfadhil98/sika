@@ -45,6 +45,10 @@ class DetailKelas extends Component
     }
 
     public function hideModal() {
+        $this->dkelas_id = '';
+        $this->periode_id = '';
+        $this->kelas_id = '';
+        $this->walas_id = '';
         $this->isOpen = false;
     }
 
@@ -73,12 +77,6 @@ class DetailKelas extends Component
 
 
         $this->hideModal();
-
-
-        $this->dkelas_id = '';
-        $this->periode_id = '';
-        $this->kelas_id = '';
-        $this->walas_id = '';
     }
 
     public function edit($id){

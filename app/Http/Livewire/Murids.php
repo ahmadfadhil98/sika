@@ -31,6 +31,10 @@ class Murids extends Component
     }
 
     public function hideModal() {
+        $this->muridId = '';
+        $this->nis = '';
+        $this->name = '';
+        $this->genre = '';
         $this->isOpen = false;
     }
 
@@ -59,10 +63,7 @@ class Murids extends Component
 
         $this->hideModal();
 
-        $this->muridId = '';
-        $this->nis = '';
-        $this->name = '';
-        $this->genre = '';
+
     }
 
     public function edit($id){

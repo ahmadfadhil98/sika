@@ -33,6 +33,10 @@ class Periodes extends Component
     }
 
     public function hideModal() {
+
+        $this->periodeId = '';
+        $this->year = '';
+        $this->period = '';
         $this->isOpen = false;
     }
 
@@ -57,10 +61,6 @@ class Periodes extends Component
         }
 
         $this->hideModal();
-
-        $this->periodeId = '';
-        $this->year = '';
-        $this->period = '';
     }
 
     public function edit($id){

@@ -106,6 +106,8 @@ class AnggotaKelas extends Component
     }
 
     public function hideModal() {
+        $this->dmurid_id = '';
+        $this->anggota = '';
         $this->isOpen = false;
     }
 

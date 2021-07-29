@@ -29,6 +29,9 @@ class UasPeriodes extends Component
 
     public function hideModal() {
         $this->isOpen = false;
+        $this->muasId = '';
+        $this->periode_id = '';
+        $this->jumlah = '';
     }
 
     public function store(){
@@ -56,9 +59,6 @@ class UasPeriodes extends Component
 
         session()->flash('info', $this->muasId ? 'Standar Uang Asrama Update Successfully' : 'Standar Uang Asrama Created Successfully' );
 
-        $this->muasId = '';
-        $this->periode_id = '';
-        $this->jumlah = '';
     }
 
     public function edit($id){

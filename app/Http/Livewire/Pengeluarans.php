@@ -36,7 +36,14 @@ class Pengeluarans extends Component
     }
 
     public function hideModal() {
+        $this->spendId = '';
+        $this->jumlah = '';
+        $this->harga = '';
+        $this->tgl = '';
+        $this->barang_id = '';
+        $this->keterangan = '';
         $this->isOpen = false;
+
     }
 
     public function store(){
@@ -69,12 +76,7 @@ class Pengeluarans extends Component
 
         session()->flash('info', $this->spendId ? 'Pengeluaran Update Successfully' : 'Pengeluaran Created Successfully' );
 
-        $this->spendId = '';
-        $this->jumlah = '';
-        $this->harga = '';
-        $this->tgl = '';
-        $this->barang_id = '';
-        $this->keterangan = '';
+
     }
 
     public function edit($id){

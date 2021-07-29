@@ -6,18 +6,18 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <button class="hover:underline text-gray-600 text-xs focus:outline-none ml-1.5">
+                <a href="/report_masuk" class="hover:underline text-gray-600 text-xs focus:outline-none ml-1.5">
                     Laporan Uang Masuk
-                </button>
+                </a>
                 <div class="text-gray-300 text-sm font-thin mx-2 -mt-0.5">
                     |
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <button class="hover:underline text-gray-600 text-xs focus:outline-none ml-1.5">
+                <a href="/report_keluar" class="hover:underline text-gray-600 text-xs focus:outline-none ml-1.5">
                     Laporan Uang Keluar
-                </button>
+                </a>
             </div>
             <div class="w-1/2 grid justify-end">
                 <div class="flex text-gray-600">
@@ -25,9 +25,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                       </svg>
-                    <button class="hover:underline focus:outline-none text-xs ml-1.5 mr-1">
+                    <a href="/tagihan" class="hover:underline focus:outline-none text-xs ml-1.5 mr-1">
                         Lihat Tagihan Per Kelas
-                    </button>
+                    </a>
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign text-gray-600"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                 </div>
             </div>

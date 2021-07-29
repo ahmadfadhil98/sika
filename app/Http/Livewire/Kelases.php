@@ -30,6 +30,8 @@ class Kelases extends Component
     }
 
     public function hideModal() {
+        $this->kelasId = '';
+        $this->name = '';
         $this->isOpen = false;
     }
 
@@ -55,8 +57,6 @@ class Kelases extends Component
 
         session()->flash('info', $this->kelasId ? 'Kelas Update Successfully' : 'Kelas Created Successfully' );
 
-        $this->kelasId = '';
-        $this->name = '';
     }
 
     public function edit($id){

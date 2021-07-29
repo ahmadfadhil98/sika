@@ -8,8 +8,8 @@ use Livewire\WithPagination;
 use App\Models\AsramaPeriode;
 use App\Models\Asrama;
 use App\Models\Periode;
-use DB;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 
 class DetailAsrama extends Component
 {
@@ -55,6 +55,11 @@ class DetailAsrama extends Component
     }
 
     public function hideModal() {
+
+        $this->dasrama_id = '';
+        $this->periode_id = '';
+        $this->asrama_id = '';
+        $this->binsis_id = '';
         $this->isOpen = false;
     }
 
@@ -84,11 +89,6 @@ class DetailAsrama extends Component
 
         $this->hideModal();
 
-
-        $this->dasrama_id = '';
-        $this->periode_id = '';
-        $this->asrama_id = '';
-        $this->binsis_id = '';
     }
 
     public function edit($id){

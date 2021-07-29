@@ -26,6 +26,10 @@ class Barangs extends Component
     }
 
     public function hideModal() {
+        $this->barangId = '';
+        $this->name = '';
+        $this->satuan = '';
+        $this->jenis = '';
         $this->isOpen = false;
     }
 
@@ -55,11 +59,6 @@ class Barangs extends Component
 
         $this->hideModal();
 
-
-        $this->barangId = '';
-        $this->name = '';
-        $this->satuan = '';
-        $this->jenis = '';
     }
 
     public function edit($id){

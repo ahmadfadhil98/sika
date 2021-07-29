@@ -83,6 +83,12 @@ class DetailMurids extends Component
     }
 
     public function hideModal() {
+        $this->bulan = '';
+        $this->tgl = '';
+        $this->keterangan1 = '';
+        $this->keterangan2 = '';
+        $this->jumlah = '';
+        $this->dinfoId = '';
         $this->isOpen = false;
     }
 
@@ -189,13 +195,6 @@ class DetailMurids extends Component
         }
 
         session()->flash('info', 'Uang Asrama Oke' );
-
-        $this->bulan = '';
-        $this->tgl = '';
-        $this->keterangan1 = '';
-        $this->keterangan2 = '';
-        $this->jumlah = '';
-        $this->dinfoId = '';
 
         $this->hideModal();
     }
