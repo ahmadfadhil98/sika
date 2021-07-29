@@ -113,7 +113,7 @@
                                               </svg>
                                             </div>
                                     </td>
-                                    <td class="text-sm px-3 text-sm">
+                                    <td class="text-sm underline text-green-500">
                                         @php
                                             $jmlh = $uas->where('month',$m);
                                         @endphp
@@ -134,7 +134,7 @@
                                               </svg>
                                             </div>
                                     </td>
-                                    <td class="text-sm px-3 text-sm">
+                                    <td class="text-sm underline">
                                         @php
                                             $jmlh = $uas->where('month',$m);
                                         @endphp
@@ -152,7 +152,7 @@
                                             </div>
                                             </div>
                                     </td>
-                                    <td class="text-sm underline">
+                                    <td class="text-sm underline text-red-500">
                                         @foreach ($uasperiode as $up)
                                             Rp {{$up->jumlah}},-
                                         @endforeach
