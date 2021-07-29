@@ -3,9 +3,9 @@
 
         <div class="w-full mt-3 px-10 flex">
             <div class="w-1/2 flex">
-                <button class="hover:underline text-gray-500 text-xs focus:outline-none mr-1.5">
+                <a href="{{route('dashboard')}}" class="hover:underline text-gray-500 text-xs focus:outline-none mr-1.5">
                     Home
-                </button>
+                </a>
                 <div class="text-gray-300 mr-1.5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
                 </div>
@@ -18,7 +18,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                       </svg>
-                    <button class="focus:outline-none hover:text-indigo-500 text-xs font-semibold underline">
+                    <button onClick="window.location.reload();" class="focus:outline-none hover:text-indigo-500 text-xs font-semibold underline">
                         Pembayaran Peserta Didik Lain ?
                     </button>
                 </div>
@@ -29,7 +29,7 @@
             <div class="flex">
                 <div class="w-full md:w-1/2">
                     <div class="text-xl pt-2 font-extrabold text-blue-900">
-                        Info Pembayaran Uang Asrama
+                        <a href="{{route('dashboard')}}">Info Pembayaran Uang Asrama</a>
                     </div>
                     <div class="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" class="text-indigo-500 mr-1.5 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
