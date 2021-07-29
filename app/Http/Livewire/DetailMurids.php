@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\Angsuran;
 use App\Models\AsramaPeriode;
 use App\Models\DetailMurid;
+use App\Models\GuruTendik;
+use App\Models\Kelas;
 use App\Models\KelasPeriode;
 use App\Models\Murid;
 use App\Models\Periode;
@@ -50,7 +52,11 @@ class DetailMurids extends Component
             $period = $periodes->period;
         }
         $periode = Periode::select('id', DB::raw("CONCAT(if(period=1,concat(year-1,'/',year),concat(year,'/',year+1)),'-',if(period=1,'Semester 2','Semester 1')) AS semester"))->orderBy('id','desc')->pluck('semester','id');
-
+        $namakelas = Kelas::pluck('name','id');
+        $walas = GuruTendik::pluck('name','id');
+        $kelasperiode_walas = KelasPeriode::pluck('walas_id','id');
+        $kelasperiode_kelas = KelasPeriode::pluck('kelas_id','id');
+        $nis = Murid::pluck('nis','id');
         if($period==1){
             $months = [1,2,3,4,5,6];
             $month = config('central.month1');
@@ -64,6 +70,12 @@ class DetailMurids extends Component
         $murid = Murid ::pluck('name','id');
         return view('livewire.detailmurid.index',[
             'uas' => $uas,
+            'namakelas' => $namakelas,
+            'walas' => $walas,
+            'kelas' => $kelas,
+            'nis' => $nis,
+            'kelasperiode_walas' => $kelasperiode_walas,
+            'kelasperiode_kelas' => $kelasperiode_kelas,
             'periodes' => $periodes,
             'periode' => $periode,
             'month' => $month,
