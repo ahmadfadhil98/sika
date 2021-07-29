@@ -113,7 +113,7 @@
                                               </svg>
                                             </div>
                                     </td>
-                                    <td class="text-sm font-semibold underline line-through text-green-500">
+                                    <td class="text-sm font-semibold line-through text-green-500">
                                         @php
                                             $jmlh = $uas->where('month',$m);
                                         @endphp
