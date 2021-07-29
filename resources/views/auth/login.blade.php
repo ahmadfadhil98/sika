@@ -15,9 +15,9 @@
                             <div class="mt-1 flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe text-indigo-300"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                                 </svg>
-                                <button class="hover:underline focus:outline-none text-xs font-thin text-gray-400 ml-2">
+                                <a href="https://sman2harau.sch.id/" class="hover:underline focus:outline-none text-xs font-thin text-gray-400 ml-2">
                                     www.sman2harau.com
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
