@@ -67,7 +67,11 @@
                                 Rp{{number_format($suas)}},-
                             @else
                                 @foreach ($ua as $u)
-                                    Rp{{number_format($suas-$u->jumlah)}},-
+                                    @if ($u->keterangan=='LUNAS')
+                                        LUNAS
+                                    @else
+                                        Rp{{number_format($suas-$u->jumlah)}},-
+                                    @endif
                                 @endforeach
                             @endif
                         </td>

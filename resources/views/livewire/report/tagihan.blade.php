@@ -40,7 +40,6 @@
                         <tbody>
                                 @foreach($murids as  $key=>$mur)
                                 <tr class="border border-gray-100">
-
                                     <th class="text-sm py-3">{{ $murid[$mur->murid_id] }}</th>
                                             @foreach ($months as $m)
                                                 @php
@@ -51,7 +50,11 @@
                                                         Rp{{number_format($suas)}},-
                                                     @else
                                                         @foreach ($ua as $u)
+                                                                @if ($u->keterangan=='LUNAS')
+                                                                    LUNAS
+                                                                @else
                                                                 Rp{{number_format($suas-$u->jumlah)}},-
+                                                                @endif
                                                         @endforeach
                                                     @endif
                                                 </th>
