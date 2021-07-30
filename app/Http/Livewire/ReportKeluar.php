@@ -41,7 +41,8 @@ class ReportKeluar extends Component
         $satuan = Barang::pluck('satuan','id');
         $peng =  Pengeluaran::pluck('barang_id','id');
         $jenis = Barang::pluck('jenis','id');
-        $barangs = Barang::where('jenis','!=',2)->get();
+        $barangs = Barang::where('jenis','!=',2)->orderBy('id')->get();
+        // dd($barangs);
         return view('livewire.report.report-keluar',[
             'periode' => $periode,
             'tgl' => $tgl,
