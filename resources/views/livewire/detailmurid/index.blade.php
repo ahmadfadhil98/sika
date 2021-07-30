@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div class="shadow-xl rounded-t-lg px-10 pt-4 pb-8 ">
+        <div class="shadow-xl rounded-t-lg px-10 pt-5 pb-8 ">
             <div class="flex">
                 <div class="w-full md:w-1/2">
                     <div class="text-xl pt-2 font-extrabold text-blue-900">

@@ -33,7 +33,8 @@
             </div>
         </div>
 
-                <div class="shadow-xl rounded-t-lg px-10 py-4">
+            {{-- Untuk Body --}}
+                <div class="shadow-xl rounded-t-lg px-10 py-5">
 
                     <div class="flex mb-4">
                         <div class="w-full -mt-0.5 pb-2 text-center">
@@ -48,7 +49,7 @@
                                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                                             </svg>
                                         </div>
-                                        <input wire:model="search" type="text" class="w-full py-1 pl-2 bg-white text-sm rounded-tr-full rounded-br-full focus:outline-none border-t border-r border-b" placeholder="Ketik untuk mencari...">
+                                        <input wire:model="search" type="text" class="w-full py-1 pl-2 bg-white text-sm rounded-tr-full rounded-br-full focus:outline-none border-t border-r border-b" placeholder="Cari peserta didik...">
                                     </div>
                                 </div>
                             </div>
@@ -100,6 +101,6 @@
 
                 </div>
 
-            </div>
+    </div>
 </div>
 

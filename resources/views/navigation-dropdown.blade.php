@@ -390,13 +390,38 @@
 
 <div style="background:color #FFFFFA;" class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 rounded-br-full shadow-lg">
     <div class="w-full flex justify-between h-8 px-0.5">
-        <div class="w-1/2 flex-shrink-0 flex items-center">
+        <div class="w-1/3 flex-shrink-0 flex items-center">
             <div class="text-gray-500 text-xs mr-2">
                 Sistem Informasi Keuangan Asrama (SIKA) SMA Negeri 2 Harau
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pocket text-indigo-500"><path d="M4 3h16a2 2 0 0 1 2 2v6a10 10 0 0 1-10 10A10 10 0 0 1 2 11V5a2 2 0 0 1 2-2z"></path><polyline points="8 10 12 14 16 10"></polyline></svg>
         </div>
-        <div class="w-1/2 flex-shrink-0 flex justify-end items-center">
+        <div class="w-1/3 flex-shrink-0 flex justify-center items-center">
+            <div class="transform hover:scale-95 duration-300">
+                <a href="{{route('dashboard')}}" class="flex focus:outline-none text-xs">
+                    <span class="z-10 flex bg-indigo-500 px-1 rounded-full mr-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign text-indigo-100"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </span>
+                    <span class="z-0 border-t border-b border-r border-indigo-200 rounded-r-full pl-4 pr-3 -ml-3 text-indigo-600 bg-indigo-50">
+                        Pemasukan +
+                    </span>
+                </a>
+            </div>
+            <div class="text-gray-300 text-sm font-thin mx-2 -mt-0.5 mx-2.5">
+                |
+            </div>
+            <div class="transform hover:scale-95 duration-300">
+                <a href="{{route('pengeluarans')}}" class="flex focus:outline-none text-xs">
+                    <span class="z-10 flex bg-red-500 px-1 rounded-full mr-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign text-red-100"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </span>
+                    <span class="z-0 border-t border-b border-r border-red-200 rounded-r-full pl-4 pr-3 -ml-3 text-red-600 bg-red-50">
+                        Pengeluaran -
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="w-1/3 flex-shrink-0 flex justify-end items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-gray-500 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
