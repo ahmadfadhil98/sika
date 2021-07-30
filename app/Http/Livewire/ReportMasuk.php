@@ -94,8 +94,10 @@ class ReportMasuk extends Component
 
         $cek = Neraca::where('periode_id',$this->period)->where('month',$this->month)->first();
 
-        if($cek){
+        if($ner){
             $debt = $ner->uang_masuk-$ner->pengeluaran;
+        }else{
+            $debt = 0;
         }
         // dd($debt);
         if($cek){
