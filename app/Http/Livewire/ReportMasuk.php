@@ -93,7 +93,9 @@ class ReportMasuk extends Component
         }
 
         $cek = Neraca::where('periode_id',$this->period)->where('month',$this->month)->first();
-        $debt = $ner->uang_masuk-$ner->pengeluaran;
+        if($ner){
+            $debt = $ner->uang_masuk-$ner->pengeluaran;
+        }
         // dd($debt);
         if($cek){
             $cek->update([
@@ -107,6 +109,9 @@ class ReportMasuk extends Component
                 'uang_masuk' => $this->debit
             ]);
             session()->flash('info','Uang Masuk telah dimasukkan ke Neraca di bulan '.$this->months[$this->month]);
+
         }
+
+        $this->hideReport();
     }
 }
