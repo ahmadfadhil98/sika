@@ -3,24 +3,30 @@
 
         <div class="w-full mt-3 px-10 flex">
             <div class="w-1/2 flex">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <a href="{{route('report_masuk')}}" class="hover:underline text-gray-600 text-xs focus:outline-none ml-1.5">
-                    Laporan Uang Masuk
+                <a href="{{route('dashboard')}}" class="hover:underline text-gray-500 text-xs focus:outline-none mr-1.5">
+                    Home
                 </a>
-                <div class="text-gray-300 text-sm font-thin mx-2 -mt-0.5">
-                    |
+                <div class="text-gray-300 mr-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <a href="{{route('report_keluar')}}" class="hover:underline text-gray-600 text-xs focus:outline-none ml-1.5">
-                    Laporan Uang Keluar
-                </a>
+                <button onClick="window.location.reload();" class="focus:outline-none hover:underline text-indigo-500 font-semibold text-xs">
+                    Pengeluaran Uang Asrama
+                </button>
             </div>
             <div class="w-1/2 grid justify-end">
                 <div class="flex text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <a href="{{route('report_masuk')}}" class="mr-3 hover:underline text-gray-600 text-xs focus:outline-none ml-1.5">
+                        Laporan Uang Masuk
+                    </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <a href="{{route('report_keluar')}}" class="mr-3 hover:underline text-gray-600 text-xs focus:outline-none ml-1.5">
+                        Laporan Uang Keluar
+                    </a>
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -107,8 +113,8 @@
                                 <td class="text-sm">{{ date('d-m-Y', strtotime($spend->tgl)) }}</td>
 
                                 <td class="text-sm">{{ $barangs[$spend->barang_id] }}</td>
-                                <td class="text-sm text-left pl-8">{{ $spend->jumlah }} {{ $stuan[$spend->barang_id] }}</td>
-                                <td class="text-sm font-semibold text-left pl-11">Rp {{ $spend->harga }},-</td>
+                                <td class="text-sm text-left pl-8">{{number_format($spend->jumlah)}} {{ $stuan[$spend->barang_id] }}</td>
+                                <td class="text-sm font-semibold text-left pl-11">Rp {{number_format($spend->harga)}},-</td>
                                 <td>
                                     <div class="flex-shrink-0 flex justify-center items-center">
                                         <button wire:click="edit({{ $spend->id }})" class="transform hover:scale-95 duration-300 text-sm text-gray-600 items-center focus:outline-none flex hover:underline hover:text-indigo-500">

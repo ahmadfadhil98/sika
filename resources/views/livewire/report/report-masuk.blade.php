@@ -3,15 +3,30 @@
 
         <div class="w-full mt-3 px-10 flex">
             <div class="w-1/2 flex">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <a href="{{route('report_keluar')}}" class="hover:underline text-gray-600 text-xs focus:outline-none ml-1.5">
-                    Laporan Uang Keluar
+                <a href="{{route('dashboard')}}" class="hover:underline text-gray-500 text-xs focus:outline-none mr-1.5">
+                    Home
                 </a>
+                <div class="text-gray-300 mr-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+                </div>
+                <button onClick="window.location.reload();" class="focus:outline-none hover:underline text-indigo-500 font-semibold text-xs">
+                    Laporan Uang Masuk
+                </button>
             </div>
             <div class="w-1/2 grid justify-end">
-                <div class="flex text-gray-600">
+                <div class="flex text-gray-600 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <a href="{{route('report_masuk')}}" class="mr-3 hover:underline text-gray-600 text-xs focus:outline-none ml-1.5">
+                        Laporan Uang Masuk
+                    </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <a href="{{route('report_keluar')}}" class="mr-3 hover:underline text-gray-600 text-xs focus:outline-none ml-1.5">
+                        Laporan Uang Keluar
+                    </a>
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -51,7 +66,7 @@
                         </div>
                     </div>
                         @endif
-                        @if ($this->period!=0&&$this->month!=0)
+                @if ($this->period!=0&&$this->month!=0)
 
                     <div class="flex w-full">
                         <div class="w-full text-left">
@@ -71,12 +86,11 @@
                         @endif
             </div>
 
-
                     @if($isReport)
                          @include('livewire.report.confirmation_report')
                     @endif
-                    @if($tgl!=[])
 
+                    @if($tgl!=[])
                     <table class="table-fixed w-full text-center" id="myTable">
                         <thead style="background-color: #262466;">
                             <tr>

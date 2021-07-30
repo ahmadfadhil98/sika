@@ -53,7 +53,7 @@
                               Rp
                             </span>
                           </div>
-                          <input type="number" wire:change="rupiahj()" wire:model="harga" name="harga" id="harga" class="focus:outline-none block w-full py-2 pr-3 pl-10 sm:text-sm border-gray-300" placeholder="  Input harga pembayaran">
+                          <input type="number" wire:change="rupiahj()" wire:model="harga" name="harga" id="harga" class="focus:outline-none block w-full py-2 pr-3 pl-10 sm:text-sm border-gray-300" placeholder="Input harga pembayaran">
                         </div>
                         @error('harga') <h1 class="text-red-500">{{$message}}</h1>@enderror
                     </div>

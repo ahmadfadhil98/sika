@@ -44,7 +44,7 @@
                         <table class="mt-2 px-3">
                             <tr>
                                 <td class="px-3 text-sm">Jumlah Pembayaran</td>
-                                <td class="px-3 text-sm">: <b>Rp {{$a->jumlah}},-</b></td>
+                                <td class="px-3 text-sm">: <b>Rp {{number_format($a->jumlah)}},-</b></td>
                             </tr>
                             <tr>
                                 <td class="px-3 text-sm">Keterangan</td>
