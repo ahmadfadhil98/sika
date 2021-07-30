@@ -36,7 +36,7 @@
             {{-- Untuk Body --}}
                 <div class="shadow-xl rounded-t-lg px-10 py-5">
 
-                    <div class="flex mb-4">
+                    <div class="mb-4">
                         <div class="w-full -mt-0.5 pb-2 text-center">
                             <div class="text-xl font-extrabold text-blue-900">
                                 Pembayaran Uang Asrama
@@ -55,6 +55,8 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- Tabel --}}
 
                     <table class="table-fixed w-full text-center">
                         <thead style="background-color: #262466;">
