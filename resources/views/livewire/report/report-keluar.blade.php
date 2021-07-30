@@ -139,7 +139,7 @@
                                         @endif
                                     @endforeach
                                 @endif
-                                <td class="text-xs border border-gray-100 text-gray-700 py-2"> {{ $barang[$t->barang_id]}} {{$t->jumlah}} {{ $satuan[$t->barang_id]}}
+                                <td class="text-xs border border-gray-100 text-gray-700 py-2"> {{ $barang[$t->barang_id]}} {{number_format($t->jumlah)}} {{ $satuan[$t->barang_id]}}
                                 </td>
                                 <td class="text-xs border border-gray-100 text-gray-700 py-2">
                                     @if ( $jenis[$peng[$t->id]] == 2 )
@@ -153,7 +153,7 @@
                                     @endif
                                 </td>
                                 @endforeach
-                                <td class="text-xs font-semibold border border-gray-100 text-gray-700 py-2">Rp {{number_format($t->harga)}}
+                                <td class="text-xs text-left pl-0.5 font-semibold border border-gray-100 text-gray-700 py-2">Rp {{number_format($t->harga)}}
                                 </td>
                             </tr>
                             @php
@@ -182,7 +182,7 @@
                                         @endforeach
                                     </th>
                                 @endforeach
-                                <th class="text-xs hover:underline bg-red-50 py-2 w-auto">
+                                <th class="text-xs text-left pl-0.5 hover:underline bg-red-50 py-2 w-auto">
                                     Rp {{number_format($kredit)}}
                                 </th>
                             </tr>
