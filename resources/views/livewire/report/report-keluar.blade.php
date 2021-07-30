@@ -55,9 +55,9 @@
                 </div>
                 <div class="text-center mt-4">
                     {{ Form::select('period',$periode,null,
-                    ['class' => 'transform hover:scale-95 duration-300 text-sm font-semibold text-gray-600 py-1.5 pl-2 pr-1 bg-indigo-50 border border-indigo-300 hover:bg-indigo-100 rounded-md shadow-inner focus:outline-none','id' => 'period','wire:change'=>'month()','wire:model'=>'period','placeholder'=>'- Pilih semester -'])}}
+                    ['class' => 'transform hover:scale-95 duration-300 text-sm font-semibold text-gray-600 py-1.5 pl-2 pr-1 bg-red-50 border border-red-300 hover:bg-red-100 rounded-md shadow-inner focus:outline-none','id' => 'period','wire:change'=>'month()','wire:model'=>'period','placeholder'=>'- Pilih semester -'])}}
                     {{ Form::select('month',$months,null,
-                    ['class' => 'transform hover:scale-95 duration-300 text-sm font-semibold text-gray-600 py-1.5 pl-2 pr-10 bg-indigo-50 border border-indigo-300 hover:bg-indigo-100 rounded-md shadow-inner focus:outline-none','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
+                    ['class' => 'transform hover:scale-95 duration-300 text-sm font-semibold text-gray-600 py-1.5 pl-2 pr-10 bg-red-50 border border-red-300 hover:bg-red-100 rounded-md shadow-inner focus:outline-none','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
                 </div>
 
                 @if ($this->period!=0&&$this->month!=0)
@@ -163,18 +163,18 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan=2 class="bg-indigo-50 text-xs font-bold py-3">
+                                <td colspan=2 class="bg-red-50 text-xs font-bold py-3">
                                     Jumlah Uang Keluar
                                 </td>
                                 @foreach ($kredit1 as $k1)
-                                    <th class="text-xs bg-indigo-50 py-2 w-auto">
+                                    <th class="text-xs bg-red-50 py-2 w-auto">
                                         @if ($k1->kredit)
                                             {{number_format($k1->kredit)}}
                                         @endif
                                     </th>
                                 @endforeach
                                 @foreach ($barangs as $b)
-                                    <th class="text-xs bg-indigo-50 py-2 w-auto">
+                                    <th class="text-xs bg-red-50 py-2 w-auto">
                                         @foreach ($kredit2 as $k2)
                                             @if ( $k2->barang_id == $b->id )
                                                 {{number_format($k2->kredit)}}
@@ -182,7 +182,7 @@
                                         @endforeach
                                     </th>
                                 @endforeach
-                                <th class="text-xs hover:underline bg-indigo-50 py-2 w-auto">
+                                <th class="text-xs hover:underline bg-red-50 py-2 w-auto">
                                     Rp {{number_format($kredit)}}
                                 </th>
                             </tr>
