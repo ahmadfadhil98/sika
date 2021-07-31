@@ -66,7 +66,7 @@
                                     Rp
                                     </span>
                                 </div>
-                            <input type="number" wire:model="jumlah" name="jumlah" id="jumlah" class="border border-gray-200 bg-white w-full rounded-md py-2 text-gray-100 focus:outline-none text-xs font-thin mt-1 placeholder-gray-400 block pr-3 pl-10 sm:text-sm" placeholder="...">
+                            <input type="number" wire:model="jumlah" name="jumlah" id="jumlah" class="border border-gray-200 bg-white w-full rounded-md py-2 text-gray-600 focus:outline-none text-xs font-thin mt-1 placeholder-gray-400 block pr-3 pl-10 sm:text-sm" placeholder="...">
                             </div>
                             @error('jumlah') <h1 class="text-red-500">{{$message}}</h1>@enderror
                         </div>

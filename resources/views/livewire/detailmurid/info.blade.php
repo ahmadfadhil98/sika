@@ -1,13 +1,13 @@
 <div class="fixed z-10 inset-0 overflow-y-auto">
     <div class="flex items-end justify-center min-h-screen pt-4 px-5 pb-20 text-center sm:block sm:p-0">
 
-      <div class="fixed inset-0 transition-opacity">
+    <div class="fixed inset-0 transition-opacity">
         <div class="bg-gray-400 absolute inset-0 opacity-50"></div>
-      </div>
+    </div>
 
-      <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
 
-      <div class="bg-gray-100 inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+    <div class="bg-gray-100 inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
 
             <div class="bg-gray-100 px-6 py-8 rounded-t-lg">
                 <div class="grid justify-center">

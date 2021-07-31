@@ -60,6 +60,18 @@
                     ['class' => 'transform hover:scale-95 duration-300 text-sm font-semibold text-gray-600 py-1.5 pl-2 pr-10 bg-red-50 border border-red-300 hover:bg-red-100 rounded-md shadow-inner focus:outline-none','id' => 'month','wire:model'=>'month','placeholder'=>'- Pilih bulan -'])}}
                 </div>
 
+                @if(session()->has('info'))
+                    <div class="w-full grid justify-center items-center mt-3">
+                        <div class="flex items-center text-green-500 text-xs">
+                            <span>Berhasil (</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" class="ml-1 text-green-500 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>)</span>
+                        </div>
+                    </div>
+                @endif
+
                 @if ($this->period!=0&&$this->month!=0)
 
                     <div class="flex w-full">
@@ -82,21 +94,6 @@
 
                     @if($isReport)
                          @include('livewire.report.confirmation_report')
-                    @endif
-                    @if(session()->has('info'))
-                        <div class="bg-green-500 mb-4 py-2 px-6">
-                            <div>
-                                <h1 class="text-white text-sm">{{ session('info') }}</h1>
-                            </div>
-                        </div>
-
-                    @endif
-                    @if(session()->has('delete'))
-                        <div class="bg-red-700 mb-4 py-2 px-6">
-                            <div>
-                                <h1 class="text-white text-sm">{{ session('delete') }}</h1>
-                            </div>
-                        </div>
                     @endif
 
                     @if ($tgl!=[])

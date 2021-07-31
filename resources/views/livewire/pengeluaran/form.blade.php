@@ -43,7 +43,7 @@
                         <div class="mt-3">
                             <label for="jumlah" class="mb-1 block text-xs font-semibold text-gray-400">Jumlah</label>
                             <div class="relative">
-                            <input type="number" wire:model="jumlah" name="jumlah" id="jumlah" class="bg-white border border-gray-200 focus:outline-none rounded-md block w-full py-2 pl-3 pr-16 sm:text-sm text-gray-600 placeholder-gray-600" wire:change="rupiahh()" placeholder=" Input jumlah">
+                            <input type="number" wire:model="jumlah" name="jumlah" id="jumlah" class="bg-white border border-gray-200 focus:outline-none rounded-md block w-full py-2 pl-3 pr-16 sm:text-sm text-gray-600 placeholder-gray-400" wire:change="rupiahh()" placeholder=" Input jumlah">
                             <div class="absolute inset-y-0 right-0 flex items-center">
                                 <span class="text-gray-600 sm:text-sm pr-3">
                                     {{$satuan}}
@@ -60,7 +60,7 @@
                                 Rp
                                 </span>
                             </div>
-                            <input type="number" wire:change="rupiahj()" wire:model="harga" name="harga" id="harga" class="border border-gray-200 bg-white w-full rounded-md py-2 text-gray-100 focus:outline-none text-xs font-thin mt-1 placeholder-gray-400 block pr-3 pl-10 sm:text-sm" placeholder="...">
+                            <input type="number" wire:change="rupiahj()" wire:model="harga" name="harga" id="harga" class="border border-gray-200 bg-white w-full rounded-md py-2 text-gray-600 focus:outline-none text-xs font-thin mt-1 placeholder-gray-400 block pr-3 pl-10 sm:text-sm" placeholder="...">
                             </div>
                             @error('harga') <h1 class="text-red-500">{{$message}}</h1>@enderror
                         </div>

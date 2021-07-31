@@ -206,7 +206,7 @@ class DetailMurids extends Component
             }
         }
 
-        session()->flash('info', 'Uang Asrama Oke' );
+        session()->flash('info','');
 
         $this->hideModal();
     }

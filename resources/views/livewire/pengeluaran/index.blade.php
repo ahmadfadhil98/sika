@@ -73,22 +73,29 @@
                     <div class="w-1/3"></div>
                 </div>
 
-                    @if(session()->has('info'))
-                        <div class="bg-green-500 mb-4 py-2 px-6">
-                            <div>
-                                <h1 class="text-white text-sm">{{ session('info') }}</h1>
+                        @if(session()->has('info'))
+                            <div class="w-full grid justify-center items-center -mt-3 mb-3">
+                                <div class="flex items-center text-green-500 text-xs">
+                                    <span>Berhasil (</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" class="ml-1 text-green-500 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    <span>)</span>
+                                </div>
                             </div>
-                        </div>
+                        @endif
 
-                    @endif
-
-                      @if(session()->has('delete'))
-                        <div class="bg-red-700 mb-4 py-2 px-6">
-                            <div>
-                                <h1 class="text-white text-sm">{{ session('delete') }}</h1>
+                        @if(session()->has('delete'))
+                            <div class="w-full grid justify-center items-center -mt-3 mb-3">
+                                <div class="flex items-center text-red-500 text-xs">
+                                    <span>Berhasil (</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" class="ml-1 mr-0.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                      </svg>
+                                    <span>)</span>
+                                </div>
                             </div>
-                        </div>
-                    @endif
+                        @endif
 
                     <table class="table-fixed w-full text-center">
                         <thead style="background-color: #262466;">
