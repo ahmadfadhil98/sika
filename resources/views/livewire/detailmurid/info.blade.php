@@ -48,8 +48,10 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="text-center">
-                                    <button disabled="disabled" class="text-sm bg-red-500 text-white py-2 px-6">{{$ketuas}}</button>
+                                <div disabled="disabled" class="px-3">
+                                    <div class="text-sm text-red-500 font-semibold underline">
+                                        BELUM LUNAS
+                                    </div>
                                 </div>
                             @endif
                         @endif
@@ -101,16 +103,11 @@
                         </div>
                     @endforeach
 
-
-
                 @else
-                <div class="border py-3 text-center">
+                <div class="text-center">
                     <table>
-                        <div class="text-lg font-bold underline">
-                            Rp 0,-
-                        </div>
-                        <div class="mt-1.5 text-sm">
-                            Belum ada pembayaran
+                        <div class="mt-7 text-sm text-gray-600">
+                            "Belum ada pembayaran"
                         </div>
                     </table>
                 </div>
