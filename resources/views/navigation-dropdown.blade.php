@@ -33,13 +33,15 @@
         <div class="flex w-full justify-between h-20">
             <div class="flex w-1/2">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <img width="56" class="object-scale-down" src="https://sman2harau.sch.id/wp-content/uploads/2021/02/Logo-SMA-Negeri-2-Harau.png" alt="Workflow">
-                    <div class="-mt-0.5 pl-4">
-                        <div class="text-xl text-gray-200 font-bold">SMA Negeri 2 Harau</div>
-                        <div class="text-xs text-gray-200 font-thin -mt-0.5">(Boarding School)</div>
+                <a class="flex-shrink-0 flex items-center transform hover:scale-95 duration-300" href="{{ route('dashboard') }}">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img width="56" class="object-scale-down" src="https://sman2harau.sch.id/wp-content/uploads/2021/02/Logo-SMA-Negeri-2-Harau.png" alt="Workflow">
+                        <div class="-mt-0.5 pl-4">
+                            <div class="text-xl text-gray-200 font-bold">SMA Negeri 2 Harau</div>
+                            <div class="text-xs text-gray-200 font-thin -mt-0.5">(Boarding School)</div>
+                        </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex px-2">
