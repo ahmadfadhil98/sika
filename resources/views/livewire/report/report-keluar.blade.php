@@ -120,7 +120,7 @@
                                 <th class="w-auto">Kecap</th>
                                 <th class="w-auto">Gaji TK Masak</th>
                                 <th class="w-auto">Pabukoan</th> --}}
-                                <th class="text-xs font-normal rounded-tr-full py-2.5 text-white w-24">Jumlah</th>
+                                <th class="text-xs font-normal py-2.5 text-white w-24">Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>

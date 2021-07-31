@@ -123,8 +123,8 @@
                         <tbody>
                             @foreach ($months as $key=>$m)
                             <tr class="border border-gray-100 hover:bg-gray-200">
-                                <td class="text-sm px-16 py-3">({{ $key+1 }})</td>
-                                <td> {{$month[$m]}} </td>
+                                <td class="text-sm text-gray-700 px-16 py-3">({{ $key+1 }})</td>
+                                <td class="text-sm text-gray-700"> {{$month[$m]}} </td>
                                 @if (count($uas->where('keterangan','LUNAS')->where('month',$m))!=0)
                                     <td class="text-sm px-28">
                                         <div disabled="disabled" class="flex justify-center">
@@ -133,8 +133,8 @@
                                             </div>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" class="ml-1.5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                                              </svg>
-                                            </div>
+                                            </svg>
+                                        </div>
                                     </td>
                                     <td class="text-sm font-semibold line-through text-green-500">
                                         @php
@@ -148,16 +148,16 @@
                                     </td>
                                 @elseif (count($uas->where('keterangan','BELUM LUNAS')->where('month',$m))!=0)
                                     <td class="text-sm px-24">
-                                        <div disabled="disabled" class="flex py-0.5 border border-red-500 bg-red-500 justify-center">
-                                            <div class="text-sm text-white">
+                                        <div disabled="disabled" class="flex py-0.5 justify-center">
+                                            <div class="text-sm font-semibold italic text-red-500">
                                                 Belum Lunas
                                             </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" class="ml-1.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" class="ml-1.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                               </svg>
-                                            </div>
+                                        </div>
                                     </td>
-                                    <td class="text-sm font-semibold underline text-gray-600">
+                                    <td class="text-sm font-semibold text-red-500">
                                         @php
                                             $jmlh = $uas->where('month',$m);
                                         @endphp
@@ -168,14 +168,14 @@
                                         @endforeach
                                     </td>
                                 @else
-                                    <td class="text-sm px-16">
-                                        <div disabled="disabled" class="flex border bg-white py-0.5 border-red-500 justify-center">
-                                            <div class="text-sm text-red-500 font-thin">
-                                                Belum ada pembayaran
+                                    <td class="text-sm">
+                                        <div disabled="disabled" class="flex justify-center">
+                                            <div class="text-sm italic font-thin text-gray-700">
+                                                "Belum ada pembayaran"
                                             </div>
                                             </div>
                                     </td>
-                                    <td class="text-sm font-semibold underline text-red-500">
+                                    <td class="text-sm text-gray-700">
                                         @foreach ($uasperiode as $up)
                                             Rp {{number_format($up->jumlah)}},-
                                         @endforeach
@@ -207,10 +207,10 @@
                             Identitas Peserta Didik:
                         </div>
                         <div class="flex mt-2 px-10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-gray-500 mr-1.5 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-indigo-500 mr-1.5 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <div class="text-gray-600 text-xs">
-                                {{ $murid[$dmurid->murid_id]}} ({{ $nis[$dmurid->murid_id]}})
+                            <div class="text-indigo-500 font-semibold text-sm">
+                                {{ $murid[$dmurid->murid_id]}} <span class="text-gray-500 text-xs font-normal">({{ $nis[$dmurid->murid_id]}})</span>
                             </div>
                         </div>
                         <div class="mt-1 px-15 text-gray-600 text-xs">

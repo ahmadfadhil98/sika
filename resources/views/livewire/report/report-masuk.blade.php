@@ -97,7 +97,7 @@
                                 <th class="text-sm font-normal pl-40 py-2.5 text-white w-1/2">Tanggal Pemasukan</th>
                                 <th class="text-sm font-normal px-4 py-2.5 text-white w-1/3">Nama Peserta Didik</th>
                                 <th class="text-sm font-normal px-4 py-2.5 text-white w-1/4">Kelas</th>
-                                <th class="text-sm font-normal rounded-tr-full pr-40 py-2.5 text-white w-1/2">Uang Masuk
+                                <th class="text-sm font-normal pr-40 py-2.5 text-white w-1/2">Uang Masuk
                                 </th>
                             </tr>
                         </thead>
