@@ -43,13 +43,13 @@
                         @if ($angsur!=[])
                             @if ($ketuas=='LUNAS')
                                 <div disabled="disabled" class="px-3">
-                                    <div class="text-sm text-green-500 font-semibold underline">
+                                    <div class="text-sm text-green-500 font-semibold">
                                         LUNAS
                                     </div>
                                 </div>
                             @else
                                 <div disabled="disabled" class="px-3">
-                                    <div class="text-sm text-red-500 font-semibold underline">
+                                    <div class="text-sm text-red-500 font-semibold">
                                         BELUM LUNAS
                                     </div>
                                 </div>
