@@ -10,7 +10,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
                 </div>
                 <button onClick="window.location.reload();" class="focus:outline-none hover:underline text-indigo-500 font-semibold text-xs">
-                    Laporan Uang Masuk
+                    Laporan Tagihan
                 </button>
             </div>
             <div class="w-1/2 grid justify-end">
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="text-xs text-center text-gray-600 mt-1">
-                            Untuk menampilkan Laporan Uang Masuk, pilih Semester dan Kelas
+                            Untuk menampilkan Laporan Tagihan, pilih Semester dan Kelas
                         </div>
                         <div class="text-center mt-4">
                             {{ Form::select('period',$periode,null,
@@ -61,11 +61,23 @@
                         </div>
 
                         @if ($this->period!=0&&$this->kelass!=0)
-                            <div class="w-full grid justify-end">
-                                <button onclick="location.href='{{ route('report',[$this->period,$this->kelass,$this->dkelasId]) }}'" class="transform hover:scale-95 duration-300 text-sm bg-green-500 border border-green-500 hover:bg-green-600 rounded-full text-white py-2 px-7 focus:outline-none shadow-lg flex-shrink-0 flex justify-center items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download -pt-0.5 mr-1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                                        Download Laporan
-                                </button>
+                            <div class="flex w-full">
+                                <div class="flex-shrink-0 flex items-center w-1/2">
+                                    <div class="flex transform hover:scale-95 duration-300 w-2/3">
+                                        <div class="bg-white pl-3 py-2.5 rounded-bl-full rounded-tl-full border-l border-b border-t">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="13" class="text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <input wire:model="search" type="text" class="w-1/2 pl-2 bg-white text-sm rounded-tr-full rounded-br-full focus:outline-none border-t border-r border-b" placeholder="Cari peserta didik...">
+                                    </div>
+                                </div>
+                                <div class="w-1/2 grid justify-end">
+                                    <button onclick="location.href='{{ route('report',[$this->period,$this->kelass,$this->dkelasId]) }}'" class="transform hover:scale-95 duration-300 text-sm bg-green-500 border border-green-500 hover:bg-green-600 rounded-full text-white py-2 px-7 focus:outline-none shadow-lg flex-shrink-0 flex justify-center items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download -pt-0.5 mr-1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                            Download Laporan
+                                    </button>
+                                </div>
                             </div>
                         @endif
                     </div>

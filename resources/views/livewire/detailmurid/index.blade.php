@@ -210,7 +210,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" class="text-indigo-500 mr-1.5 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <div class="text-indigo-500 font-semibold text-sm">
-                                {{ $murid[$dmurid->murid_id]}} <span class="text-gray-500 text-xs font-normal">({{ $nis[$dmurid->murid_id]}})</span>
+                                {{ $murid[$dmurid->murid_id]}} <span class="text-gray-700 text-xs font-normal">({{ $nis[$dmurid->murid_id]}})</span>
                             </div>
                         </div>
                         <div class="mt-1 px-15 text-gray-600 text-xs">
