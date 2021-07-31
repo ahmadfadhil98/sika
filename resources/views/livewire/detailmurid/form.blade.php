@@ -37,7 +37,7 @@
                             <input wire:model="dinfoId" type="hidden" class="border w-full py-2 px-3 text-blue-900">
                         </div> --}}
                         <div class="mb-2">
-                            <label for="bulan" class="mb-1 block text-xs font-semibold text-gray-400">
+                            <label for="bulan" class="block text-xs font-semibold text-gray-400">
                                 Untuk Bulan
                             </label>
                             {{ Form::select('bulan',$month,null, ['class' => 'bg-white border border-gray-200 w-full rounded-md px-3 py-2 text-gray-600 focus:outline-none text-sm mt-1 placeholder-gray-100','id' => 'bulan','wire:model'=>'bulan','placeholder'=>'- Pilih pembayaran bulan -'])}}
