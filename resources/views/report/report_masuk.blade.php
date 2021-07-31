@@ -74,7 +74,7 @@
                 @endif
                 <td class="border padding"> {{ $murid[$dmurid[$uas_dmurid[$t->uas_id]]] }} </td>
                 <td class="border center jarakbody"> {{ $kelas[$dkelas[$dmuridkelas[$uas_dmurid[$t->uas_id]]]] }} </td>
-                <td class="border center jarakbody">Rp {{number_format($t->jumlah)}},-</td>
+                <td class="border center jarakbody">Rp {{number_format($t->jumlah)}}.-</td>
             </tr>
             @php
                 $date = $t->tgl;
@@ -87,7 +87,7 @@
                     Jumlah
                 </th>
                 <th class="border center jarakbody">
-                    Rp{{number_format($debit)}},-
+                    Rp {{number_format($debit)}}.-
                 </th>
             </tr>
         </tfoot>

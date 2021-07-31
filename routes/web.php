@@ -71,7 +71,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('neraca',Neraca::class)->name('neraca');
     Route::get('tagihan',Tagihan::class)->name('tagihan');
     Route::get('uasperiode',UasPeriodes::class)->name('uasperiode');
-    Route::get('/report/{period}/{month}/{jenis}',[Report::class,'report'])->name('report');
-    // Route::get('/report/{period}/{month}/{jenis}',[Report::class,'view'])->name('report');
+    // Route::get('/report/{period}/{month}/{jenis}',[Report::class,'report'])->name('report');
+    Route::get('/report/{period}/{month}/{jenis}',[Report::class,'view'])->name('report');
 
 });

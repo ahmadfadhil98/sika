@@ -30,6 +30,10 @@
             text-align: center;
         }
 
+        .padding{
+            padding-left: 15px;
+        }
+
         .jarakhead{
             padding: 7px;
         }
@@ -48,29 +52,35 @@
     <table class="item">
         <thead class="border">
             <tr class="border center">
-                <th>Nama Peserta Didik</th>
+                <th class="border jarakhead">
+                    Nama Peserta Didik
+                </th>
                 @foreach ($month as $m)
-                    <th>{{$months[$m]}}</th>
+                    <th class="border">
+                        {{$months[$m]}}
+                    </th>
                 @endforeach
             </tr>
         </thead>
         <tbody class="border">
             @foreach($murids as  $key=>$mur)
                 <tr class="border center">
-                    <td >{{ $murid[$mur->murid_id] }}</td>
+                    <td class="border jarakbody">
+                        {{ $murid[$mur->murid_id] }}
+                    </td>
                     @foreach ($month as $m)
                         @php
                             $ua = $uas->where('murid_id',$mur->id)->where('month',$m);
                         @endphp
-                        <td>
+                        <td class="border jarakbody">
                             @if ($ua=='[]')
-                                Rp{{number_format($suas)}},-
+                                Rp {{number_format($suas)}}.-
                             @else
                                 @foreach ($ua as $u)
                                     @if ($u->keterangan=='LUNAS')
                                         LUNAS
                                     @else
-                                        Rp{{number_format($suas-$u->jumlah)}},-
+                                        Rp {{number_format($suas-$u->jumlah)}}.-
                                     @endif
                                 @endforeach
                             @endif
