@@ -31,11 +31,15 @@
         }
 
         .jarakhead{
-            padding: 7px;
+            padding: 5px;
+        }
+
+        .ukurantulisan{
+            font-size: 12px;
         }
 
         .jarakbody{
-            padding: 3px;
+            padding: 1px;
         }
 
         </style>
@@ -45,12 +49,12 @@
     <div class="head">
         <b>BUKU PEMBANTU PENGELUARAN DAPUR BULAN {{$months[$month]}} {{$periode->year}}</b>
     </div>
-    <table class="item" id="myTable">
+    <table class="ukurantulisan item" id="myTable">
         <thead class="border">
             <tr>
                 <th class="border jarakhead">Tanggal</th>
                 <th class="border jarakhead">Nama Barang</th>
-                <th class="border jarakhead">Lauk/Sayur</th>
+                <th class="border jarakhead">Lauk / Sayur</th>
                 @foreach ($barangs as $b)
                     <th class="border jarakhead">{{$b->name}}</th>
                 @endforeach
@@ -81,21 +85,21 @@
                         @endif
                     @endforeach
                 @endif
-                <td class="border center jarakbody"> {{ $barang[$t->barang_id]}} {{$t->jumlah}} {{ $satuan[$t->barang_id]}} </td>
+                <td class="border center jarakbody"> {{ $barang[$t->barang_id]}} {{number_format($t->jumlah)}} {{ $satuan[$t->barang_id]}} </td>
                 <td class="border center jarakbody">
                     @if ( $jenis[$peng[$t->id]] == 2 )
-                        Rp{{number_format($t->harga)}},-
+                        {{number_format($t->harga)}}
                     @endif
                 </td>
                 @foreach ($barangs as $b)
                     <td class="border center jarakbody">
                         @if ( $barang[$peng[$t->id]] == $b->name )
-                            Rp{{number_format($t->harga)}},-
+                            {{number_format($t->harga)}}
                         @endif
                     </td>
                 @endforeach
                 <td class="border center jarakbody">
-                    Rp{{number_format($t->harga)}},-
+                    {{number_format($t->harga)}}
                 </td>
             </tr>
             @php
@@ -111,7 +115,7 @@
                 @foreach ($kredit1 as $k1)
                     <th class="border center jarakbody">
                         @if ($k1->kredit)
-                            Rp{{number_format($k1->kredit)}},-
+                            {{number_format($k1->kredit)}}
                         @endif
                     </th>
                 @endforeach
@@ -119,13 +123,13 @@
                     <th class="border center jarakbody">
                         @foreach ($kredit2 as $k2)
                             @if ( $k2->barang_id == $b->id )
-                                Rp{{number_format($k2->kredit)}},-
+                                {{number_format($k2->kredit)}}
                             @endif
                         @endforeach
                     </th>
                 @endforeach
                 <th class="border center jarakbody">
-                    Rp{{number_format($kredit)}},-
+                    Rp{{number_format($kredit)}}.-
                 </th>
             </tr>
         </tfoot>
