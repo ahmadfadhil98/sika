@@ -8,7 +8,7 @@ use App\Models\Asrama;
 use App\Models\KelasPeriode;
 use App\Models\Murid;
 use Livewire\Component;
-use DB;
+use Illuminate\Support\Facades\DB ;
 
 class AnggotaAsrama extends Component
 {
@@ -105,6 +105,6 @@ class AnggotaAsrama extends Component
         $dmurid->update([
             'asrama_id' => null
         ]);
-        session()->flash('delete','Anggota Kelas Successfully Deleted');
+        session()->flash('delete','Berhasil Dihapus');
     }
 }

@@ -104,14 +104,14 @@ class ReportMasuk extends Component
             $cek->update([
                 'uang_masuk' => $debt+$this->debit
             ]);
-            session()->flash('info','Uang Masuk telah dimasukkan ke Neraca di bulan '.$this->months[$this->month]);
+            session()->flash('info',''.$this->months[$this->month]);
         }else{
             Neraca::create([
                 'periode_id' => $this->period,
                 'month' => $this->month,
                 'uang_masuk' => $this->debit
             ]);
-            session()->flash('info','Uang Masuk telah dimasukkan ke Neraca di bulan '.$this->months[$this->month]);
+            session()->flash('info',''.$this->months[$this->month]);
 
         }
 

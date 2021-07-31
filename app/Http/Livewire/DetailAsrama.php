@@ -103,6 +103,6 @@ class DetailAsrama extends Component
 
     public function delete($id){
         AsramaPeriode::find($id)->delete();
-        session()->flash('delete','Detail Asrama Successfully Deleted');
+        session()->flash('delete','');
     }
 }

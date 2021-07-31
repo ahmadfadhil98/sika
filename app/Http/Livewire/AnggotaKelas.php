@@ -117,7 +117,7 @@ class AnggotaKelas extends Component
         $dmurid->update([
             'kelas_id' => null
         ]);
-        session()->flash('delete','Anggota Kelas Successfully Deleted');
+        session()->flash('delete','Berhasil Dihapus');
     }
 
 }

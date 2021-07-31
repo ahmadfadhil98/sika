@@ -86,6 +86,6 @@ class Asramas extends Component
 
     public function delete($id){
         Asrama::find($id)->delete();
-        session()->flash('delete','Asrama Successfully Deleted');
+        session()->flash('delete','Berhasil Dihapus');
     }
 }

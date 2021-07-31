@@ -83,14 +83,14 @@ class ReportKeluar extends Component
             $cek->update([
                 'pengeluaran' => $this->kredit
             ]);
-            session()->flash('info','Uang pengeluaran telah dimasukkan ke Neraca di bulan '.$this->months[$this->month]);
+            session()->flash('info',''.$this->months[$this->month]);
         }else{
             Neraca::create([
                 'periode_id' => $this->period,
                 'month' => $this->month,
                 'pengeluaran' => $this->kredit
             ]);
-            session()->flash('info','Uang pengeluaran telah dimasukkan ke Neraca di bulan '.$this->months[$this->month]);
+            session()->flash('info',''.$this->months[$this->month]);
         }
         $this->hideReport();
 
