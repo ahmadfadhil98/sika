@@ -21,14 +21,16 @@ class Tagihan extends Component
     public $suas = 0;
     public $periodes,$kelass,$month,$months;
     public $dkelasId = 0;
+    public $search;
 
     public function render()
     {
+        $searchParams = '%'.$this->search.'%';
         $periode = Periode::select('id', DB::raw("CONCAT(if(period=1,concat(year-1,'/',year),concat(year,'/',year+1)),'-',if(period=1,'Semester 2','Semester 1')) AS semester"))->orderBy('id','desc')->pluck('semester','id');
         if($this->kelass!=[]){
             $dkelas = KelasPeriode::where('kelas_id',$this->kelass)->where('periode_id',$this->period)->get();
             foreach ($dkelas as $dk){
-               $this->murids = DetailMurid::where('kelas_id',$dk->id)->get();
+               $this->murids = DetailMurid::join('murids','murids.id','detail_murids.murid_id')->select('detail_murids.*','murids.name')->where('kelas_id',$dk->id)->where('murids.name','like',$searchParams)->get();
                $this->dkelasId = $dk->id;
             }
 
