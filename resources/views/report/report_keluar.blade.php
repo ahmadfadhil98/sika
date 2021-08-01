@@ -129,7 +129,7 @@
                     </th>
                 @endforeach
                 <th class="border center jarakbody">
-                    Rp{{number_format($kredit)}}.-
+                    Rp {{number_format($kredit)}}.-
                 </th>
             </tr>
         </tfoot>

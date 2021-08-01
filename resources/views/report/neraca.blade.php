@@ -58,7 +58,7 @@
             <tr>
                 <td class="border center jarakbody">{{$month-1}}-{{$periode->year}}</td>
                 <td class="border center jarakbody">
-                        Rp{{number_format($debitm)}},-
+                        Rp {{number_format($debitm)}},-
                 </td>
                 <td class="border center jarakbody">
                 </td>
@@ -71,14 +71,14 @@
                     <td class="border center jarakbody">
                         @foreach ($debitd as $d)
                             @if($t->tgl==$d->tgl)
-                                Rp{{number_format($d->debit)}},-
+                                Rp {{number_format($d->debit)}},-
                             @endif
                         @endforeach
                     </td>
                     <td class="border center jarakbody">
                         @foreach ($kreditd as $k)
                             @if($t->tgl==$k->tgl)
-                                Rp{{number_format($k->kredit)}},-
+                                Rp {{number_format($k->kredit)}},-
                             @endif
                         @endforeach
                     </td>
@@ -92,13 +92,13 @@
                     Jumlah
                 </th>
                 <th class="border center jarakbody">
-                    Rp{{number_format($debit+$debitm)}},-
+                    Rp {{number_format($debit+$debitm)}},-
                 </th>
                 <th class="border center jarakbody">
-                    Rp{{number_format($kredit)}},-
+                    Rp {{number_format($kredit)}},-
                 </th>
                 <th class="border center jarakbody">
-                    Rp{{number_format($debit+$debitm-$kredit)}},-
+                    Rp {{number_format($debit+$debitm-$kredit)}},-
                 </th>
             </tr>
         </tfoot>
