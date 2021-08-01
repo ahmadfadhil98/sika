@@ -43,7 +43,7 @@
   </head>
   <body>
     <div class="head">
-        <b>NERACA UANG MAKAN {{$months[$month]}} {{$periode->year}}</b>
+        <b>NERACA UANG ASRAMA {{$months[$month]}} {{$periode->year}}</b>
     </div>
     <table class="item">
         <thead class="border">

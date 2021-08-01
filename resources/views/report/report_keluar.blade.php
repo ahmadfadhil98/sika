@@ -47,7 +47,7 @@
   </head>
   <body>
     <div class="head">
-        <b>BUKU PEMBANTU PENGELUARAN DAPUR BULAN {{$months[$month]}} {{$periode->year}}</b>
+        <b>RINCIAN PENGELUARAN UANG ASRAMA BULAN {{$months[$month]}} {{$periode->year}}</b>
     </div>
     <table class="ukurantulisan item" id="myTable">
         <thead class="border">
@@ -56,7 +56,7 @@
                 <th class="border jarakhead">Nama Barang</th>
                 <th class="border jarakhead">Lauk / Sayur</th>
                 @foreach ($barangs as $b)
-                    <th class="border jarakhead">{{$b->name}}</th>
+                <th class="border jarakhead">{{$b->name}}</th>
                 @endforeach
                 {{-- <th class="w-auto">Air</th>
                 <th class="w-auto">Gas</th>
