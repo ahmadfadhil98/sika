@@ -47,7 +47,7 @@
   </head>
   <body>
     <div class="head">
-        TAGIHAN UANG MAKAN KELAS {{$kelas[$dkelasp[$dkelasId]]}} PADA {{$periodes[$period]}}
+        TAGIHAN UANG ASRAMA KELAS {{$kelas[$dkelasp[$dkelasId]]}} PADA {{$periodes[$period]}}
     </div>
     <table class="item">
         <thead class="border">

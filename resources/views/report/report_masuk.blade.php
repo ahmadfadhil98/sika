@@ -45,7 +45,7 @@
         </style>
     <title></title>
   </head>
-  <body>
+  <body onload="window.print()">
     <div class="head">
         <b>PEMBAYARAN UANG ASRAMA BULAN {{$months[$month]}} {{$periode->year}}</b>
     </div>
