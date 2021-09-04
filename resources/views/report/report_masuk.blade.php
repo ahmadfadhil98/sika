@@ -80,8 +80,6 @@
                 $date = $t->tgl;
             @endphp
             @endforeach
-        </tbody>
-        <tfoot>
             <tr>
                 <th colspan=3 class="border center jarakbody">
                     Jumlah
@@ -90,7 +88,17 @@
                     Rp {{number_format($debit)}}.-
                 </th>
             </tr>
-        </tfoot>
+        </tbody>
+        {{-- <tfoot>
+            <tr>
+                <th colspan=3 class="border center jarakbody">
+                    Jumlah
+                </th>
+                <th class="border center jarakbody">
+                    Rp {{number_format($debit)}}.-
+                </th>
+            </tr>
+        </tfoot> --}}
     </table>
     <table>
         <tbody>

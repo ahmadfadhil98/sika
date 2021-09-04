@@ -18,7 +18,7 @@
         }
 
         .ttd{
-            width: 80%;
+            width: 77%;
         }
 
         .head{
@@ -106,8 +106,6 @@
                 $date = $t->tgl;
             @endphp
             @endforeach
-        </tbody>
-        <tfoot>
             <tr>
                 <th colspan=2 class="border center jarakbody">
                     Jumlah
@@ -132,7 +130,33 @@
                     Rp {{number_format($kredit)}}.-
                 </th>
             </tr>
-        </tfoot>
+        </tbody>
+        {{-- <tfoot>
+            <tr>
+                <th colspan=2 class="border center jarakbody">
+                    Jumlah
+                </th>
+                @foreach ($kredit1 as $k1)
+                    <th class="border center jarakbody">
+                        @if ($k1->kredit)
+                            {{number_format($k1->kredit)}}
+                        @endif
+                    </th>
+                @endforeach
+                @foreach ($barangs as $b)
+                    <th class="border center jarakbody">
+                        @foreach ($kredit2 as $k2)
+                            @if ( $k2->barang_id == $b->id )
+                                {{number_format($k2->kredit)}}
+                            @endif
+                        @endforeach
+                    </th>
+                @endforeach
+                <th class="border center jarakbody">
+                    Rp {{number_format($kredit)}}.-
+                </th>
+            </tr>
+        </tfoot> --}}
     </table>
 
     <table>
