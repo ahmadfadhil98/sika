@@ -45,7 +45,7 @@
         </style>
     <title></title>
   </head>
-  <body onload="window.print()">
+  <body onload="printWithSpecialFileName('{{$months[$month]}}','{{$periode->year}}')">
     <div class="head">
         <b>PEMBAYARAN UANG ASRAMA BULAN {{$months[$month]}} {{$periode->year}}</b>
     </div>
@@ -125,4 +125,11 @@
         </tbody>
     </table>
   </body>
+
+  <script>
+        function printWithSpecialFileName(bulan,tahun){
+            document.title = "Laporan Pembayaran Uang Asrama ".concat(bulan,' ',tahun,'.pdf');
+            window.print();
+        }
+  </script>
 </html>
