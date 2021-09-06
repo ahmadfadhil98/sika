@@ -69,7 +69,7 @@ class Report extends Controller
                 'kredit' => $kredit,
                 'months' => $months
             ]);
-            return $pdf->download('Neraca Uang Makan '.$months[$month].' '.$periode->year.'.pdf');
+            return $pdf->download('Neraca Uang Asrama '.$months[$month].' '.$periode->year.'.pdf');
 
         }elseif($jenism==2){
 
