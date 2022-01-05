@@ -168,7 +168,7 @@
                 <br>
                 <br>
                 <br>
-                <b>Lely Hanafiah, S.Pd, M.Si</b><br>
+                <b>Eli Marlina, S.Pd.</b><br>
                 NIP 19611110 198512 2 002 <br>
                 </td>
                 <td>
